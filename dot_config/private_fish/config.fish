@@ -96,7 +96,7 @@ alias cmcd='cd /home/mxstoto/.local/share/chezmoi/'
 
 if status is-interactive
     # Welcome message
-    ~/Desktop/scripts/random_krabby.sh
+    ~/.config/fish/functions/random_krabby.sh
 else
     set -U fish_greeting
 end
