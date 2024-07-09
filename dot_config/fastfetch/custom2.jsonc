@@ -1,0 +1,63 @@
+// ~/.config/fastfetch/config.jsonc
+// See https://github.com/fastfetch-cli/fastfetch/wiki/Configuration for more details
+// See *.jsonc in https://github.com/fastfetch-cli/fastfetch/tree/dev/presets/examples for more examples
+{
+  "logo": {
+    "type": "small",
+    "color": {
+      "1": "magenta",
+      "2": "magenta"
+    }
+  },
+  "display": {
+    "separator": " -> "
+  },
+  "modules": [
+    {
+      "type": "title",
+      "color": {
+        "user": "cyan",
+        "at": "white",
+        "host": "magenta"
+      },
+      "key": "├♥ ",
+      "keycolor": "cyan"
+    },
+    {
+      "type": "custom",
+      "key": "├r ",
+      "keyColor": "magenta",
+      "format": "Aetherglass Rice"
+    },
+    {
+      "type": "os",
+      "key": "├ ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "de",
+      "key": "├ ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "wm",
+      "key": "├ ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "host",
+      "key": "├ ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "uptime",
+      "key": "├󰅐 ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "media",
+      "key": "├󰝚",
+      "keyColor": "cyan"
+    }
+  ]
+}
