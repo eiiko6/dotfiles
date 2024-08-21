@@ -74,6 +74,7 @@ tooltip {
 #workspaces,
 #tray,
 #custom-spotify,
+#cava,
 #backlight {
     background: @transparent-background;
     opacity: 0.9;
@@ -87,7 +88,7 @@ tooltip {
 }
 
 /* close to left */
-#tray, #bluetooth, #temperature, #backlight , #custom-myhyprvm, #workspaces, #window, #custom-spotify, #clock {
+#tray, #bluetooth, #temperature, #backlight, #cava, #custom-myhyprvm, #workspaces, #window, #custom-spotify, #clock {
     border-radius: 100px 0px 0px 100px;
     border-left: 2px solid @accent-background;
     margin-left: 5px;
@@ -95,7 +96,7 @@ tooltip {
 }
 
 /*close to the right */
-#tray, #custom-light_dark, #workspaces, #window, #custom-spotify, #pulseaudio.microphone, #battery, #clock {
+#tray, #custom-light_dark, #workspaces, #window, #cava, #custom-spotify, #pulseaudio.microphone, #battery, #clock {
     border-radius: 0px 100px 100px 0px;
     border-right: 2px solid @accent-background;
     margin-right: 5px;
@@ -140,6 +141,12 @@ tooltip {
 }
 
 #clock {
+    color: @color6;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+#cava {
     color: @color6;
     border-radius: 100px;
     margin-right: 10px;
