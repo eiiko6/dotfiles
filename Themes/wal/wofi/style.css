@@ -1,0 +1,86 @@
+@import '/home/mxstoto/.cache/wal/colors-waybar.css';
+
+window {
+    margin: 0px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid @accent-background;
+}
+
+#input {
+    padding: 4px;
+    padding-left: 20px;
+    color: @foreground;
+    font-weight: bold;
+    outline: none;
+    margin-bottom: 2px;
+    border: 3px solid @color2;
+    background: none;
+    border-radius: 15px;
+    margin: 30px 50px 2px 50px;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#input > image.right {
+    -gtk-icon-transform: scaleX(0);
+}
+
+#input > image.left {
+    margin-right: 15px;
+}
+
+#inner-box {
+    margin: 8px;
+    color: @foreground;
+    font-weight: bold;
+    border-radius: 15px;
+    background: none;
+    outline: none;
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    border-radius: 15px;
+    background: none;
+    outline: none;
+}
+
+#scroll {
+    margin-top: 5px;
+    border: 3px solid @color1;
+    border-radius: 15px;
+    background: none;
+    margin: 20px 30px 30px 30px;
+}
+
+#img:selected {
+    border-radius: 15px;
+}
+
+#text:selected {
+    margin: 0px 0px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+}
+
+#entry {
+    margin: 0px 0px;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    outline: none;
+}
+
+#entry:selected {
+    margin: 0px 0px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.2);
+}
