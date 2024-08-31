@@ -39,7 +39,7 @@
     "on-click": "~/Desktop/scripts/flex.sh"
   },
   "image#album-art": {
-    "path": "/tmp/cover.jpeg",
+    "path": "/tmp/cover.png",
      "size": 32,
      "interval": 10
   },
@@ -175,8 +175,7 @@
     "on-click": "playerctl play-pause"
   },
   "custom/album-art-update": {
-    "exec": "~/.config/waybar/scripts/album-art.sh",
-    "interval": 10
+    "exec": "~/.config/waybar/scripts/album-art.sh"
   },
   "custom/pkg_updates": {
     "exec": "~/.config/waybar/scripts/pkg_updates.sh",
