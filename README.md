@@ -9,11 +9,13 @@ Made with [chezmoi](https://chezmoi.io).
 
 ### Themes
 These are multi-theme dotfiles.     
-I am using a custom [theme switcher](https://github.com/eiiko6/linux-theme-switcher) script that creates symlinks in **.config**. Thus most appearance configuration files located in **.config** are irrelevant and actually located in **Themes**.
+I am using a custom [theme switcher](https://github.com/eiiko6/linux-theme-switcher) script that creates symlinks in **.config**. Thus most appearance configuration files located in **.config** are irrelevant and actually located in **Themes**.      
+Most themes are no longer maintained: the main theme is `wal`.
+Themes are more than color palettes here, they actually come with different features (mostly noticeable in Waybar).
 
 ### Pywal
-If you are looking for configuration files that use [pywal](https://github.com/eylles/pywal16), every theme in **Themes** that contains `wal` uses the pywal colorscheme.
+If you are looking for configuration files that use [pywal](https://github.com/eylles/pywal16), every theme in **Themes** that contains `wal` uses the Pywal colorscheme.
 
 ### Fish
-My [fish config](./dot_config/private_fish/config.fish) contains the **palette** function which I use to generate my pywal themes, along with many other utility functions.
+My [fish config](./dot_config/private_fish/config.fish) contains the **palette** function which I use to generate my Pywal themes, along with many other utility functions.
 
