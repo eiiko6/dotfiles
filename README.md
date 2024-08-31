@@ -1,5 +1,10 @@
 ## My [Arch Linux](https://archlinux.org) & [hyprland](https://hyprland.org) dotfiles.
 
+<p float="left">
+    <img alt="Demo" src="https://imgur.com/u15fOBP" width="300" />
+    <img alt="Demo2" src="https://imgur.com/u15fOBP" width="300" />
+</p>
+
 Made with [chezmoi](https://chezmoi.io).
 
 ### Themes
