@@ -81,8 +81,8 @@ function pys
     nvim +2 $path/src/main.py
 end
 
-# Helper tot trim videos with ffmpeg
-function trim
+# Helper to trim videos with ffmpeg
+function trimv
     if test (count $argv) -lt 5
         echo "Usage: trim <input_video> <start_time> <end_time> <bitrate> <output_video>"
         return 1
@@ -97,6 +97,20 @@ function trim
     ffmpeg -i $input_video -ss $start_time -to $end_time -c:v libx264 -c:a aac -strict experimental -b:a $bitrate $output_video
 end
 
+# Helper to trim audio with ffmpeg
+function trima
+    if test (count $argv) -lt 5
+        echo "Usage: trim <input> <start_time> <end_time> <bitrate> <output>"
+        return 1
+    end
+
+    set input $argv[1]
+    set start_time $argv[2]
+    set end_time $argv[3]
+    set output $argv[5]
+
+    ffmpeg -i $input.mp3 -ss $start_time -to $end_time -c copy $output
+end
 
 # ===> Custom aliases
 alias grep='grep --color=auto'
@@ -105,6 +119,7 @@ alias tt='tt -n 10 -theme custom'
 alias ff='fastfetch -c ~/.config/fastfetch/nice.jsonc'
 alias ffs='fastfetch -c ~/.config/fastfetch/custom2.jsonc --logo-type small'
 alias fff='fastfetch -c ~/.config/fastfetch/custom.jsonc'
+alias fft='magick /tmp/cover-raw.jpeg -resize 500x500^ -gravity center -extent 500x500 -alpha set ~/.config/fastfetch/mask.png -compose DstIn -composite /home/mxstoto/.config/fastfetch/fetch-logo.png && fastfetch -c ~/.config/fastfetch/track.jsonc'
 alias sd='shutdown 0'
 alias rb='reboot'
 alias vim='nvim'
@@ -137,3 +152,7 @@ starship init fish | source
 
 # Created by `pipx` on 2024-06-25 06:22:23
 set PATH $PATH /home/mxstoto/.local/bin
+
+
+# External configs
+source ~/passwords/ssh-magnamalo.fish

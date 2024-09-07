@@ -5,55 +5,35 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 42,
-  "margin": "6px 6px 0px 6px",
+  "height": 35,
+  "margin": "0px 0px 0px 0px",
   "modules-left": [
-    "image#icon",
     "hyprland/workspaces",
-    "tray",
     "hyprland/window"
   ],
   "modules-center": [
-    "custom/album-art-update",
-    "image#album-art",
-    "custom/spotify"
+    "image#icon"
   ],
   "modules-right": [
-    "custom/pkg_updates",
-    "hyprland/language",
     "backlight",
     "pulseaudio",
     "pulseaudio#microphone",
+    "bluetooth",
     "network",
     "battery",
     "clock"
   ],
-  "include": [
-    "~/.config/HyprV/waybar/conf/mesu.jsonc",
-    "~/.config/HyprV/waybar/conf/asus-rog.jsonc",
-    "~/.config/HyprV/waybar/conf/hyprv-util.jsonc"
-  ],
-  "image#icon": {
-	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
-	  "size": 20,
-    "on-click": "~/Desktop/scripts/flex.sh"
-  },
-  "image#album-art": {
-    "path": "/tmp/cover.png",
-     "size": 32,
-     "interval": 10
+ "image#icon": {
+	  "path": "/tmp/waybarIcon.png",
+	  "size": 45,
+    "on-click": "~/Desktop/scripts/flex.sh",
+    "interval": 1
   },
   "hyprland/window": {
-    "format": "{class} | {title}",
-    "icon": true,
-    "icon-size": 18
+    "format": "{}"
   },
   "hyprland/workspaces": {
     "format": "{}"
-  },
-  "hyprland/language": {
-    "format-en": "EN",
-    "format-fr": "FR"
   },
   "wlr/workspaces": {
     "disable-scroll": true,
@@ -77,8 +57,9 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%Y-%m-%d}"
+    "format": "{:%H:%M:%S}",
+    "tooltip": false,
+    "interval": 1
   },
   "backlight": {
     "device": "intel_backlight",
@@ -88,10 +69,10 @@
       "󰃟",
       "󰃠"
     ],
-    "tooltip": false,
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/brightness --dec",
-    "min-length": 6
+    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+    "min-length": 6,
+    "tooltip": false
   },
   "battery": {
     "states": {
@@ -120,10 +101,10 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": " Muted",
-    "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle",
+    "on-click": "~/.config/waybar/scripts/volume --toggle",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --dec",
+    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -143,10 +124,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "  Muted",
-    "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle-mic",
+    "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --mic-inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --mic-dec",
+    "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
     "scroll-step": 5
   },
   "network": {
@@ -156,7 +137,8 @@
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
+    "tooltip": false
   },
   "bluetooth": {
     "format": " {status}",
@@ -169,20 +151,10 @@
   },
   "custom/spotify": {
     "exec": "/usr/bin/python3 ~/.config/waybar/modules/mediaplayer.py --player spotify",
-    "format": "{}",
+    "format": "{}  ",
     "return-type": "json",
     "max-length": 46,
     "on-click": "playerctl play-pause"
-  },
-  "custom/album-art-update": {
-    "exec": "~/.config/waybar/scripts/album-art.sh"
-  },
-  "custom/pkg_updates": {
-    "exec": "~/.config/waybar/scripts/pkg_updates.sh",
-    "format": " {}",
-    "tooltip-format": "Apply updates",
-    "on-click": "~/.config/waybar/scripts/pkg_updates.sh --update"
-    // "interval": 350
   },
   "cava": {
     // "cava_config": "$XDG_CONFIG_HOME/cava/config",
