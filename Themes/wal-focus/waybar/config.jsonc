@@ -24,8 +24,8 @@
     "clock"
   ],
  "image#icon": {
-	  "path": "/tmp/waybarIcon.png",
-	  "size": 45,
+	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
+	  "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1
   },

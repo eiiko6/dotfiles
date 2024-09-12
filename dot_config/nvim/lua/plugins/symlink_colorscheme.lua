@@ -1,1 +1,1 @@
-/home/mxstoto/Themes/Glass-wal/nvim/lua/plugins/colorscheme.lua
+/home/mxstoto/Themes/wal/nvim/lua/plugins/colorscheme.lua

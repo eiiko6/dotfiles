@@ -41,7 +41,7 @@
   "image#album-art": {
     "path": "/tmp/cover.png",
      "size": 32,
-     "interval": 10
+     "interval": 3
   },
   "hyprland/window": {
     "format": "{class} | {title}",
