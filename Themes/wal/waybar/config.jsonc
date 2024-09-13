@@ -28,11 +28,6 @@
     "battery",
     "clock"
   ],
-  "include": [
-    "~/.config/HyprV/waybar/conf/mesu.jsonc",
-    "~/.config/HyprV/waybar/conf/asus-rog.jsonc",
-    "~/.config/HyprV/waybar/conf/hyprv-util.jsonc"
-  ],
   "image#icon": {
 	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
 	  "size": 20,
@@ -89,8 +84,8 @@
       "󰃠"
     ],
     "tooltip": false,
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/brightness --dec",
+    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
     "min-length": 6
   },
   "battery": {
@@ -120,10 +115,10 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": " Muted",
-    "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle",
+    "on-click": "~/.config/waybar/scripts/volume --toggle",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --dec",
+    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -143,10 +138,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "  Muted",
-    "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle-mic",
+    "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --mic-inc",
-    "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --mic-dec",
+    "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
     "scroll-step": 5
   },
   "network": {
