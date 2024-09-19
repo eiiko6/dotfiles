@@ -54,6 +54,11 @@
       "keyColor": "cyan"
     },
     {
+      "type": "command",
+      "key": "{$2}{#34} ",
+      "shell": "/home/mxstoto/.config/fastfetch/os-age.sh"
+    },
+    {
       "type": "media",
       "key": "{$2}{#34}󰝚 ",
     },
@@ -63,7 +68,7 @@
     },
     {
       "type": "cpu",
-      "key": "{$2}{#36}󰍛 ",
+      "key": "{$2}{#36} ",
       "format": "{1}"
     },
     {
