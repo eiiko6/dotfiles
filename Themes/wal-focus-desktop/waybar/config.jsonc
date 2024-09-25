@@ -6,13 +6,14 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 35,
-  "margin": "0px 0px 0px 0px",
+"margin": "7px 7px 0px 7px",
   "modules-left": [
     "hyprland/workspaces",
+    "tray",
     "hyprland/window"
   ],
   "modules-center": [
-    "image#icon"
+    "custom/spotify"
   ],
   "modules-right": [
     "pulseaudio",
@@ -50,7 +51,7 @@
     }
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 16,
     "spacing": 10
   },
   "clock": {

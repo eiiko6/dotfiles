@@ -12,6 +12,7 @@
 window#waybar {
     background: @transparent-background;
     color: #cdd6f4;
+    border-radius: 14px;
 }
 
 window#waybar.empty #window {
@@ -104,6 +105,7 @@ tooltip {
     border-radius: 100px;
     padding-right: 6px;
     padding-left: 6px;
+    margin-left: 11px;
 }
 
 #custom-power_profile {
@@ -117,10 +119,14 @@ tooltip {
     margin-left: 4px;
 }
 
+#custom-spotify {
+    border-radius: 100px 100px 100px 100px;
+}
+
 #clock {
     color: @color6;
     border-radius: 100px;
-    margin-right: 4px;
+    margin-right: 11px;
 }
 
 #network {
@@ -139,6 +145,15 @@ tooltip {
 
 #pulseaudio {
     color: @color4;
+}
+
+#tray {
+    border-radius: 100px;
+    margin-right: 6px;
+}
+
+#tray > * {
+  opacity: 0.6;
 }
 
 #pulseaudio.microphone {

@@ -13,6 +13,7 @@ alias p='sudo pacman'
 alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort name --time-style iso'
 alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort name --time-style iso'
 alias cls='c && lsa'
+alias lls='/bin/ls'
 alias c='clear'
 alias dim='echo 70 | sudo tee /sys/class/backlight/intel_backlight/brightness'
 alias clock="tty-clock -s -C 5"
