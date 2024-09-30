@@ -130,6 +130,16 @@ tooltip {
     border-right: 0px;
 }
 
+#tray {
+  border-radius: 100px;
+  margin-left: 4px;
+  opacity: 0; /* Tray is a visual distraction but is required */
+}
+
+#tray > * {
+  opacity: 0.6;
+}
+
 #bluetooth {
     color: @color5;
     border-radius: 100px 0px 0px 100px;
@@ -148,11 +158,13 @@ tooltip {
     border-left: 0px;
     border-radius: 0px 100px 100px 0px;
     padding-left: 6px;
+    margin-right: 4px;
 }
 
 #battery {
     color: @color5;
     border-radius: 0px 100px 100px 0px;
+    margin-right: 4px;
 }
 
 #backlight {

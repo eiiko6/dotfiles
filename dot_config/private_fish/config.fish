@@ -22,7 +22,7 @@ alias commits="~/Desktop/git-repos/commits/commits.sh"
 alias cm='chezmoi'
 alias dcolors='Desktop/scripts/display-colors.fish'
 alias cmcd='cd /home/mxstoto/.local/share/chezmoi/'
-alias deb="sudo lxc-start -name debian; sudo lxc-attach -n debian -- login"
+alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-attach -n debian -- login"
 
 # Setup greeting
 if status is-interactive

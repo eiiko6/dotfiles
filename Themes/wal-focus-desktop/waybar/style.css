@@ -127,6 +127,7 @@ tooltip {
     color: @color6;
     border-radius: 100px;
     margin-right: 11px;
+    margin-left: 2px;
 }
 
 #network {
@@ -136,7 +137,8 @@ tooltip {
     padding-right: 11px;
     border-left: 2px solid @accent-background;
     border-right: 2px solid @accent-background;
-    margin-right: 2px;
+    margin-right: 4px;
+    margin-left: 2px;
 }
 
 #bluetooth {
@@ -149,7 +151,8 @@ tooltip {
 
 #tray {
     border-radius: 100px;
-    margin-right: 6px;
+    margin-right: 2px;
+    margin-left: 4px;
 }
 
 #tray > * {
