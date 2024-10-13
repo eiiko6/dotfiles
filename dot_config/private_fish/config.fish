@@ -1,4 +1,6 @@
 # Aliases
+alias ..='cd ..'
+alias ...='cd ../../'
 alias grep='grep --color=auto'
 alias tt='tt -n 10 -theme custom'
 alias ff='fastfetch -c ~/.config/fastfetch/nice.jsonc'
