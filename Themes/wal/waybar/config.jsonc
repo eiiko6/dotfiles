@@ -29,14 +29,14 @@
     "clock"
   ],
   "image#icon": {
-	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
-	  "size": 20,
+    "path": "/home/mxstoto/Pictures/Icons/arch.png",
+    "size": 20,
     "on-click": "~/Desktop/scripts/flex.sh"
   },
   "image#album-art": {
     "path": "/tmp/cover.png",
-     "size": 32,
-     "interval": 3
+    "size": 32,
+    "interval": 3
   },
   "hyprland/window": {
     "format": "{class} | {title}",
@@ -196,7 +196,17 @@
     "waves": false,
     "noise_reduction": 0.77,
     "input_delay": 2,
-    "format-icons" : [" ","▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+    "format-icons": [
+      " ",
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
     "actions": {
       "on-click-right": "mode"
     }
