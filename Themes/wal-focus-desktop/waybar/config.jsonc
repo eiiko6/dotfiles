@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 35,
-"margin": "7px 7px 0px 7px",
+  "margin": "7px 7px 0px 7px",
   "modules-left": [
     "hyprland/workspaces",
     "tray",
@@ -21,9 +21,9 @@
     "network",
     "clock"
   ],
- "image#icon": {
-	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
-	  "size": 30,
+  "image#icon": {
+    "path": "/home/mxstoto/Pictures/Icons/arch.png",
+    "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1
   },
@@ -171,7 +171,17 @@
     "waves": false,
     "noise_reduction": 0.77,
     "input_delay": 2,
-    "format-icons" : [" ","▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+    "format-icons": [
+      " ",
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
     "actions": {
       "on-click-right": "mode"
     }
