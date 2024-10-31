@@ -11,9 +11,7 @@
     "hyprland/workspaces",
     "hyprland/window"
   ],
-  "modules-center": [
-    "image#icon"
-  ],
+  "modules-center": [],
   "modules-right": [
     "backlight",
     "pulseaudio",
@@ -23,9 +21,9 @@
     "battery",
     "clock"
   ],
- "image#icon": {
-	  "path": "/home/mxstoto/Pictures/Icons/arch.png",
-	  "size": 30,
+  "image#icon": {
+    "path": "/home/mxstoto/Pictures/Icons/arch.png",
+    "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1
   },
@@ -58,6 +56,7 @@
   },
   "clock": {
     "format": "{:%H:%M:%S}",
+    "format-alt": "{:%a %d %b | %D | %H:%M:%S}",
     "tooltip": false,
     "interval": 1
   },
@@ -173,7 +172,17 @@
     "waves": false,
     "noise_reduction": 0.77,
     "input_delay": 2,
-    "format-icons" : [" ","▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+    "format-icons": [
+      " ",
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
     "actions": {
       "on-click-right": "mode"
     }

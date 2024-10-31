@@ -8,6 +8,10 @@ window {
     border: 2px solid @accent-background;
 }
 
+#text {
+  margin-left: 10px;
+}
+
 #input {
     padding: 4px;
     padding-left: 20px;
@@ -63,7 +67,7 @@ window {
 }
 
 #text:selected {
-    margin: 0px 0px;
+    margin: 0px 10px;
     border: none;
     border-radius: 15px;
     outline: none;
