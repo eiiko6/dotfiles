@@ -42,5 +42,7 @@ function palette
     magick -size 500x500 xc:none -draw "roundrectangle 0,0,500,500,32,32" ~/.config/fastfetch/mask.png 2>/dev/null
     magick $wallpaper_path -resize 500x500^ -gravity center -extent 500x500 -alpha set ~/.config/fastfetch/mask.png -compose DstIn -composite /home/mxstoto/.config/fastfetch/fetch-logo.png 2>/dev/null
 
+    pkill waybar && nohup waybar >/dev/null
+
     echo "Colorscheme and background changed!"
 end
