@@ -28,7 +28,7 @@
     "break",
     "break",
     {
-      "format": "{#1}{#keys}╭{$1}╮\u001b[76D {user-name-colored}{at-symbol-colored}{host-name-colored} ♥ ",
+      "format": "{#1}{#keys}╭{$1}╮\u001b[76D {user-name-colored}{at-symbol-colored}{host-name-colored}",
       "type": "title",
       "color": {
         "user": "cyan",
@@ -56,7 +56,7 @@
     {
       "type": "command",
       "key": "{$2}{#34} ",
-      "shell": "/home/mxstoto/.config/fastfetch/os-age.sh"
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
     },
     {
       "type": "media",
@@ -86,10 +86,10 @@
       "type": "custom"
     },
     {
-        "type": "colors",
-        "format": "{$2}",
-        "paddingLeft": 18,
-        "symbol": "circle"
+      "type": "colors",
+      "format": "{$2}",
+      "paddingLeft": 18,
+      "symbol": "circle"
     }
   ]
 }

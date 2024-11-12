@@ -29,6 +29,10 @@ handle_arch() {
   chezmoi init --apply https://github.com/eiiko6/dotfiles.git
 
   echo "chezmoi installed and initialized with your dotfiles."
+
+  fish
+
+  theme -s wal-focus-desktop
 }
 
 # Handle unsupported distros

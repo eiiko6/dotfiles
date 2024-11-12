@@ -12,8 +12,8 @@ alias rb='shutdown -r 0'
 alias vim='nvim'
 alias svim='sudo nvim'
 alias p='sudo pacman'
-alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort name --time-style iso'
-alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort name --time-style iso'
+alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso'
+alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso'
 alias cls='c && lsa'
 alias lls='/bin/ls'
 alias c='clear'
@@ -26,11 +26,15 @@ alias dcolors='Desktop/scripts/display-colors.fish'
 alias cmcd='cd /home/mxstoto/.local/share/chezmoi/'
 alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-attach -n debian -- login"
 
+function shufbg
+    fish -c 'source ~/.config/fish/functions/palette.fish; set wallpaper (lls ~/Pictures/Wallpapers/rin/ | shuf -n 1 | sed s/.png\$//); palette "rin/$wallpaper"'
+end
+
 # Setup greeting
 if status is-interactive
     # Welcome message
     #~/.config/fish/functions/random_krabby.sh
-    krabby name sylveon -s
+    krabby name sylveon
 else
     set -U fish_greeting
 end
