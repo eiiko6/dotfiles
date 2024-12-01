@@ -34,10 +34,14 @@ end
 if status is-interactive
     # Welcome message
     #~/.config/fish/functions/random_krabby.sh
-    krabby name sylveon
+    #krabby name sylveon
+    ff
 else
     set -U fish_greeting
 end
+
+# Env variables
+set -x MANPAGER 'nvim +Man!'
 
 # Set the prompt
 starship init fish | source
