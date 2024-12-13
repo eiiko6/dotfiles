@@ -24,7 +24,7 @@
     "clock"
   ],
   "image#icon": {
-    "path": "/home/mxstoto/Pictures/Icons/arch.png",
+    "path": "[ABSOLUTE PATH]", // doesn't work if path doesn't exist
     "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1
