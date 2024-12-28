@@ -1,4 +1,4 @@
-## My [Arch Linux](https://archlinux.org) & [hyprland](https://hyprland.org) dotfiles.
+## My [Arch Linux](https://archlinux.org) & [hyprland](https://hyprland.org) dotfiles
 
 <p float="left">
     <img alt="Demo" src="https://i.imgur.com/u15fOBP.png" width="400" />
@@ -8,14 +8,14 @@
 Made with [chezmoi](https://chezmoi.io).
 
 ### Themes
-These are multi-theme dotfiles.     
-I am using a custom [theme switcher](https://github.com/eiiko6/linux-theme-switcher) script that creates symlinks in **.config**. Thus most appearance configuration files located in **.config** are irrelevant and actually located in **Themes**.      
-Most themes are no longer maintained: the main theme is `wal`.
-Themes are more than color palettes here, they actually come with different features (mostly noticeable in Waybar).
 
-### Pywal
-If you are looking for configuration files that use [pywal](https://github.com/eylles/pywal16), every theme in **Themes** that contains `wal` uses the Pywal colorscheme.
+These are multi-theme dotfiles.
+I am using my [theme switcher](https://github.com/eiiko6/linux-theme-switcher) script that creates symlinks in **.config**. Thus some appearance configuration files located in **.config** are irrelevant or missing and are actually located in **.config/theme-switcher/themes/**.
 
 ### Fish
-My [fish config](./dot_config/private_fish/config.fish) contains the **palette** function which I use to generate my Pywal themes, along with many other utility functions.
 
+My [fish config](./dot_config/private_fish/config.fish) contains many utility functions, and most of the scripting in this repo.
+
+### Installation
+
+**installer.sh** should install the dependencies and apply the configs on any base Arch installation.
