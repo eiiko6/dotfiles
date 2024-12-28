@@ -25,6 +25,8 @@ alias cm='chezmoi'
 alias dcolors='Desktop/scripts/display-colors.fish'
 alias cmcd='cd /home/mxstoto/.local/share/chezmoi/'
 alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-attach -n debian -- login"
+alias t="tmux"
+alias ta="tmux attach"
 
 function shufbg
     fish -c 'source ~/.config/fish/functions/palette.fish; set wallpaper (lls ~/Pictures/Wallpapers/rin/ | shuf -n 1 | sed s/.png\$//); palette "rin/$wallpaper"'

@@ -1,0 +1,205 @@
+@import '/home/mxstoto/.cache/wal/colors-waybar.css';
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 16px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @transparent-background;
+    color: #cdd6f4;
+    /* border: 2px solid @color5; */
+    border-radius: 17px;
+
+}
+
+window#waybar.empty #window {
+    background: none;
+    border: none;
+}
+
+tooltip {
+    background: #1e252e;
+    border-radius: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+#workspaces button {
+    padding: 0px;
+    padding-right: 9px;
+    padding-left: 9px;
+    color: @transparent-foreground;
+    border-radius: 100px;
+}
+
+#workspaces button.active {
+    color: @foreground;
+}
+
+#workspaces button.focused {
+    color: #bac5e8;
+    background: #eba0ac;
+    border-radius: 100px;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: #a6e3a1;
+    border-radius: 100px;
+}
+
+#workspaces button:hover {
+    background: rgba(17,17,27,0.2);
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#custom-power_profile,
+#custom-weather,
+#custom-myhyprv,
+#custom-light_dark,
+#custom-pkg_updates,
+#language,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#temperature,
+#workspaces,
+#tray,
+#custom-spotify,
+#cava,
+#backlight {
+    background: @transparent-background;
+    opacity: 0.9;
+    padding: 0px 9px 0px 9px;
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 2px solid @accent-background;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+/* close to left */
+#tray, #bluetooth, #temperature, #backlight, #cava, #custom-myhyprvm, #custom-pkg_updates, #network, #workspaces, #window, #custom-spotify, #clock {
+    border-radius: 100px 0px 0px 100px;
+    border-left: 2px solid @accent-background;
+    margin-left: 5px;
+    padding-left: 15px;
+}
+
+/*close to the right */
+#tray, #custom-light_dark, #workspaces, #language, #window, #cava, #custom-spotify, #pulseaudio.microphone, #battery, #clock {
+    border-radius: 0px 100px 100px 0px;
+    border-right: 2px solid @accent-background;
+    margin-right: 5px;
+    padding-right: 15px;
+}
+
+#temperature.critical {
+    color: #eba0ac;
+}
+
+#custom-spotify {
+    border-radius: 100px;
+    padding-right: 20px;
+    padding-left: 15px;
+    color: @foreground;
+}
+
+#language {
+    border-left: 0px;
+    border-radius: 0px 100px 100px 0px;
+    margin-right: 10px;
+    padding-left: 9px;
+    color: @foreground;
+}
+
+#custom-pkg_updates {
+  color: @foreground;
+}
+
+#image {
+    margin-left: 10px;
+}
+
+#tray {
+    border-radius: 100px;
+    margin-right: 6px;
+}
+
+#tray > * {
+  opacity: 0.6;
+}
+
+#workspaces {
+    border-radius: 100px;
+    margin-left: 10px;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+#custom-power_profile {
+    color: @color2;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 100px;
+}
+
+#clock {
+    color: @color6;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+#cava {
+    color: @color6;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+#network {
+    color: @color5;
+}
+
+#bluetooth {
+    color: @color5;
+    border-radius: 100px 0px 0px 100px;
+    margin-right: 0px;
+} 
+
+#pulseaudio {
+    color: @color4;
+    border-left: 0px;
+    border-right: 0px;
+    padding-left: 4px;
+}
+
+#pulseaudio.microphone {
+    color: @color4;
+    border-left: 0px;
+    border-radius: 0px 100px 100px 0px;
+    margin-right: 10px;
+    padding-left: 9px;
+}
+
+#battery {
+    color: @color5;
+    border-radius: 0px 100px 100px 0px;
+}
+
+#backlight {
+    color: @color4;
+}

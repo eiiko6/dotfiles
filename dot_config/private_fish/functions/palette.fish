@@ -4,7 +4,7 @@ function palette
     if test (count $argv) -eq 0
         echo "Usage: palette [-p <full-path-to-image>] [image-name]"
         echo "  -p: Specify the full path to the image"
-        echo "  image-name: Specify just the image name (without .png) if the image is in /home/mxstoto/Pictures/Wallpapers/"
+        echo "  image-name: Specify just the image name (without .png) if the image is in $HOME/Pictures/Wallpapers/"
         return 1
     end
 
@@ -20,7 +20,7 @@ function palette
         set wallpaper_path $argv[2]
     else
         # Otherwise, treat it as a file name in the default directory
-        set wallpaper_path "/home/mxstoto/Pictures/Wallpapers/$argv[1].png"
+        set wallpaper_path "$HOME/Pictures/Wallpapers/$argv[1].png"
     end
 
     # Check if the file exists at the determined path
@@ -30,7 +30,7 @@ function palette
     end
 
     # Generate the colors using wal
-    wal -i $wallpaper_path -n -q -t --saturate 0.5 2>/dev/null
+    wal -i $wallpaper_path -n -q -t --saturate 0.6 2>/dev/null
 
     # Set the background opacity of kitty
     sed -i '3s/.*/background_opacity 0.6/' ~/.cache/wal/colors-kitty.conf

@@ -25,16 +25,14 @@ update_packages() {
 
     kitty --class updates --hold -e bash -c "
         echo '> Updating system...'; 
-        yay -Syu; 
-        clear
+        yay -Syu --noconfirm; 
         echo '> Cleaning package cache...'; 
         sudo pacman -Sc --noconfirm; 
-        clear
         # echo '> Removing orphaned packages...'; 
         # sudo pacman -Rns \$(pacman -Qdtq) --noconfirm; 
-        clear
         echo '> System updated! Press any key to close...'; 
-        read -n 1"
+        read -n 1;
+        exit"
 
     # Update the count file
     update_count
