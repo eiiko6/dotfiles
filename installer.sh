@@ -55,8 +55,8 @@ handle_arch() {
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
   mkdir -p "$HOME/Pictures/Wallpapers"
-  cp "$HOME/Themes/prettydesktop/wallpaper.png" "$HOME/Pictures/Wallpapers/aura.png"
-  fish -c 'source ~/.config/fish/functions/palette.fish; palette aura'
+  cp "$(find "$HOME"/.config/theme-switcher/themes/ -type f -name 'wallpaper.png' | shuf -n 1)" "$HOME/Pictures/Wallpapers/wallpaper.png"
+  fish -c 'source ~/.config/fish/functions/palette.fish; palette wallpaper'
 
   fish
 }
