@@ -23,7 +23,7 @@ update_packages() {
     # Update everything (official and AUR)
     notify-send "Opening a terminal..."
 
-    kitty --class updates --hold -e bash -c "
+    kitty --class floatingcentered --hold -e bash -c "
         echo '> Updating system...'; 
         yay -Syu --noconfirm; 
         echo '> Cleaning package cache...'; 

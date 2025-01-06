@@ -18,7 +18,7 @@ handle_arch() {
 
   echo "Installing required packages..."
   $SUDO pacman -Syu --noconfirm
-  $SUDO pacman -S --needed --noconfirm acpid blueman chezmoi cliphist eza fish fuse2 grim gtk3 hyprland kitty less lxappearance-gtk3 mako man-db mupdf neovim network-manager-applet noto-fonts-emoji npm nwg-look pamixer pavucontrol python-pywal qt5ct qt5-graphicaleffects qt5-quickcontrols2 qt5-wayland qt6-5compat qt6ct qt6-wayland rust-analyzer slurp starship swappy sway swww thunar thunar-archive-plugin ttf-fira-code ttf-hack ttf-jetbrains-mono-nerd unrar unzip waybar wayland wireplumber wofi xdg-desktop-portal-hyprland xfce4-settings xorg-server xorg-xinit
+  $SUDO pacman -S --needed --noconfirm acpid blueman chezmoi cliphist eza fish fuse2 grim gtk3 hyprland kitty less mako man-db mupdf neovim network-manager-applet noto-fonts-cjk noto-fonts-emoji noto-fonts npm nwg-look gtk-engine-murrine gnome-themes-extra file-roller gvfs audacious pamixer pavucontrol python-pywal qt5ct qt5-graphicaleffects qt5-quickcontrols2 qt5-wayland qt6-5compat qt6ct qt6-wayland rust-analyzer slurp starship swappy sway swww thunar thunar-archive-plugin ttf-fira-code ttf-hack ttf-jetbrains-mono-nerd unrar unzip waybar wayland wireplumber wofi xdg-desktop-portal-hyprland xfce4-settings xorg-server xorg-xinit
   clear
   echo "Packages installation ended"
   echo "Now installing dotfiles"
@@ -46,7 +46,7 @@ handle_arch() {
   echo "yay installation ended"
 
   # Intall yay packages
-  yay -S --noconfirm --needed krabby-bin swaylock-effects
+  yay -S --noconfirm --needed krabby-bin swaylock-effects graphite-gtk-theme rose-pine-hyprcursor
 
   # Install my theme switcher
   mkdir "$HOME/.config/scripts"

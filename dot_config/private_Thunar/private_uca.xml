@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1728929820706265-1</unique-id>
+	<command>kitty --hold --class floatingcentered %f</command>
+	<description>Open kitty with floatingcentered class</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Set as wallpaper</name>
+	<submenu></submenu>
+	<unique-id>1736084005538454-1</unique-id>
+	<command>fish -c &apos;source ~/.config/fish/functions/palette.fish; palette -p %f&apos;</command>
+	<description>Use the fish palette function</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<image-files/>
+</action>
+</actions>
