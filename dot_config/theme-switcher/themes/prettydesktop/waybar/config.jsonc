@@ -8,6 +8,7 @@
   "height": 35,
   "margin": "7px 7px 0px 7px",
   "modules-left": [
+    "image#icon",
     "hyprland/workspaces",
     "tray",
     "hyprland/window"
@@ -24,10 +25,9 @@
     "clock"
   ],
   "image#icon": {
-    "path": "[ABSOLUTE PATH]", // doesn't work if path doesn't exist
-    "size": 30,
-    "on-click": "~/Desktop/scripts/flex.sh",
-    "interval": 1
+    "path": "/home/mxstoto/.config/waybar/arch.png",
+    "size": 18,
+    "on-click": "wofi"
   },
   "hyprland/window": {
     "format": "{}"

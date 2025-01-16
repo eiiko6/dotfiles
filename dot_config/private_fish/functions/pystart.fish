@@ -1,7 +1,12 @@
-# Quickly start a python project
+# Quickly start a python project in the current location
 function pystart
-    set path (realpath ~/Desktop/random-code/python-projects/)/$argv[1]
+    if test (count $argv) -eq 0
+        echo "No path specified."
+        return
+    end
+    set path (realpath $(pwd))/$argv[1]
     cp -r ~/Desktop/random-code/python-projects/template $path
-    cd $path/
-    nvim +2 $path/main.py
+    cd $path/src
+    cls
+    vim .
 end
