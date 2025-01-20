@@ -76,7 +76,7 @@ handle_arch() {
   fish
 }
 
-install-extra-packages() {
+install_extra_packages() {
   printf "Do you wish to install the optional $(echo $EXTRA_PACKAGES | wc -l) packages? [y/N] "
   read -r input
 
