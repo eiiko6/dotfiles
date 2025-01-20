@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get package list for installation
+. ./packages.sh
+
 # Function to detect the Linux distribution
 detect_distro() {
   if [ -f /etc/os-release ]; then
@@ -12,13 +15,25 @@ detect_distro() {
   fi
 }
 
+# Function to validate sudo credentials upfront (only ask for password once)
+validate_sudo() {
+  if [[ $EUID -ne 0 ]]; then
+    # Validate sudo and cache the credentials for the session
+    echo "Please enter your password to proceed with the installation."
+    sudo -v
+  fi
+}
+
 # Handle Arch
 handle_arch() {
   echo "Detected Arch-based system."
 
   echo "Installing required packages..."
-  $SUDO pacman -Syu --noconfirm
-  $SUDO pacman -S --needed --noconfirm acpid blueman chezmoi cliphist eza fish fuse2 grim gtk3 hyprland kitty less mako man-db mupdf neovim network-manager-applet noto-fonts-cjk noto-fonts-emoji noto-fonts npm nwg-look gtk-engine-murrine gnome-themes-extra file-roller gvfs audacious pamixer pavucontrol python-pywal qt5ct qt5-graphicaleffects qt5-quickcontrols2 qt5-wayland qt6-5compat qt6ct qt6-wayland rust-analyzer slurp starship swappy sway swww thunar thunar-archive-plugin ttf-fira-code ttf-hack ttf-jetbrains-mono-nerd unrar unzip waybar wayland wireplumber wofi xdg-desktop-portal-hyprland xfce4-settings xorg-server xorg-xinit
+  sudo pacman -Syu --noconfirm || {
+    echo "Failed to execute pacman"
+    return 1
+  }
+  sudo pacman -S --needed --noconfirm $PACMAN_PACKAGES
   clear
   echo "Packages installation ended"
   echo "Now installing dotfiles"
@@ -35,7 +50,7 @@ handle_arch() {
   # Install yay
   if ! command -v yay &>/dev/null; then
     echo "yay not found. Installing yay..."
-    $SUDO pacman -S --needed --noconfirm git base-devel
+    sudo pacman -S --needed --noconfirm git base-devel
     git clone https://aur.archlinux.org/yay.git /tmp/yay
     cd /tmp/yay && makepkg -si --noconfirm
     cd - && rm -rf /tmp/yay
@@ -45,8 +60,8 @@ handle_arch() {
   clear
   echo "yay installation ended"
 
-  # Intall yay packages
-  yay -S --noconfirm --needed krabby-bin swaylock-effects graphite-gtk-theme rose-pine-hyprcursor
+  # Install yay packages
+  yay -S --noconfirm --needed $YAY_PACKAGES
 
   # Install my theme switcher
   mkdir "$HOME/.config/scripts"
@@ -61,6 +76,22 @@ handle_arch() {
   fish
 }
 
+install-extra-packages() {
+  printf "Do you wish to install the optional $(echo $EXTRA_PACKAGES | wc -l) packages? [y/N] "
+  read -r input
+
+  case "$input" in
+  [Yy])
+    # Install the optional packages
+    echo "Installing optional packages..."
+    sudo yay -S --noconfirm --needed $EXTRA_PACKAGES
+    ;;
+  *)
+    echo "Skipping installation of optional packages."
+    ;;
+  esac
+}
+
 # Handle unsupported distros
 handle_unsupported() {
   echo "Unsupported Linux distribution: $DISTRO"
@@ -73,16 +104,14 @@ handle_unsupported() {
 # First check the distribution
 detect_distro
 
-# Define SUDO variable based on whether the script is running as root
-SUDO=""
-if [[ $EUID -ne 0 ]]; then
-  SUDO="sudo"
-fi
+# Validate sudo credentials upfront
+validate_sudo
 
 # Main script execution
 case $DISTRO in
 arch)
   handle_arch
+  install_extra_packages
   ;;
 *)
   handle_unsupported
