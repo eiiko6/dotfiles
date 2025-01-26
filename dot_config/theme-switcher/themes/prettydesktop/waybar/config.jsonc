@@ -62,6 +62,7 @@
   },
   "clock": {
     "format": "{:%H:%M:%S}",
+    "format-alt": "{:%a %d %b | %D | %H:%M:%S}",
     "tooltip": false,
     "interval": 1
   },

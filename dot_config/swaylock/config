@@ -6,7 +6,7 @@ clock
 datestr=%a, %B %e
 timestr=%H:%M
 screenshot
-effect-blur=9x5
+effect-blur=16x8
 effect-vignette=0.5:0.5
 effect-scale=1.2
 scaling=center

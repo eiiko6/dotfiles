@@ -117,6 +117,7 @@ grim
 gtk-engine-murrine
 gtk3
 gvfs
+hyprcursor
 hyprland
 kitty
 lemurs
@@ -175,7 +176,6 @@ arch-install-scripts
 btop
 firefox
 graphite-gtk-theme
-hyprcursor
 krabby-bin
 less
 man-db
