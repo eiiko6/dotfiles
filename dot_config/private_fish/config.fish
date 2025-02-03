@@ -50,6 +50,9 @@ starship init fish | source
 # Add PATH
 set PATH $PATH /home/mxstoto/.local/bin
 
+# Bindings
+bind \b 'commandline -r ""'
+
 # External configs
 for file in ~/.config/fish/functions/*
     source $file 2>/dev/null
