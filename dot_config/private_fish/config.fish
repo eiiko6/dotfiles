@@ -27,6 +27,12 @@ alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-a
 alias t="tmux"
 alias ta="tmux attach"
 
+alias theme="~/.config/scripts/palette/change-wallpaper.sh"
+
+function palette
+    ~/.config/scripts/palette/change-wallpaper.sh $argv
+end
+
 function shufbg
     fish -c 'source ~/.config/fish/functions/palette.fish; set wallpaper (lls ~/Pictures/Wallpapers/rin/ | shuf -n 1 | sed s/.png\$//); palette "rin/$wallpaper"'
 end

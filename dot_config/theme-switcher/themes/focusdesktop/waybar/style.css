@@ -1,0 +1,115 @@
+@import '/home/mxstoto/.cache/wal/colors-waybar.css';
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @transparent-background-double;
+    color: #cdd6f4;
+}
+
+window#waybar.empty #window {
+    background: none;
+}
+
+#workspaces button {
+    padding: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-radius: 100%;
+    border: none;
+    color: @transparent-foreground;
+}
+
+#workspaces button.active {
+    color: @foreground;
+}
+
+#workspaces button.focused {
+    color: #bac5e8;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: #bac5e8;
+}
+
+#workspaces button:hover {
+    background: @transparent-background;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#custom-power_profile,
+#custom-pkg_updates,
+#language,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#temperature,
+#workspaces,
+#custom-spotify,
+#cpu,
+#memory,
+#temperature,
+#tray,
+#backlight {
+    opacity: 1;
+    padding: 0px 5px 0px 5px;
+    /* margin-top: 10px; */
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* close to left */
+#pulseaudio, #pulseaudio, #temperature, #workspaces, #custom-spotify, #clock {
+    margin-left: 2px;
+    padding-left: 11px;
+}
+
+/*close to the right */
+#window, #tray, #custom-spotify, #clock, #language, #cpu {
+    margin-right: 2px;
+    padding-right: 11px;
+}
+
+#workspaces {
+    padding-left: 6px;
+}
+
+#clock {
+    color: @color2;
+    margin-right: 4px;
+}
+
+#temperature, #memory, #cpu {
+    color: @color5;
+}
+
+#bluetooth {
+    color: @color5;
+    margin-right: 0px;
+} 
+
+#pulseaudio, #backlight {
+    color: @color4;
+    padding-left: 0px;
+}
+
+#battery, #network {
+    color: @color6;
+}
+
+#image {
+  margin: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}

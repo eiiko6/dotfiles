@@ -17,11 +17,22 @@
 	<name>Set as wallpaper</name>
 	<submenu></submenu>
 	<unique-id>1736084005538454-1</unique-id>
-	<command>fish -c &apos;source ~/.config/fish/functions/palette.fish; palette -p %f&apos;</command>
+	<command>~/.config/scripts/palette/change-wallpaper.sh -p %f</command>
 	<description>Use the fish palette function</description>
 	<range>*</range>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<image-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>Edit with neovim</name>
+	<submenu></submenu>
+	<unique-id>1738773992740375-1</unique-id>
+	<command>kitty --class floatingcentered sh -c &quot;nvim %f&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<text-files/>
 </action>
 </actions>

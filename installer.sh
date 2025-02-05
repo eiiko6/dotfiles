@@ -59,15 +59,11 @@ handle_arch() {
   # Install yay packages
   yay -S --noconfirm --needed --sudoloop $YAY_PACKAGES
 
-  # Install my theme switcher
-  mkdir "$HOME/.config/scripts"
-  git clone https://github.com/eiiko6/theme-switcher.git ~/.config/scripts/theme-switcher
-
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
   mkdir -p "$HOME/Pictures/Wallpapers"
   cp "$(find "$HOME"/.config/theme-switcher/themes/ -type f -name 'wallpaper.png' | shuf -n 1)" "$HOME/Pictures/Wallpapers/wallpaper.png"
-  fish -c 'source ~/.config/fish/functions/palette.fish; palette wallpaper'
+  ~/.config/scripts/palette/change-wallpaper.sh wallpaper
 
   # Setup directories
   mkdir -p ~/.local/share/icons ~/Desktop/

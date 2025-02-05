@@ -5,28 +5,49 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 35,
+  "height": 0,
   "margin": "0px 0px 0px 0px",
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/window",
-    "tray"
+    "tray",
+    "hyprland/window"
   ],
-  "modules-center": [
-    "image#icon"
-  ],
+  "modules-center": [],
   "modules-right": [
-    "backlight",
+    "custom/pkg_updates",
+    "hyprland/language",
+    // "backlight",
     "pulseaudio",
-    "pulseaudio#microphone",
-    "bluetooth",
+    "backlight",
+    // "pulseaudio#microphone",
+    // "bluetooth",
+    "temperature",
+    "memory",
+    "cpu",
     "network",
     "battery",
     "clock"
   ],
+  "temperature": {
+    // "hwmon-path": "/sys/devices/platform/dell_smm_hwmon/hwmon/hwmon4/temp1_input",
+    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {percentage}%",
+    "max-length": 10
+  },
   "image#icon": {
     "path": "/home/mxstoto/Pictures/Icons/arch.png",
-    "size": 28,
+    "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1
   },
@@ -36,29 +57,16 @@
   "hyprland/workspaces": {
     "format": "{}"
   },
-  "wlr/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "on-click": "activate",
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": [],
-      "8": [],
-      "9": [],
-      "10": []
-    }
+  "hyprland/language": {
+    "format-en": "EN",
+    "format-fr": "FR"
   },
   "tray": {
-    "icon-size": 16,
+    "icon-size": 18,
     "spacing": 10
   },
   "clock": {
-    "format": "{:%H:%M:%S}",
+    "format": "{:%a %D %H:%M:%S}",
     "tooltip": false,
     "interval": 1
   },
@@ -81,10 +89,9 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
+    "format": "{icon} {capacity}% {time}",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -156,6 +163,13 @@
     "return-type": "json",
     "max-length": 46,
     "on-click": "playerctl play-pause"
+  },
+  "custom/pkg_updates": {
+    "exec": "~/.config/waybar/scripts/pkg_updates.sh",
+    "format": " {}",
+    "tooltip-format": "Apply updates",
+    "on-click": "~/.config/waybar/scripts/pkg_updates.sh --update"
+    // "interval": 350
   },
   "cava": {
     // "cava_config": "$XDG_CONFIG_HOME/cava/config",
