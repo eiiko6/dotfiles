@@ -78,8 +78,8 @@
       "󰃟",
       "󰃠"
     ],
-    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+    "on-scroll-up": "~/.config/scripts/controls/brightness --inc",
+    "on-scroll-down": "~/.config/scripts/controls/brightness --dec",
     "min-length": 6,
     "tooltip": false
   },
@@ -109,10 +109,10 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": " Muted",
-    "on-click": "~/.config/waybar/scripts/volume --toggle",
+    "on-click": "~/.config/scripts/controls/volume --toggle",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
+    "on-scroll-up": "~/.config/scripts/controls/volume --inc",
+    "on-scroll-down": "~/.config/scripts/controls/volume --dec",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -132,10 +132,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "  Muted",
-    "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
+    "on-click": "~/.config/scripts/controls/volume --toggle-mic",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
+    "on-scroll-up": "~/.config/scripts/controls/volume --mic-inc",
+    "on-scroll-down": "~/.config/scripts/controls/volume --mic-dec",
     "scroll-step": 5
   },
   "network": {
@@ -165,10 +165,10 @@
     "on-click": "playerctl play-pause"
   },
   "custom/pkg_updates": {
-    "exec": "~/.config/waybar/scripts/pkg_updates.sh",
+    "exec": "~/.config/scripts/pkg_updates.sh",
     "format": " {}",
     "tooltip-format": "Apply updates",
-    "on-click": "~/.config/waybar/scripts/pkg_updates.sh --update"
+    "on-click": "~/.config/scripts/pkg_updates.sh --update"
     // "interval": 350
   },
   "cava": {
