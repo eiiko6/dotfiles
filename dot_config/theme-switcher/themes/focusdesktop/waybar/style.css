@@ -59,6 +59,7 @@ window#waybar.empty #window {
 #memory,
 #temperature,
 #tray,
+#disk,
 #backlight {
     opacity: 1;
     padding: 0px 5px 0px 5px;
@@ -68,13 +69,13 @@ window#waybar.empty #window {
 }
 
 /* close to left */
-#pulseaudio, #pulseaudio, #temperature, #workspaces, #custom-spotify, #clock {
+#pulseaudio, #pulseaudio, #temperature, #workspaces, #custom-spotify, #image {
     margin-left: 2px;
     padding-left: 11px;
 }
 
 /*close to the right */
-#window, #tray, #custom-spotify, #clock, #language, #cpu {
+#window, #tray, #custom-spotify, #clock, #language, #disk, #network {
     margin-right: 2px;
     padding-right: 11px;
 }
@@ -88,7 +89,7 @@ window#waybar.empty #window {
     margin-right: 4px;
 }
 
-#temperature, #memory, #cpu {
+#temperature, #memory, #cpu, #disk {
     color: @color5;
 }
 
@@ -104,12 +105,4 @@ window#waybar.empty #window {
 
 #battery, #network {
     color: @color6;
-}
-
-#image {
-  margin: 2px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
 }

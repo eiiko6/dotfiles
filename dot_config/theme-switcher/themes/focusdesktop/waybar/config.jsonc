@@ -8,15 +8,19 @@
   "height": 0,
   "margin": "0px 0px 0px 0px",
   "modules-left": [
+    "image#icon",
     "hyprland/workspaces",
     "tray",
     "hyprland/window"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "custom/playerctl"
+  ],
   "modules-right": [
     "custom/pkg_updates",
     "hyprland/language",
     // "backlight",
+    "network",
     "pulseaudio",
     "backlight",
     // "pulseaudio#microphone",
@@ -24,16 +28,28 @@
     "temperature",
     "memory",
     "cpu",
-    "network",
+    "disk",
     "battery",
     "clock"
   ],
+  "custom/playerctl": {
+    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}'",
+    "format": "  {}",
+    "on-click": "playerctl play-pause",
+    "interval": 5
+  },
   "temperature": {
     // "hwmon-path": "/sys/devices/platform/dell_smm_hwmon/hwmon/hwmon4/temp1_input",
     "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {specific_free:0.2f}GB",
+    "path": "/",
+    "unit": "GB"
   },
   "cpu": {
     "interval": 10,
@@ -46,9 +62,9 @@
     "max-length": 10
   },
   "image#icon": {
-    "path": "/home/mxstoto/Pictures/Icons/arch.png",
-    "size": 30,
-    "on-click": "~/Desktop/scripts/flex.sh",
+    "path": "/home/mxstoto/.config/waybar/arch.png",
+    "size": 16,
+    "on-click": "wofi",
     "interval": 1
   },
   "hyprland/window": {
@@ -139,13 +155,13 @@
     "scroll-step": 5
   },
   "network": {
+    "interval": 5,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-ethernet": " {bandwidthDownBytes} 󰈀 {ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
     "tooltip": false
   },
   "bluetooth": {
