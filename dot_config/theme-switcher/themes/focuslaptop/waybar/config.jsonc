@@ -20,19 +20,17 @@
     "backlight",
     // "pulseaudio#microphone",
     // "bluetooth",
-    "temperature",
+    "custom/temperature",
     "memory",
     "cpu",
     "network",
     "battery",
     "clock"
   ],
-  "temperature": {
-    // "hwmon-path": "/sys/devices/platform/dell_smm_hwmon/hwmon/hwmon4/temp1_input",
-    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C"
+  "custom/temperature": {
+    "exec": "for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$i) $i\"; done | sort -nr | awk 'NR==1 {printf \"%d\\n\", $1/1000 + 0.5}'",
+    "format": " {}°C",
+    "interval": 10
   },
   "cpu": {
     "interval": 10,
@@ -45,7 +43,7 @@
     "max-length": 10
   },
   "image#icon": {
-    "path": "/home/mxstoto/Pictures/Icons/arch.png",
+    "path": "/home/strawberries/Pictures/Icons/arch.png",
     "size": 30,
     "on-click": "~/Desktop/scripts/flex.sh",
     "interval": 1

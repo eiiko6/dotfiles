@@ -25,7 +25,7 @@ window#waybar.empty #window {
 #battery,
 #pulseaudio,
 #network,
-#temperature,
+#custom-temperature,
 #workspaces,
 #custom-spotify,
 #cpu,
@@ -36,20 +36,20 @@ window#waybar.empty #window {
     padding: 0 5px;
 }
 
-/* Close to left */
-#temperature, #workspaces, #custom-spotify, #image {
+/*
+#custom-temperature, #workspaces, #custom-spotify, #image {
     margin-left: 2px;
     padding-left: 11px;
 }
 
-/* Close to right */
 #window, #tray, #custom-spotify, #clock, #language, #disk, #network {
     margin-right: 2px;
     padding-right: 11px;
 }
+*/
 
 #workspaces {
-    padding-left: 6px;
+    margin-left: 6px;
 }
 
 #workspaces button {
@@ -79,11 +79,16 @@ window#waybar.empty #window {
     text-shadow: none;
 }
 
-#clock {
-    color: @color2;
+#image {
+  margin-left: 10px;
 }
 
-#temperature, #memory, #cpu, #disk, #bluetooth {
+#clock {
+    color: @color2;
+    margin-right: 10px;
+}
+
+#custom-temperature, #memory, #cpu, #disk, #bluetooth {
     color: @color5;
 }
 

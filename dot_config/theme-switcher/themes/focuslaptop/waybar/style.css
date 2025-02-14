@@ -1,4 +1,4 @@
-@import '/home/mxstoto/.cache/wal/colors-waybar.css';
+@import '/home/strawberries/.cache/wal/colors-waybar.css';
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -52,12 +52,12 @@ window#waybar.empty #window {
 #battery,
 #pulseaudio,
 #network,
-#temperature,
+#custom-temperature,
 #workspaces,
 #custom-spotify,
 #cpu,
 #memory,
-#temperature,
+#custom-temperature,
 #backlight {
     opacity: 1;
     padding: 0px 5px 0px 5px;
@@ -67,7 +67,7 @@ window#waybar.empty #window {
 }
 
 /* close to left */
-#pulseaudio, #pulseaudio, #temperature, #workspaces, #custom-spotify, #clock {
+#pulseaudio, #pulseaudio, #custom-temperature, #workspaces, #custom-spotify, #clock {
     margin-left: 2px;
     padding-left: 11px;
 }
@@ -87,7 +87,7 @@ window#waybar.empty #window {
     margin-right: 4px;
 }
 
-#temperature, #memory, #cpu {
+#custom-temperature, #memory, #cpu {
     color: @color5;
 }
 
