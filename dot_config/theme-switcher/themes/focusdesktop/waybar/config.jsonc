@@ -22,7 +22,6 @@
     // "backlight",
     "network",
     "pulseaudio",
-    "backlight",
     // "pulseaudio#microphone",
     // "bluetooth",
     "temperature",
@@ -43,7 +42,8 @@
     "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C"
+    "format": " {temperatureC}°C",
+    "tooltip": false
   },
   "disk": {
     "interval": 30,
@@ -62,7 +62,7 @@
     "max-length": 10
   },
   "image#icon": {
-    "path": "/home/mxstoto/.config/waybar/arch.png",
+    "path": "/home/strawberries/.config/waybar/arch.png",
     "size": 16,
     "on-click": "wofi",
     "interval": 1
@@ -78,7 +78,7 @@
     "format-fr": "FR"
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 16,
     "spacing": 10
   },
   "clock": {
@@ -157,12 +157,12 @@
   "network": {
     "interval": 5,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "  {signalStrength}%",
+    "format-wifi": " {bandwidthDownBytes} 󰖩 {ipaddr}/{cidr}",
     "format-ethernet": " {bandwidthDownBytes} 󰈀 {ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "tooltip": false
+    "tooltip": true
   },
   "bluetooth": {
     "format": " {status}",
@@ -218,5 +218,5 @@
     "actions": {
       "on-click-right": "mode"
     }
-  },
+  }
 }
