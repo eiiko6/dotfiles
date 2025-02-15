@@ -52,9 +52,18 @@ window#waybar.empty #window {
     margin-left: 6px;
 }
 
+#image {
+  margin-left: 10px;
+}
+
+#clock {
+    color: @color2;
+    margin-right: 10px;
+}
+
 #workspaces button {
     padding: 0 2px;
-    margin-right: 2px;
+    margin: 0 1px;
     border-radius: 100%;
     border: none;
     color: @transparent-foreground;
@@ -79,21 +88,16 @@ window#waybar.empty #window {
     text-shadow: none;
 }
 
-#image {
-  margin-left: 10px;
-}
-
-#clock {
-    color: @color2;
-    margin-right: 10px;
-}
-
 #custom-temperature, #memory, #cpu, #disk, #bluetooth {
     color: @color5;
 }
 
 #pulseaudio, #backlight {
     color: @color4;
+}
+
+#battery {
+  padding-right: 0;
 }
 
 #battery, #network {

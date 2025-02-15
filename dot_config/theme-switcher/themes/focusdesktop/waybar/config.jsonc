@@ -28,7 +28,6 @@
     "memory",
     "cpu",
     "disk",
-    "battery",
     "clock"
   ],
   "custom/playerctl": {
@@ -79,7 +78,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%a %D %H:%M:%S}",
+    "format": " {:%a %D %H:%M:%S}",
     "tooltip": false,
     "interval": 1
   },
