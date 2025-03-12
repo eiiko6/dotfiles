@@ -1,11 +1,27 @@
-# My [Arch Linux](https://archlinux.org) & [hyprland](https://hyprland.org) dotfiles
+# My [Arch Linux](https://archlinux.org) & [Hyprland](https://hyprland.org) dotfiles
 
+<details>
+<summary>🌸 <strong>Pretty Desktop</strong> (wal colors)</summary>
 <p float="left">
-    <img alt="Demo" src="https://i.imgur.com/u15fOBP.png" width="400" />
-    <img alt="Demo2" src="https://i.imgur.com/cpRZRtX.png" width="400" />
+    <img alt="Pretty Desktop" src="previews/prettydesktop.png" width="800" />
 </p>
+</details>
 
-Made with [chezmoi](https://chezmoi.io).
+<details>
+<summary>🌑 <strong>Matte Desktop</strong></summary>
+<p float="left">
+    <img alt="Matte Desktop" src="previews/mattedesktop.png" width="800" />
+</p>
+</details>
+
+<details>
+<summary>🎨 <strong>Focus Desktop</strong> (wal colors)</summary>
+<p float="left">
+    <img alt="Focus Desktop" src="previews/focusdesktop.png" width="800" />
+</p>
+</details>
+
+Uses [chezmoi](https://chezmoi.io) to quickly install and maintain.
 
 ## Utilities
 
@@ -17,7 +33,7 @@ I am using my [theme switcher](https://github.com/eiiko6/linux-theme-switcher) s
 
 ### Wallpapers
 
-Wallpapers and color schemes are managed by [palette](https://github.com/eiiko6/palette).
+Wallpapers and wal color schemes are managed by [palette](https://github.com/eiiko6/palette).
 
 ## Installation
 
