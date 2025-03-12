@@ -38,7 +38,7 @@ handle_arch() {
   chezmoi init --apply https://github.com/eiiko6/dotfiles.git
   echo "chezmoi installed and initialized with your dotfiles."
   # Replace my username with current user
-  find ~/.config -type f -exec sed -i "s/mxstoto/$(whoami)/g" {} +
+  find ~/.config -type f -exec sed -i "s/strawberries/$(whoami)/g" {} +
   clear
   echo "Dotfiles installation ended"
   echo "Now installing yay"

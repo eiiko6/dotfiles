@@ -25,7 +25,7 @@
     "clock"
   ],
   "image#icon": {
-    "path": "/home/mxstoto/.config/waybar/arch.png",
+    "path": "/home/strawberries/.config/waybar/arch.png",
     "size": 18,
     "on-click": "wofi"
   },

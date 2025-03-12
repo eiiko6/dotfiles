@@ -22,7 +22,7 @@ alias led="echo off | sudo tee /sys/class/sound/ctl-led/mic/mode"
 alias commits="~/Desktop/git-repos/commits/commits.sh"
 alias cm='chezmoi'
 alias dcolors='Desktop/scripts/display-colors.fish'
-alias cmcd='cd /home/mxstoto/.local/share/chezmoi/'
+alias cmcd='cd /home/strawberries/.local/share/chezmoi/'
 alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-attach -n debian -- login"
 alias t="tmux"
 alias ta="tmux attach"
@@ -54,7 +54,7 @@ set -x MANPAGER 'nvim +Man!'
 starship init fish | source
 
 # Add PATH
-set PATH $PATH /home/mxstoto/.local/bin
+set PATH $PATH /home/strawberries/.local/bin
 
 # Bindings
 bind \b 'commandline -r ""'

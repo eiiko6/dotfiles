@@ -58,7 +58,7 @@
     "max-length": 10
   },
   "image#icon": {
-    "path": "/home/mxstoto/.config/waybar/arch.png",
+    "path": "/home/strawberries/.config/waybar/arch.png",
     "size": 16,
     "on-click": "wofi",
     "interval": 1
