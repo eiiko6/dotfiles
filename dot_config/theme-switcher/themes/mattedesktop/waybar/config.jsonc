@@ -5,8 +5,8 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 0,
-  "margin": "0px 0px 0px 0px",
+  "height": 35,
+  "margin": "15px 15px 0px 15px",
   "modules-left": [
     "image#icon",
     "hyprland/workspaces",

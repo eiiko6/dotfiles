@@ -32,7 +32,7 @@ palette() {
   fi
 
   # Generate the colors using wal
-  wal -i "$wallpaper_path" -n -q -t --saturate 0.6
+  wal -i "$wallpaper_path" -s -n -q -t --saturate 0.6
 
   # Set the wallpaper using swww
   swww img "$wallpaper_path" -t none
