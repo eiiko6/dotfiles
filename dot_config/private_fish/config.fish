@@ -57,7 +57,7 @@ starship init fish | source
 set PATH $PATH /home/strawberries/.local/bin
 
 # Bindings
-bind \b 'commandline -r ""'
+bind ctrl-backspace 'commandline -r ""'
 
 # External configs
 for file in ~/.config/fish/functions/*
