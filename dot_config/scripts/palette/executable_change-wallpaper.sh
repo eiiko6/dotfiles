@@ -19,7 +19,7 @@ palette() {
       echo "Error: Missing path after -p option."
       return 1
     fi
-    wallpaper_path="$2"
+    wallpaper_path="$(realpath "$2")"
   else
     # Otherwise, treat it as a file name in the default directory
     wallpaper_path="$HOME/Pictures/Wallpapers/$1.png"
@@ -32,18 +32,24 @@ palette() {
   fi
 
   # Generate the colors using wal
-  wal -i "$wallpaper_path" -s -n -q -t --saturate 0.6
+  wal -i "$wallpaper_path" -n -q -t --saturate 0.6
 
   # Set the wallpaper using swww
-  swww img "$wallpaper_path" -t none
+  swww img "$wallpaper_path" -t fade
 
   # Change the preview
   wallpaper=$(echo "$wallpaper_path" | sed -E 's|.*/Wallpapers/||; s|\.[^.]+$||')
-  echo $wallpaper
-  ln -sf "$HOME/.cache/palette/wallpapers/$wallpaper.png" ~/.cache/palette/current-preview.png
+  if [[ "$wallpaper_path" == "$HOME/Pictures/Wallpapers/"* ]]; then
+    preview_path="$HOME/.cache/palette/wallpapers/$wallpaper.png"
+  else
+    mkdir -p "$HOME/.cache/palette/others"
+    file_path="$(realpath "$wallpaper_path")"
+    hash=$(echo -n "$file_path" | sha256sum | cut -d ' ' -f1)
+    preview_path="$HOME/.cache/palette/others/$hash.png"
 
-  # Restart waybar without any output
-  pkill waybar && nohup waybar &>/dev/null &
+    "$HOME"/.config/scripts/palette/generate-wallpaper-previews.sh "$file_path"
+  fi
+  ln -sf "$preview_path" "$HOME/.cache/palette/current-preview.png"
 
   echo "Colorscheme and background changed!"
 }
@@ -51,4 +57,5 @@ palette() {
 # Run the function if the script is executed directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   palette "$@"
+  exit
 fi

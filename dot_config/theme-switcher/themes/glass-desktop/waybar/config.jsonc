@@ -4,29 +4,64 @@
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
+  "reload_style_on_change": true,
   "gtk-layer-shell": true,
   "height": 35,
-  "margin": "7px 7px 0px 7px",
+  "margin": "15px 15px 0px 15px",
   "modules-left": [
+    "image#icon",
     "hyprland/workspaces",
     "tray",
     "hyprland/window"
   ],
   "modules-center": [
-    "custom/spotify"
+    "custom/playerctl"
   ],
   "modules-right": [
     "custom/pkg_updates",
     "hyprland/language",
-    "pulseaudio",
+    // "backlight",
     "network",
-    "battery",
+    "pulseaudio",
+    // "pulseaudio#microphone",
+    // "bluetooth",
+    "custom/temperature",
+    "memory",
+    "cpu",
+    "disk",
     "clock"
   ],
+  "custom/playerctl": {
+    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}'",
+    "format": "  {}",
+    "on-click": "playerctl play-pause",
+    "interval": 5
+  },
+  "custom/temperature": {
+    "exec": "for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$i) $i\"; done | sort -nr | awk 'NR==1 {printf \"%d\\n\", $1/1000 + 0.5}'",
+    "format": " {}°C",
+    "interval": 10
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {specific_free:0.2f}GB",
+    "path": "/",
+    "unit": "GB"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {percentage}%",
+    "max-length": 10
+  },
   "image#icon": {
-    "path": "/home/strawberries/Pictures/Icons/arch.png",
-    "size": 30,
-    "on-click": "~/Desktop/scripts/flex.sh",
+    "path": "/home/strawberries/.config/waybar/arch.png",
+    "size": 16,
+    "on-click": "wofi",
     "interval": 1
   },
   "hyprland/window": {
@@ -39,31 +74,12 @@
     "format-en": "EN",
     "format-fr": "FR"
   },
-  "wlr/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "on-click": "activate",
-    "persistent_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "6": [],
-      "7": [],
-      "8": [],
-      "9": [],
-      "10": []
-    }
-  },
   "tray": {
     "icon-size": 16,
-    "spacing": 10,
-    "tooltip": false
+    "spacing": 10
   },
   "clock": {
-    "format": "{:%H:%M:%S}",
-    "format-alt": "{:%a %d %b | %D | %H:%M:%S}",
+    "format": " {:%a %D %H:%M:%S}",
     "tooltip": false,
     "interval": 1
   },
@@ -86,10 +102,9 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
+    "format": "{icon} {capacity}% {time}",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -102,8 +117,7 @@
       "󰂁",
       "󰂂",
       "󰁹"
-    ],
-    "tooltip": false
+    ]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -138,14 +152,14 @@
     "scroll-step": 5
   },
   "network": {
+    "interval": 1,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-wifi": " {bandwidthDownBytes} 󰖩 {ipaddr}/{cidr}",
+    "format-ethernet": " {bandwidthDownBytes} 󰈀 ", //{ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
-    "tooltip": false
+    "tooltip": true
   },
   "bluetooth": {
     "format": " {status}",
@@ -201,5 +215,5 @@
     "actions": {
       "on-click-right": "mode"
     }
-  },
+  }
 }

@@ -82,7 +82,7 @@ tooltip {
   /* margin-top: 10px; */
   margin-bottom: 5px;
   margin-top: 5px;
-  border: 2px solid @accent-background;
+  border: 0px solid @accent-background;
   border-right: 0px;
   border-left: 0px;
 }
@@ -100,7 +100,7 @@ tooltip {
 #clock,
 #pulseaudio {
   border-radius: 11px 0px 0px 11px;
-  border-left: 2px solid @accent-background;
+  border-left: 0px solid @accent-background;
   margin-left: 2px;
   padding-left: 11px;
 }
@@ -117,7 +117,7 @@ tooltip {
 #battery,
 #clock {
   border-radius: 0px 11px 11px 0px;
-  border-right: 2px solid @accent-background;
+  border-right: 0px solid @accent-background;
   margin-right: 2px;
   padding-right: 11px;
 }
@@ -156,8 +156,8 @@ tooltip {
   border-radius: 11px 11px 11px 11px;
   padding-left: 11px;
   padding-right: 11px;
-  border-left: 2px solid @accent-background;
-  border-right: 2px solid @accent-background;
+  border-left: 0px solid @accent-background;
+  border-right: 0px solid @accent-background;
   margin-right: 4px;
   margin-left: 2px;
 }

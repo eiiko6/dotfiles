@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 35,
-  "margin": "7px 7px 0px 7px",
+  "margin": "10px 10px 0px 10px",
   "modules-left": [
     "image#icon",
     "hyprland/workspaces",
@@ -138,7 +138,7 @@
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "  {signalStrength}%",
-    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-ethernet": " {bandwidthDownBytes} 󰈀 ",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",

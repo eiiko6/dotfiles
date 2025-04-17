@@ -4,6 +4,7 @@
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
+  "reload_style_on_change": true,
   "gtk-layer-shell": true,
   "height": 35,
   "margin": "15px 15px 0px 15px",
@@ -151,7 +152,7 @@
     "scroll-step": 5
   },
   "network": {
-    "interval": 5,
+    "interval": 1,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": " {bandwidthDownBytes} 󰖩 {ipaddr}/{cidr}",
     "format-ethernet": " {bandwidthDownBytes} 󰈀 ", //{ipaddr}/{cidr}",
