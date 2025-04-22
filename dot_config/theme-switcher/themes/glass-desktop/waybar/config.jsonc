@@ -154,7 +154,7 @@
   "network": {
     "interval": 1,
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": " {bandwidthDownBytes} 󰖩 {ipaddr}/{cidr}",
+    "format-wifi": " {bandwidthDownBytes} 󰖩 ",
     "format-ethernet": " {bandwidthDownBytes} 󰈀 ", //{ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",

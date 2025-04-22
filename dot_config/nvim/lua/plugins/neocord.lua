@@ -5,7 +5,7 @@ return {
     enabled = false,
     opts = {
       -- General options
-      logo = "auto", -- "auto" or url
+      logo = "#", -- "auto" or url
       logo_tooltip = nil, -- nil or string
       main_image = "language", -- "language" or "logo"
       client_id = "1157438221865717891", -- Use your own Discord application client id (not recommended)
