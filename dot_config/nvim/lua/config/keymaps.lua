@@ -9,3 +9,5 @@ vim.keymap.set("n", "<leader>o", function()
 end, { desc = "Insert current Spotify song" })
 
 vim.api.nvim_create_user_command("W", "w", {})
+
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)

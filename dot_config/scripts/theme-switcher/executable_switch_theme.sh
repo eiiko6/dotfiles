@@ -35,6 +35,29 @@ execute_global_commands() {
   done <<<"$GLOBAL_COMMANDS"
 }
 
+# Function to execute per-theme commands
+execute_pertheme_commands() {
+  local wallpaper="$1"
+  local theme_name="$2"
+
+  # Iterate over each global command
+  while IFS= read -r command; do
+    # Skip empty lines
+    [[ -z "$command" ]] && continue
+
+    # Replace placeholders and execute
+    local expanded_command=$(echo "$command" | sed \
+      -e "s|\$wallpaper|$wallpaper|g" \
+      -e "s|\$theme_name|$theme_name|g")
+
+    if [[ "$quiet" != 1 ]]; then
+      echo "Executing: $expanded_command"
+    fi
+
+    eval "$expanded_command"
+  done <<<"$PERTHEME_COMMANDS"
+}
+
 # Function to backup existing files
 backup_files() {
   local theme_dir=$1
@@ -101,6 +124,13 @@ switch_theme() {
   echo "=> Updated config files"
 
   execute_global_commands "$theme_wallpaper" "$theme_name"
+  if [[ "$quiet" != 1 ]]; then
+    echo ""
+  fi
+
+  source "$theme_dir/commands.conf"
+
+  execute_pertheme_commands "$theme_wallpaper" "$theme_name" 2>/dev/null
   if [[ "$quiet" != 1 ]]; then
     echo ""
   fi

@@ -1,0 +1,175 @@
+@define-color rosewater #dc8a78;
+@define-color flamingo #dd7878;
+@define-color pink #ea76cb;
+@define-color mauve #8839ef;
+@define-color red #d20f39;
+@define-color maroon #e64553;
+@define-color peach #fe640b;
+@define-color yellow #df8e1d;
+@define-color green #40a02b;
+@define-color teal #179299;
+@define-color sky #04a5e5;
+@define-color sapphire #209fb5;
+@define-color blue #1e66f5;
+@define-color lavender #7287fd;
+@define-color text #4c4f69;
+@define-color subtext1 #5c5f77;
+@define-color subtext0 #6c6f85;
+@define-color overlay2 #7c7f93;
+@define-color overlay1 #8c8fa1;
+@define-color overlay0 #9ca0b0;
+@define-color surface2 #acb0be;
+@define-color surface1 #bcc0cc;
+@define-color surface0 #ccd0da;
+@define-color base #eff1f5;
+@define-color mantle #e6e9ef;
+@define-color crust #dce0e8;
+
+@define-color border rgba(234, 118, 203, 0.35);
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @base;
+    color: @text;
+    border-radius: 15px;
+    border: 2px solid @border;
+}
+
+window#waybar.empty #window {
+    background: none;
+    border: none;
+}
+
+tooltip {
+    background: #1e252e;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+#workspaces button {
+    padding: 0px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: @subtext0;
+    border-radius: 100%;
+}
+
+#workspaces button.active {
+    color: @text;
+}
+
+#workspaces button.focused, #workspaces button.urgent {
+    color: #11111b;
+    background: @lavender;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: @crust;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#custom-power_profile,
+#custom-pkg_updates,
+#language,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-temperature,
+#workspaces,
+#tray,
+#cpu,
+#memory,
+#custom-playerctl,
+#disk,
+#cava,
+#backlight {
+    background: @mantle;
+    opacity: 0.9;
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 2px solid rgba(0,0,0,0);
+}
+
+/* close to left */
+#custom-temperature, #custom-pkg_updates {
+    border-radius: 10px 0px 0px 10px;
+    border-left: 2px solid rgba(0,0,0,0);
+    margin-left: 4px;
+    padding-left: 10px;
+}
+
+/*close to the right */
+#disk, #language, #custom-spotify {
+    border-radius: 0px 10px 10px 0px;
+    border-right: 2px solid rgba(0,0,0,0);
+    margin-right: 4px;
+    padding-right: 10px;
+}
+
+/*close to both sides */
+#network, #custom-playerctl, #pulseaudio, #clock, #workspaces, #tray, #window {
+    border-radius: 10px;
+    border-right: 2px solid rgba(0,0,0,0);
+    border-left: 2px solid rgba(0,0,0,0);
+    margin-right: 4px;
+    margin-left: 4px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#network {
+    color: @yellow;
+}
+
+#pulseaudio {
+    color: @blue;
+}
+
+#custom-temperature {
+    color: @maroon;
+}
+
+#memory {
+    color: @green;
+}
+
+#cpu {
+    color: @mauve;
+}
+
+#disk {
+    color: @peach;
+}
+
+#clock {
+    color: @pink;
+    margin-right: 12px;
+}
+
+#image {
+    margin: 2px;
+    margin-left: 15px;
+    margin-right: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 0px solid rgba(0,0,0,0);
+    border-radius: 10px;
+}
