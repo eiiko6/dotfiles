@@ -107,7 +107,7 @@ tooltip {
 }
 
 /* close to left */
-#network, #custom-temperature, #custom-pkg_updates {
+#custom-temperature, #custom-pkg_updates, #network {
     border-radius: 10px 0px 0px 10px;
     border-left: 2px solid rgba(0,0,0,0);
     margin-left: 4px;
@@ -115,7 +115,7 @@ tooltip {
 }
 
 /*close to the right */
-#pulseaudio, #battery, #language, #custom-spotify {
+#disk, #language, #custom-spotify, #battery {
     border-radius: 0px 10px 10px 0px;
     border-right: 2px solid rgba(0,0,0,0);
     margin-right: 4px;
@@ -142,20 +142,8 @@ tooltip {
     color: @blue;
 }
 
-#custom-temperature {
-    color: @maroon;
-}
-
 #memory {
     color: @green;
-}
-
-#cpu {
-    color: @mauve;
-}
-
-#disk {
-    color: @peach;
 }
 
 #battery {

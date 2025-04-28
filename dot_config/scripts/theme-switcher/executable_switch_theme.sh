@@ -3,7 +3,16 @@
 # Function to create/replace symlinks
 update_files() {
   local theme_dir=$1
-  for file in $(find "$theme_dir" -type f -printf '%P\n'); do
+  local ignored_files=("wallpaper.png" "script.sh")
+
+  find "$theme_dir" -type f -printf '%P\n' | while IFS= read -r file; do
+    # Check if the file is in the ignored list
+    for ignored in "${ignored_files[@]}"; do
+      if [[ "$file" == "$ignored" ]]; then
+        continue 2
+      fi
+    done
+
     ln -sf "$theme_dir/$file" "$HOME/.config/$file"
 
     if [[ $? -eq 0 && "$quiet" != 1 ]]; then
@@ -12,50 +21,22 @@ update_files() {
   done
 }
 
-# Function to execute global commands
-execute_global_commands() {
+# Function to execute global script
+execute_global_script() {
   local wallpaper="$1"
   local theme_name="$2"
+  local theme_dir="$3"
 
-  # Iterate over each global command
-  while IFS= read -r command; do
-    # Skip empty lines
-    [[ -z "$command" ]] && continue
-
-    # Replace placeholders and execute
-    local expanded_command=$(echo "$command" | sed \
-      -e "s|\$wallpaper|$wallpaper|g" \
-      -e "s|\$theme_name|$theme_name|g")
-
-    if [[ "$quiet" != 1 ]]; then
-      echo "Executing: $expanded_command"
-    fi
-
-    eval "$expanded_command"
-  done <<<"$GLOBAL_COMMANDS"
+  source "$HOME/.config/theme-switcher/script.sh"
 }
 
-# Function to execute per-theme commands
-execute_pertheme_commands() {
+# Function to execute the theme's script
+execute_theme_script() {
   local wallpaper="$1"
   local theme_name="$2"
+  local theme_dir="$3"
 
-  # Iterate over each global command
-  while IFS= read -r command; do
-    # Skip empty lines
-    [[ -z "$command" ]] && continue
-
-    # Replace placeholders and execute
-    local expanded_command=$(echo "$command" | sed \
-      -e "s|\$wallpaper|$wallpaper|g" \
-      -e "s|\$theme_name|$theme_name|g")
-
-    if [[ "$quiet" != 1 ]]; then
-      echo "Executing: $expanded_command"
-    fi
-
-    eval "$expanded_command"
-  done <<<"$PERTHEME_COMMANDS"
+  source "$theme_dir/script.sh"
 }
 
 # Function to backup existing files
@@ -123,18 +104,17 @@ switch_theme() {
   fi
   echo "=> Updated config files"
 
-  execute_global_commands "$theme_wallpaper" "$theme_name"
+  execute_global_script "$theme_wallpaper" "$theme_name" "$theme_dir"
   if [[ "$quiet" != 1 ]]; then
     echo ""
   fi
 
-  source "$theme_dir/commands.conf"
-
-  execute_pertheme_commands "$theme_wallpaper" "$theme_name" 2>/dev/null
+  execute_theme_script "$theme_wallpaper" "$theme_name" "$theme_dir"
   if [[ "$quiet" != 1 ]]; then
     echo ""
   fi
-  echo "=> Executed global commands."
+
+  echo "=> Executed scripts."
 }
 
 # Create default config directory if not present
