@@ -3,3 +3,4 @@
 -- Add any additional options here
 vim.g.autoformat = true
 vim.opt.shell = "/usr/bin/fish"
+vim.o.timeoutlen = 500

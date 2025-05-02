@@ -2,7 +2,7 @@ return {
   {
     "IogaMaster/neocord",
     event = "VeryLazy",
-    enabled = false,
+    enabled = vim.fn.system("git rev-parse --is-inside-work-tree") == "true\n",
     opts = {
       -- General options
       logo = "#", -- "auto" or url

@@ -59,6 +59,9 @@ handle_arch() {
   # Install yay packages
   yay -S --noconfirm --needed --sudoloop $YAY_PACKAGES
 
+  # Install other packages
+  cargo install --git "https://github.com/eiiko6/here"
+
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
   mkdir -p "$HOME/Pictures/Wallpapers"
@@ -101,6 +104,7 @@ acpid
 audacious
 blueman
 brightnessctl
+rustup
 chezmoi
 cliphist
 eza
