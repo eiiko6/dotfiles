@@ -25,7 +25,7 @@
     "clock"
   ],
   "custom/playerctl": {
-    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}'",
+    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}' | sed 's/&/&amp;/g'",
     "format": "  {}",
     "on-click": "playerctl play-pause",
     "interval": 5

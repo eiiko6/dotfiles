@@ -163,7 +163,7 @@
     "on-click": "blueman-manager"
   },
   "custom/spotify": {
-    "exec": "/usr/bin/python3 ~/.config/waybar/modules/mediaplayer.py --player spotify",
+    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}' | sed 's/&/&amp;/g'",
     "format": "{}",
     "return-type": "json",
     "max-length": 46,
