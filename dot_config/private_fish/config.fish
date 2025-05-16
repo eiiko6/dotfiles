@@ -42,7 +42,11 @@ if status is-interactive
     # Welcome message
     #~/.config/fish/functions/random_krabby.sh
     #krabby name sylveon
-    ff
+    if not set -q KITTY_WINDOW_CLASS; or test "$KITTY_WINDOW_CLASS" != clean_fish
+        ln -sf (find ~/Pictures/Icons/genshin-emotes/ | shuf | head -n1) ~/.cache/palette/current-preview.png
+        ff
+    end
+
 else
     set -U fish_greeting
 end
