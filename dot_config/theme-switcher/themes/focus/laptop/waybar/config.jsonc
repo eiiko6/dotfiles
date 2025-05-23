@@ -9,6 +9,7 @@
   "margin": "0px 0px 0px 0px",
   "modules-left": [
     "hyprland/workspaces",
+    "tray",
     "hyprland/window"
   ],
   "modules-center": [],
