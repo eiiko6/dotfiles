@@ -11,10 +11,10 @@ alias rb='shutdown -r 0'
 alias vim='nvim'
 alias svim='sudo nvim'
 alias p='sudo pacman'
-alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso'
-alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso'
+alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso --hyperlink'
+alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso --hyperlink'
 alias cls='c && lsa'
-alias lls='/bin/ls'
+alias lls='command ls'
 alias c='clear'
 alias dim='echo 70 | sudo tee /sys/class/backlight/intel_backlight/brightness'
 alias clock="tty-clock -s -C 5"
@@ -46,13 +46,12 @@ end
 
 # Setup greeting
 if status is-interactive
-    # Welcome message
     #~/.config/fish/functions/random_krabby.sh
     #krabby name sylveon
+
     if not set -q KITTY_WINDOW_CLASS; or test "$KITTY_WINDOW_CLASS" != clean_fish
         ff
     end
-
 else
     set -U fish_greeting
 end
@@ -74,6 +73,7 @@ bind ctrl-backspace 'commandline -r ""'
 for file in ~/.config/fish/functions/*
     source $file 2>/dev/null
 end
+
 source ~/private/config.fish 2>/dev/null
 
 set -x EDITOR nvim

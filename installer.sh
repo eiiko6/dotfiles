@@ -1,5 +1,97 @@
 #!/bin/bash
 
+# --------- PACKAGES -----------
+
+PACMAN_PACKAGES="
+  blueman
+  brightnessctl
+  rustup
+  chezmoi
+  cliphist
+  eza
+  fastfetch
+  file-roller
+  fish
+  gnome-themes-extra
+  grim
+  gtk3
+  gvfs
+  hyprcursor
+  hyprland
+  hyprlock
+  hypridle
+  kitty
+  lemurs
+  libpulse
+  mako
+  neovim
+  network-manager-applet
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
+  nwg-look
+  pacman-contrib
+  pamixer
+  pavucontrol
+  pipewire
+  pipewire-pulse
+  python-pywal
+  qt5-graphicaleffects
+  qt5-quickcontrols2
+  qt5-wayland
+  qt6-5compat
+  qt6-wayland
+  qt6ct
+  slurp
+  starship
+  swappy
+  swww
+  thunar
+  thunar-archive-plugin
+  tumbler
+  ttf-fira-code
+  ttf-hack
+  ttf-jetbrains-mono-nerd
+  7zip
+  waybar
+  wayland
+  wireplumber
+  wofi
+  xdg-desktop-portal
+  xdg-desktop-portal-hyprland
+"
+
+YAY_PACKAGES="
+"
+
+EXTRA_PACKAGES="
+  arch-install-scripts
+  audacious
+  btop
+  firefox
+  less
+  man-db
+  mvp
+  npm
+  qemu
+  rust-analyzer
+  spotify-lauhcher
+  stress
+  tealdeer
+  vesktop
+  yt-dlp
+"
+
+RUST_PACKAGES="
+  yazi
+  hyperfine
+  dust
+  zoxide
+  fd
+  uutils-coreutils
+  sudo-rs
+"
+
 # Function to detect the Linux distribution
 detect_distro() {
   if [ -f /etc/os-release ]; then
@@ -10,6 +102,66 @@ detect_distro() {
     # Default to unsupported if the file doesn't exist
     DISTRO="unsupported"
   fi
+}
+
+# Ask for install type: default or extended
+choose_install_type() {
+  echo "Select install type:"
+  echo "1) Default (minimal setup)"
+  echo "2) Extended (includes Firefox, Vesktop, Spotify, etc...)"
+  read -rp "Enter 1 or 2: " install_choice
+
+  case "$install_choice" in
+  2)
+    INSTALL_EXTENDED=true
+    ;;
+  *)
+    INSTALL_EXTENDED=false
+    ;;
+  esac
+}
+
+# Ask if the user wants to run the oxidation process
+ask_oxidize() {
+  read -rp "Do you want to oxidize the install (Rust tools and tweaks)? [y/N] " oxidize
+  case "$oxidize" in
+  [Yy]*) OXIDIZE_INSTALL=true ;;
+  *) OXIDIZE_INSTALL=false ;;
+  esac
+}
+
+oxidize_install() {
+  echo "Installing Rust-powered replacements..."
+
+  yay -S --noconfirm --needed --sudoloop $RUST_PACKAGES
+
+  rustup default stable
+
+  # Create overrides directory
+  mkdir -p ~/.local/rust-overrides
+
+  # Add to private fish config
+  mkdir -p ~/private
+  {
+    echo 'set -U fish_user_paths ~/.local/rust-overrides $fish_user_paths'
+    echo 'zoxide init fish | source'
+  } >>~/private/config.fish
+
+  # Link uu-* binaries
+  for bin in /usr/bin/uu-*; do
+    base_name=$(basename "$bin" | sed 's/^uu-//')
+    ln -sf "$bin" "$HOME/.local/rust-overrides/$base_name"
+  done
+
+  # Link sudo-rs and su-rs
+  ln -sf /usr/bin/sudo-rs "$HOME/.local/rust-overrides/sudo"
+  ln -sf /usr/bin/su-rs "$HOME/.local/rust-overrides/su"
+
+  # Install some additional tools
+  cargo install --git "https://github.com/eiiko6/here"
+  rm ~/.config/fish/functions/here.fish
+
+  echo "Rust-based tools installed and configured."
 }
 
 # Function to get sudo credentials (only ask for password once)
@@ -30,7 +182,7 @@ handle_arch() {
     return 1
   }
   sudo pacman -S --needed --noconfirm $PACMAN_PACKAGES
-  clear
+  # clear
   echo "Packages installation ended"
   echo "Now installing dotfiles"
 
@@ -39,7 +191,7 @@ handle_arch() {
   echo "chezmoi installed and initialized with your dotfiles."
   # Replace my username with current user
   find ~/.config -type f -exec sed -i "s/strawberries/$(whoami)/g" {} +
-  clear
+  # clear
   echo "Dotfiles installation ended"
   echo "Now installing yay"
 
@@ -53,14 +205,11 @@ handle_arch() {
   else
     echo "yay is already installed."
   fi
-  clear
+  # clear
   echo "yay installation ended"
 
   # Install yay packages
   yay -S --noconfirm --needed --sudoloop $YAY_PACKAGES
-
-  # Install other packages
-  cargo install --git "https://github.com/eiiko6/here"
 
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
@@ -75,19 +224,10 @@ handle_arch() {
 }
 
 install_extra_packages() {
-  printf "Do you wish to install the optional $(echo $EXTRA_PACKAGES | wc -l) packages? [y/N] "
-  read -r input
+  printf "Installing $(echo $EXTRA_PACKAGES | tr ' ' '\n' | wc -l) extra packages"
 
-  case "$input" in
-  [Yy])
-    # Install the optional packages
-    echo "Installing optional packages..."
-    yay -S --noconfirm --needed --sudoloop $EXTRA_PACKAGES
-    ;;
-  *)
-    echo "Skipping installation of optional packages."
-    ;;
-  esac
+  # Install the optional packages
+  yay -S --noconfirm --needed --sudoloop $EXTRA_PACKAGES
 }
 
 # Handle unsupported distros
@@ -97,103 +237,14 @@ handle_unsupported() {
   exit
 }
 
-# --------- PACKAGES -----------
-
-PACMAN_PACKAGES="
-acpid
-audacious
-blueman
-brightnessctl
-rustup
-chezmoi
-cliphist
-eza
-fastfetch
-file-roller
-fish
-fuse2
-gnome-themes-extra
-grim
-gtk-engine-murrine
-gtk3
-gvfs
-hyprcursor
-hyprland
-kitty
-lemurs
-libpulse
-mako
-mupdf
-neovim
-network-manager-applet
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
-nwg-look
-pacman-contrib
-pamixer
-pavucontrol
-pipewire
-pipewire-pulse
-python-pywal
-qt5-graphicaleffects
-qt5-quickcontrols2
-qt5-wayland
-qt5ct
-qt6-5compat
-qt6-wayland
-qt6ct
-slurp
-starship
-swappy
-sway
-swww
-thunar
-thunar-archive-plugin
-ttf-fira-code
-ttf-hack
-ttf-jetbrains-mono-nerd
-unrar
-unzip
-waybar
-wayland
-wireplumber
-wofi
-xdg-desktop-portal
-xdg-desktop-portal-hyprland
-xfce4-settings
-xorg-server
-xorg-xinit
-"
-
-YAY_PACKAGES="
-rose-pine-hyprcursor
-swaylock-effects
-"
-
-EXTRA_PACKAGES="
-arch-install-scripts
-btop
-firefox
-graphite-gtk-theme
-krabby-bin
-less
-man-db
-mvp
-npm
-qemu-full
-rust-analyzer
-spotify-lauhcher
-stress
-tealdeer
-vesktop
-yt-dlp
-"
-
 # --------- EXECUTION ----------
 
 # First check the distribution
 detect_distro
+
+# Ask for install type and rust extras
+choose_install_type
+ask_oxidize
 
 # Get sudo password
 validate_sudo
@@ -202,7 +253,14 @@ validate_sudo
 case $DISTRO in
 arch)
   handle_arch
-  install_extra_packages
+
+  if $INSTALL_EXTENDED; then
+    install_extra_packages
+  fi
+
+  if $OXIDIZE_INSTALL; then
+    oxidize_install
+  fi
 
   echo "==> Dotfiles installation has ended."
   ;;
