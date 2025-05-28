@@ -2,7 +2,7 @@
 
 # --------- PACKAGES -----------
 
-PACMAN_PACKAGES="
+MAIN_PACKAGES="
   blueman
   brightnessctl
   rustup
@@ -61,7 +61,8 @@ PACMAN_PACKAGES="
   xdg-desktop-portal-hyprland
 "
 
-YAY_PACKAGES="
+AUR_PACKAGES="
+  rose-pine-hyprcursor
 "
 
 EXTRA_PACKAGES="
@@ -181,7 +182,7 @@ handle_arch() {
     echo "Failed to execute pacman"
     return 1
   }
-  sudo pacman -S --needed --noconfirm $PACMAN_PACKAGES
+  sudo pacman -S --needed --noconfirm $MAIN_PACKAGES
   # clear
   echo "Packages installation ended"
   echo "Now installing dotfiles"
@@ -209,7 +210,7 @@ handle_arch() {
   echo "yay installation ended"
 
   # Install yay packages
-  yay -S --noconfirm --needed --sudoloop $YAY_PACKAGES
+  yay -S --noconfirm --needed --sudoloop $AUR_PACKAGES
 
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
