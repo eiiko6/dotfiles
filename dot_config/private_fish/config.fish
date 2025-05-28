@@ -26,6 +26,13 @@ alias cmcd='cd /home/strawberries/.local/share/chezmoi/'
 alias deb="sudo lxc-start -n debian -f /var/lib/lxc/debian/config -d; sudo lxc-attach -n debian -- login"
 alias t="tmux"
 alias ta="tmux attach"
+alias y='yazi'
+alias gs='git status'
+alias gps='git push'
+alias gpl='git pull'
+alias ga='git add'
+alias gf='git fetch'
+alias gc='git commit -m'
 
 alias theme="~/.config/scripts/palette/change-wallpaper.sh"
 
@@ -43,7 +50,6 @@ if status is-interactive
     #~/.config/fish/functions/random_krabby.sh
     #krabby name sylveon
     if not set -q KITTY_WINDOW_CLASS; or test "$KITTY_WINDOW_CLASS" != clean_fish
-        ln -sf (find ~/Pictures/Icons/genshin-emotes/ | shuf | head -n1) ~/.cache/palette/current-preview.png
         ff
     end
 
@@ -69,3 +75,5 @@ for file in ~/.config/fish/functions/*
     source $file 2>/dev/null
 end
 source ~/private/config.fish 2>/dev/null
+
+set -x EDITOR nvim
