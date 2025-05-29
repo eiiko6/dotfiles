@@ -12,8 +12,11 @@ map("n", "<leader>o", function()
   vim.api.nvim_put({ song }, "c", true, true)
 end, { desc = "Insert current Spotify song" })
 
--- use :W like :w
 vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Wq", "wq", {})
+vim.api.nvim_create_user_command("Wqa", "wqa", {})
+vim.api.nvim_create_user_command("Q", "q", {})
+vim.api.nvim_create_user_command("Qa", "qa", {})
 
 -- read full line diagnostics
 map("n", "<leader>d", vim.diagnostic.open_float)
