@@ -183,16 +183,20 @@ handle_arch() {
     return 1
   }
   sudo pacman -S --needed --noconfirm $MAIN_PACKAGES
-  # clear
+
   echo "Packages installation ended"
   echo "Now installing dotfiles"
 
-  # Install dotfiles
+  # Install dotfiles with chezmoi
   chezmoi init --apply https://github.com/eiiko6/dotfiles.git
   echo "chezmoi installed and initialized with your dotfiles."
+
   # Replace my username with current user
   find ~/.config -type f -exec sed -i "s/strawberries/$(whoami)/g" {} +
-  # clear
+
+  # Install my profile switcher
+  cargo install --git "https://github.com/eiiko6/dotswitch"
+
   echo "Dotfiles installation ended"
   echo "Now installing yay"
 
@@ -206,7 +210,7 @@ handle_arch() {
   else
     echo "yay is already installed."
   fi
-  # clear
+
   echo "yay installation ended"
 
   # Install yay packages
