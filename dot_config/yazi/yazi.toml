@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 ratio = [0, 4, 3]
 sort_by = "alphabetical"
 linemode = "size_and_mtime"

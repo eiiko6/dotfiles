@@ -8,7 +8,7 @@ update_count() {
   OFFICIAL_COUNT=$(checkupdates 2>/dev/null | wc -l)
 
   # Update AUR packages count
-  AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l)
+  AUR_COUNT=$(paru -Qua 2>/dev/null | wc -l)
 
   TOTAL_COUNT=$((OFFICIAL_COUNT + AUR_COUNT))
 
@@ -25,7 +25,7 @@ update_packages() {
 
     kitty --class floatingcentered --hold -e bash -c "
         echo '> Updating system...'; 
-        yay -Syu --noconfirm; 
+        paru -Syu --noconfirm; 
         echo '> Cleaning package cache...'; 
         sudo pacman -Sc --noconfirm; 
         # echo '> Removing orphaned packages...'; 

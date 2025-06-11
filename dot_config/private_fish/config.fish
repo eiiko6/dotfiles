@@ -33,8 +33,11 @@ alias gpl='git pull'
 alias ga='git add'
 alias gf='git fetch'
 alias gc='git commit -m'
+alias h='helix'
 
-alias theme="~/.config/scripts/palette/change-wallpaper.sh"
+function theme
+    dotswitch switch $argv common
+end
 
 function palette
     ~/.config/scripts/palette/change-wallpaper.sh $argv

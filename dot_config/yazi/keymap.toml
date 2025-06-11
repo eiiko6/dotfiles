@@ -1,17 +1,5 @@
-[manager]
+[mgr]
 
 prepend_keymap = [
   { on = "!", for = "unix", run = 'shell "$SHELL" --block', desc = "Open $SHELL here" },
-  { on = "j", run = [
-    "arrow next",
-    "plugin state-writer",
-  ] },
-  { on = "k", run = [
-    "arrow prev",
-    "plugin state-writer",
-  ] },
-  { on = "l", run = [
-    "enter",
-    "plugin state-writer",
-  ] },
 ]
