@@ -9,7 +9,7 @@ SELECTED_ENTRY=$(find "$CACHE_DIR" -type f | while read -r file; do
   # Get relative path from CACHE_DIR
   REL_PATH="${file#"$CACHE_DIR"}"
   echo "img:$file:text:$REL_PATH"
-done | wofi --dmenu --prompt "Select Wallpaper")
+done | wofi --dmenu -H 700 --prompt "Select Wallpaper")
 
 if [ -n "$SELECTED_ENTRY" ]; then
   # Extract only the filename with subdirectory path
