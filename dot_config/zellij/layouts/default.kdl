@@ -5,6 +5,7 @@ layout {
         pane size=1 borderless=true {
             plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
                 // format_left   "#[fg=default,bold]{session}"
+                format_left "{mode}"
                 format_center "{tabs}"
                 // format_right  "{command_git_branch} {datetime}"
                 format_space  ""
@@ -16,7 +17,21 @@ layout {
 
                 hide_frame_for_single_pane "true"
 
-                mode_tmux    "#[bg=#ffc387] "
+                mode_normal        "{name} "
+                mode_locked        "{name} "
+                mode_resize        "{name} "
+                mode_pane          "{name} "
+                mode_tab           "{name} "
+                mode_scroll        "{name} "
+                mode_enter_search  "{name} "
+                mode_search        "{name} "
+                mode_rename_tab    "{name} "
+                mode_rename_pane   "{name} "
+                mode_session       "{name} "
+                mode_move          "{name} "
+                mode_prompt        "{name} "
+                mode_tmux          "{name} "
+                mode_tmux          "{name} "
 
                 tab_normal   "#[fg=#6C7086]{index} "
                 tab_active   "#[fg=#9399B2,bold,italic]{index} "
@@ -42,10 +57,6 @@ layout {
     tab {
       nvim
     }
-    tab
-    tab
-    tab
-    tab
     tab
     tab
     tab

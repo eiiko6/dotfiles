@@ -13,7 +13,8 @@ alias svim='sudo nvim'
 alias p='sudo pacman'
 alias ls='exa -1lhmU --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso --hyperlink'
 alias lsa='exa -1alhmUF --group-directories-first --no-permissions --no-user --icons --color always --sort date -r --time-style iso --hyperlink'
-alias cls='c && lsa'
+alias cls='c && ls'
+alias clsa='c && lsa'
 alias lls='command ls'
 alias c='clear'
 alias dim='echo 70 | sudo tee /sys/class/backlight/intel_backlight/brightness'
@@ -34,6 +35,7 @@ alias ga='git add'
 alias gf='git fetch'
 alias gc='git commit -m'
 alias h='helix'
+alias zel='zellij'
 
 function theme
     dotswitch switch $argv common
@@ -76,6 +78,8 @@ bind ctrl-backspace 'commandline -r ""'
 for file in ~/.config/fish/functions/*
     source $file 2>/dev/null
 end
+
+pyenv init - fish | source
 
 source ~/private/config.fish 2>/dev/null
 
