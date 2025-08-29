@@ -20,6 +20,7 @@ window#waybar.empty #window {
 #custom-power_profile,
 #custom-pkg_updates,
 #language,
+#custom-language,
 #window,
 #clock,
 #battery,
@@ -42,7 +43,7 @@ window#waybar.empty #window {
     padding-left: 11px;
 }
 
-#window, #tray, #custom-spotify, #clock, #language, #disk, #network {
+#window, #tray, #custom-spotify, #clock, #language, #custom-language, #disk, #network {
     margin-right: 2px;
     padding-right: 11px;
 }

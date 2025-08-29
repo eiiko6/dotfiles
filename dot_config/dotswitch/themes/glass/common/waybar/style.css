@@ -60,7 +60,7 @@ tooltip {
 
 #custom-power_profile,
 #custom-pkg_updates,
-#language,
+#language, #custom-language,
 #window,
 #clock,
 #battery,
@@ -93,7 +93,7 @@ tooltip {
 }
 
 /*close to the right */
-#disk, #language, #custom-spotify {
+#disk, #language, #custom-language, #custom-spotify {
     border-radius: 0px 10px 10px 0px;
     border-right: 2px solid rgba(0,0,0,0);
     margin-right: 4px;

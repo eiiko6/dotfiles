@@ -46,7 +46,7 @@ window#waybar.empty #window {
 
 #custom-power_profile,
 #custom-pkg_updates,
-#language,
+#language, #custom-language,
 #window,
 #clock,
 #battery,
@@ -73,7 +73,7 @@ window#waybar.empty #window {
 }
 
 /*close to the right */
-#window, #cava, #custom-spotify, #clock, #language, #cpu, #tray {
+#window, #cava, #custom-spotify, #clock, #language, #custom-language, #cpu, #tray {
     margin-right: 2px;
     padding-right: 11px;
 }

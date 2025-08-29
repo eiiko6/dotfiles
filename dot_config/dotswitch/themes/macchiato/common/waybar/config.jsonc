@@ -31,6 +31,10 @@
     "disk",
     "clock"
   ],
+  "custom/language": {
+    "exec": "~/.config/scripts/get-fcitx-input-method.sh",
+    "interval": 1
+  },
   "custom/playerctl": {
     "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}' | sed 's/&/&amp;/g'",
     "format": "  {}",

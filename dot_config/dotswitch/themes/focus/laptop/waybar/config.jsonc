@@ -15,7 +15,7 @@
   "modules-center": [],
   "modules-right": [
     "custom/pkg_updates",
-    "hyprland/language",
+    "custom/language",
     // "backlight",
     "pulseaudio",
     "backlight",
@@ -28,6 +28,10 @@
     "battery",
     "clock"
   ],
+  "custom/language": {
+    "exec": "~/.config/scripts/get-fcitx-input-method.sh",
+    "interval": 1
+  },
   "custom/temperature": {
     "exec": "for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$i) $i\"; done | sort -nr | awk 'NR==1 {printf \"%d\\n\", $1/1000 + 0.5}'",
     "format": " {}°C",
