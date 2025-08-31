@@ -15,7 +15,7 @@
   "modules-center": [],
   "modules-right": [
     "custom/pkg_updates",
-    "custom/language",
+    "hyprland/language",
     // "backlight",
     "pulseaudio",
     "backlight",

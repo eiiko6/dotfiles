@@ -17,7 +17,7 @@
   "modules-center": [],
   "modules-right": [
     "custom/pkg_updates",
-    "custom/language",
+    "hyprland/language",
     "network",
     "pulseaudio",
     "memory",
