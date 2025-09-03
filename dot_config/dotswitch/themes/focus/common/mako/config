@@ -1,3 +1,5 @@
+# Auto-generated mako config
+
 # GLOBAL
 max-history=100
 sort=-time
@@ -31,17 +33,17 @@ max-visible=6
 layer=overlay
 anchor=top-right
 
-background-color=#1e1e2e55
-text-color=#d9e0ee
-border-color=#313244
+background-color=#61334955
+text-color=#eee1eb
+border-color=#e79fdd
 progress-color=over #89b4fa
 
 [urgency=low]
-border-color=#313244
+border-color=#e79fdd
 default-timeout=2000
 
 [urgency=normal]
-border-color=#313244
+border-color=#e79fdd
 default-timeout=5000
 
 [urgency=high]

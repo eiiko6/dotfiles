@@ -9,6 +9,11 @@ return {
 			custom_highlights = function(colors)
 				return {
 					LineNr = { fg = colors.pink },
+
+					NormalFloat = { bg = "NONE" },
+
+					Pmenu = { bg = "NONE" },
+
 					-- CursorLine = { bg = "NONE" },
 				}
 			end,
