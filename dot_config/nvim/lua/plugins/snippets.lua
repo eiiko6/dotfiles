@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.snippets",
+  "nvim-mini/mini.snippets",
   opts = function()
     local mini_snippets = require("mini.snippets")
     local gen_loader = mini_snippets.gen_loader
