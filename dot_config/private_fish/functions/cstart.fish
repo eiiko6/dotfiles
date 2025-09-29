@@ -8,5 +8,5 @@ function cstart
     cp -r ~/Desktop/random-code/c-projects/template $path
     cd $path/src
     cls
-    vim .
+    zel
 end

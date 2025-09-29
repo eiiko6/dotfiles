@@ -12,7 +12,16 @@ return {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
 				lualine_b = { "filename", "branch" },
 				lualine_c = { "%=" },
-				lualine_x = {},
+				lualine_x = {
+					{ "mode", separator = { left = "" }, right_padding = 2 },
+					function()
+						local reg = vim.fn.reg_recording()
+						if reg ~= "" then
+							return "recording on " .. reg
+						end
+						return ""
+					end,
+				},
 				lualine_y = { "filetype", "progress" },
 				lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
 			},

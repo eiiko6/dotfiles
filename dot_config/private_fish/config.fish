@@ -38,7 +38,7 @@ alias h='helix'
 alias zel='zellij'
 
 function theme
-    dotswitch switch $argv common
+    dotswitch switch $argv[1] common $argv[2]
 end
 
 function palette
