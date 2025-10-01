@@ -73,6 +73,7 @@ set PATH $PATH /home/strawberries/.cargo/bin
 
 # Bindings
 bind ctrl-backspace 'commandline -r ""'
+bind alt-backspace backward-kill-word
 
 # External configs
 for file in ~/.config/fish/functions/*
