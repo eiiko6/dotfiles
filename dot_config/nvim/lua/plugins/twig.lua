@@ -1,3 +1,0 @@
-return {
-  { "nelsyeung/twig.vim" },
-}
