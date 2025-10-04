@@ -5,6 +5,9 @@ vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 
+-- Whole file actions
+vim.keymap.set({ 'o', 'x' }, 'ag', ':<C-u>normal! ggVG<CR>', { desc = 'Whole file' })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 

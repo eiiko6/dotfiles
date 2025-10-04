@@ -34,6 +34,7 @@ return {
       c = { 'clang-format' },
       cpp = { 'clang-format' },
       sh = { 'beautysh' },
+      json = { 'fixjson' },
     },
   },
 }
