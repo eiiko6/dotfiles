@@ -54,7 +54,7 @@ if status is-interactive
     #~/.config/fish/functions/random_krabby.sh
     #krabby name sylveon
 
-    if not set -q KITTY_WINDOW_CLASS; or test "$KITTY_WINDOW_CLASS" != clean_fish
+    if not set -q CLEAN_FISH; or test "$CLEAN_FISH" != true
         ff
     end
 else
