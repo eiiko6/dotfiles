@@ -141,13 +141,17 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
     local servers = {
       clangd = {},
+
       -- gopls = {},
+      --
       pyright = {},
+
       jdtls = {
         handlers = {
           ['$/progress'] = function(_, _, _) end,
         },
       },
+
       rust_analyzer = {
         enabled = true,
         settings = {
@@ -172,6 +176,8 @@ return {
           },
         },
       },
+
+      bashls = {},
     }
 
     for name, opts in pairs(servers) do

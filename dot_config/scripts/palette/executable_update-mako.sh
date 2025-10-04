@@ -1,3 +1,16 @@
+# Read colors from wal cache
+WAL_COLORS="$HOME/.cache/wal/colors"
+
+# Load specific colors
+BORDER_COLOR=$(sed -n '3p' "$WAL_COLORS" | tr 'a-z' 'A-Z' | tr -d '#')     # color1
+TEXT_COLOR=$(sed -n '16p' "$WAL_COLORS" | tr 'a-z' 'A-Z' | tr -d '#')      # special (foreground)
+BACKGROUND_COLOR=$(sed -n '1p' "$WAL_COLORS" | tr 'a-z' 'A-Z' | tr -d '#') # background
+
+# Optional extra config
+EXTRA_CONFIG="$1"
+
+# Generate mako config
+cat >"$HOME/.config/mako/config" <<EOF
 # Auto-generated mako config
 
 # GLOBAL
@@ -33,17 +46,17 @@ max-visible=6
 layer=overlay
 anchor=top-right
 
-background-color=#210c3855
-text-color=#f2dff3
-border-color=#ecc8b6
+background-color=#${BACKGROUND_COLOR}55
+text-color=#${TEXT_COLOR}
+border-color=#${BORDER_COLOR}
 progress-color=over #89b4fa
 
 [urgency=low]
-border-color=#ecc8b6
+border-color=#${BORDER_COLOR}
 default-timeout=2000
 
 [urgency=normal]
-border-color=#ecc8b6
+border-color=#${BORDER_COLOR}
 default-timeout=5000
 
 [urgency=high]
@@ -55,3 +68,11 @@ default-timeout=0
 border-color=#f9e2af
 default-timeout=2000
 group-by=category
+EOF
+
+# Append extra config if provided
+if [ -n "$EXTRA_CONFIG" ]; then
+  bash -c "$EXTRA_CONFIG"
+fi
+
+makoctl reload

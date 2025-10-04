@@ -5,6 +5,7 @@
 MAIN_PACKAGES="
   blueman
   brightnessctl
+  fuzzel
   rustup
   chezmoi
   cliphist
