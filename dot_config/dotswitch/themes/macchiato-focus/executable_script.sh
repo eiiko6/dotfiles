@@ -101,7 +101,7 @@ border=${BORDER_COLOR}ff
 
 [border]
 width=2
-radius=50
+radius=0
 EOF
 }
 

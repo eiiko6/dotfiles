@@ -22,6 +22,7 @@
     "pulseaudio",
     "memory",
     "battery",
+    "disk",
     "clock"
   ],
   "custom/language": {

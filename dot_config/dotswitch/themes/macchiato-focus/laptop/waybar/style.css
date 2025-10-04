@@ -111,7 +111,8 @@ window#waybar.empty #window {
 
 #network {
     color: @yellow;
-    padding-right: 0;
+    padding-right: 5px;
+    padding-left: 0px;
 }
 
 #pulseaudio {
@@ -124,21 +125,37 @@ window#waybar.empty #window {
 
 #battery {
     color: @sky;
+    padding-right: 2px;
+}
+
+#disk {
+    color: @peach;
+    padding-right: 15px;
 }
 
 #clock {
     color: @pink;
     margin-right: 12px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#window {
+    padding-left: 2px;
 }
 
 #tray > * {
     opacity: 0.6;
 }
 
+#workspaces {
+    padding-right: 0;
+    margin-right: 0;
+}
+
 #image {
     margin: 2px;
     margin-left: 15px;
-    margin-right: 8px;
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 5px;
