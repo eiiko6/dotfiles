@@ -103,8 +103,6 @@ return {
       end,
     })
 
-    -- marker123
-
     -- Diagnostic Config
     vim.diagnostic.config {
       severity_sort = true,
@@ -135,37 +133,95 @@ return {
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+    -- Check and suggest installation for missing LSP servers
+    local function check_lsp_binary(server)
+      local binaries = {
+        clangd = 'clangd',
+        pyright = 'pyright-langserver',
+        vue_ls = 'vue-language-server',
+        jdtls = 'jdtls',
+        rust_analyzer = 'rust-analyzer',
+        ts_ls = 'typescript-language-server',
+        lua_ls = 'lua-language-server',
+        bashls = 'bash-language-server',
+        phpactor = 'phpactor',
+        tailwindcss = 'tailwindcss-language-server',
+        nil_ls = 'nil',
+      }
+
+      local pkg_map = {
+        clangd = 'clang',
+        pyright = 'pyright',
+        vue_ls = 'vue-language-server',
+        jdtls = 'jdtls',
+        rust_analyzer = 'rust-analyzer',
+        ts_ls = 'typescript-language-server',
+        lua_ls = 'lua-language-server',
+        bashls = 'bash-language-server',
+        phpactor = 'phpactor',
+        tailwindcss = 'tailwindcss-language-server',
+        nil_ls = 'nil-git',
+      }
+
+      local bin = binaries[server]
+      if not bin then
+        return true
+      end -- skip unknown
+      return vim.fn.executable(bin) == 1, pkg_map[server]
+    end
+
+    local function suggest_install_missing(missing)
+      if #missing == 0 then
+        return
+      end
+      local pkgs = table.concat(missing, ' ')
+      local choice = vim.fn.input(string.format('Missing LSP servers detected. Install all with paru? (%s) [y/N]: ', pkgs))
+      if choice:lower() == 'y' then
+        vim.cmd('split | term paru -S ' .. pkgs)
+      else
+        vim.notify('Skipped installation for: ' .. pkgs, vim.log.levels.INFO)
+      end
+    end
+
     --  - cmd (table): Override the default command used to start the server
     --  - filetypes (table): Override the default list of associated filetypes for the server
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     local servers = {
+      -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+
+      -- clangd
       clangd = {},
 
-      -- gopls = {},
-      --
+      -- pyright-langserver
       pyright = {},
 
+      -- vue-language-server
+      vue_ls = {},
+
+      -- jdtls
       jdtls = {
         handlers = {
           ['$/progress'] = function(_, _, _) end,
         },
       },
 
+      -- rust-analyzer
       rust_analyzer = {
         enabled = true,
-        settings = {
-          ['rust-analyzer'] = {
-            checkOnSave = {
-              command = 'clippy',
-            },
-          },
-        },
+        -- settings = {
+        --   ['rust-analyzer'] = {
+        --     checkOnSave = {
+        --       command = 'clippy',
+        --     },
+        --   },
+        -- },
       },
-      -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
+      -- typescript-language-server
       ts_ls = {},
 
+      -- lua-language-server
       lua_ls = {
         settings = {
           Lua = {
@@ -177,8 +233,29 @@ return {
         },
       },
 
+      -- bash-language-server
       bashls = {},
+
+      -- phpactor
+      phpactor = {},
+
+      -- tailwindcss-language-server
+      tailwindcss = {},
+
+      -- nil + nixfmt
+      nil_ls = {},
     }
+
+    -- collect missing LSPs first
+    local missing_pkgs = {}
+    for name, _ in pairs(servers) do
+      local ok, pkg = check_lsp_binary(name)
+      if not ok and pkg then
+        table.insert(missing_pkgs, pkg)
+      end
+    end
+
+    suggest_install_missing(missing_pkgs)
 
     for name, opts in pairs(servers) do
       opts = vim.tbl_deep_extend('force', { capabilities = capabilities }, opts)
