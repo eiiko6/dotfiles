@@ -3,7 +3,11 @@
 -- Disable swapfiles
 -- vim.opt.swapfile = false
 
+-- Set indentation width
 vim.opt.tabstop = 2
+
+-- Disable line wrap
+vim.o.wrap = false
 
 -- Set <space> as the leader key
 vim.g.mapleader = ' '

@@ -196,8 +196,18 @@ return {
       -- pyright-langserver
       pyright = {},
 
+      -- typescript-language-server
+      ts_ls = {
+      },
+
       -- vue-language-server
-      vue_ls = {},
+      vue_ls = {
+        init_options = {
+          typescript = {
+            tsdk = '/usr/lib/node_modules/typescript/lib',
+          },
+        },
+      },
 
       -- jdtls
       jdtls = {
@@ -217,9 +227,6 @@ return {
         --   },
         -- },
       },
-
-      -- typescript-language-server
-      ts_ls = {},
 
       -- lua-language-server
       lua_ls = {
