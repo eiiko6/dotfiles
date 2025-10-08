@@ -3,6 +3,8 @@
 -- Disable swapfiles
 -- vim.opt.swapfile = false
 
+vim.opt.tabstop = 2
+
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -59,7 +61,7 @@ vim.o.splitbelow = true
 
 -- Set how neovim will display certain whitespace characters in the editor
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '▸ ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live
 vim.o.inccommand = 'split'
