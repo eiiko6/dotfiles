@@ -70,6 +70,7 @@ starship init fish | source
 # Add PATH
 set PATH $PATH /home/strawberries/.local/bin
 set PATH $PATH /home/strawberries/.cargo/bin
+set PATH $PATH /home/strawberries/go/bin
 
 # Bindings
 bind ctrl-backspace 'commandline -r ""'

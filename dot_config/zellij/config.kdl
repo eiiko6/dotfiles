@@ -19,6 +19,9 @@ keybinds clear-defaults=true {
 
         unbind "Ctrl q"
         bind "Ctrl Shift q" { Quit; }
+
+        unbind "Ctrl o"
+        bind "Ctrl Shift o" { SwitchToMode "session"; }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
