@@ -197,16 +197,26 @@ return {
       pyright = {},
 
       -- typescript-language-server
-      ts_ls = {
+      -- ts_ls = {
+      -- },
+      vtsls = {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = {
+                name = '@vue/typescript-plugin',
+                location = '/usr/bin/vue-language-server',
+                languages = { 'vue' },
+                configNamespace = 'typescript',
+              },
+            },
+          },
+        },
       },
 
       -- vue-language-server
       vue_ls = {
-        init_options = {
-          typescript = {
-            tsdk = '/usr/lib/node_modules/typescript/lib',
-          },
-        },
       },
 
       -- jdtls

@@ -1,5 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
+  event = 'VeryLazy',
   dependencies = { 'catppuccin/nvim' },
   opts = function(_, opts)
     -- use catppuccin integration
