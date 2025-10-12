@@ -145,7 +145,7 @@ return {
         lua_ls = 'lua-language-server',
         bashls = 'bash-language-server',
         phpactor = 'phpactor',
-        tailwindcss = 'tailwindcss-language-server',
+        -- tailwindcss = 'tailwindcss-language-server',
         nil_ls = 'nil',
       }
 
@@ -159,7 +159,7 @@ return {
         lua_ls = 'lua-language-server',
         bashls = 'bash-language-server',
         phpactor = 'phpactor',
-        tailwindcss = 'tailwindcss-language-server',
+        -- tailwindcss = 'tailwindcss-language-server',
         nil_ls = 'nil-git',
       }
 
@@ -197,26 +197,69 @@ return {
       pyright = {},
 
       -- typescript-language-server
-      -- ts_ls = {
-      -- },
+      -- explicitly disable old tsserver / ts_ls so they don't conflict with vtsls
+      tsserver = { enabled = false },
+      ts_ls = { enabled = false },
+
+      -- vtsls (TypeScript + Vue integration)
       vtsls = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx",
+          "vue", -- <- key addition
+        },
         settings = {
+          complete_function_calls = true,
           vtsls = {
+            enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true,
+            experimental = {
+              maxInlayHintLength = 30,
+              completion = { enableServerSideFuzzyMatch = true },
+            },
             tsserver = {
               globalPlugins = {
-                name = '@vue/typescript-plugin',
-                location = '/usr/bin/vue-language-server',
-                languages = { 'vue' },
-                configNamespace = 'typescript',
+                {
+                  name = "@vue/typescript-plugin",
+                  location = "/usr/lib/node_modules/@vue/language-server",
+                  languages = { "vue" },
+                  configNamespace = "typescript",
+                  enableForWorkspaceTypeScriptVersions = true,
+                },
               },
+            },
+          },
+          typescript = {
+            updateImportsOnFileMove = { enabled = "always" },
+            suggest = { completeFunctionCalls = true },
+            inlayHints = {
+              enumMemberValues = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              variableTypes = { enabled = false },
             },
           },
         },
       },
 
-      -- vue-language-server
+      -- vue-language-server (depends on vtsls)
       vue_ls = {
+        init_options = {
+          typescript = {
+            -- must point to vtsls or tsserver client ID
+            tsdk = "/usr/lib/node_modules/typescript/lib",
+            -- tell volar which LSP to use for TS features
+            -- vtsls registers under this name
+            lspClient = "vtsls",
+          },
+        },
+        filetypes = { "vue" },
       },
 
       -- jdtls
@@ -257,7 +300,7 @@ return {
       phpactor = {},
 
       -- tailwindcss-language-server
-      tailwindcss = {},
+      -- tailwindcss = {},
 
       -- nil + nixfmt
       nil_ls = {},
@@ -275,7 +318,28 @@ return {
     suggest_install_missing(missing_pkgs)
 
     for name, opts in pairs(servers) do
-      opts = vim.tbl_deep_extend('force', { capabilities = capabilities }, opts)
+      -- merge user opts with capabilities
+      opts = vim.tbl_deep_extend('force', { capabilities = capabilities }, opts or {})
+
+      -- special handling for vtsls: ensure vue filetype, copy TS settings to JS,
+      if name == 'vtsls' then
+        -- make sure vue is present
+        opts.filetypes = opts.filetypes or {}
+        local has_vue = false
+        for _, ft in ipairs(opts.filetypes) do
+          if ft == 'vue' then
+            has_vue = true; break
+          end
+        end
+        if not has_vue then table.insert(opts.filetypes, 'vue') end
+
+        -- copy typescript settings into javascript so JS gets same behavior
+        if opts.settings and opts.settings.typescript then
+          opts.settings.javascript = vim.tbl_deep_extend('force', {}, opts.settings.typescript,
+            opts.settings.javascript or {})
+        end
+      end
+
       vim.lsp.config(name, opts)
       vim.lsp.enable { name }
     end
