@@ -1,0 +1,224 @@
+{
+  "layer": "top",
+  "output": "!HDMI-A-1",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "reload_style_on_change": true,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "margin": "0px",
+  "modules-left": [
+    "image#icon",
+    "hyprland/workspaces",
+    "tray",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "custom/playerctl"
+  ],
+  "modules-right": [
+    "custom/pkg_updates",
+    "hyprland/language",
+    // "backlight",
+    "network",
+    "pulseaudio",
+    // "pulseaudio#microphone",
+    // "bluetooth",
+    "custom/temperature",
+    "memory",
+    "cpu",
+    "disk",
+    "clock"
+  ],
+  "custom/language": {
+    "exec": "~/.config/scripts/get-fcitx-input-method.sh",
+    "interval": 1
+  },
+  "custom/playerctl": {
+    "exec": "playerctl -p spotify metadata --format '{{title}} - {{artist}}' | sed 's/&/&amp;/g'",
+    "format": "  {}",
+    "on-click": "playerctl play-pause",
+    "interval": 5
+  },
+  "custom/temperature": {
+    "exec": "for i in /sys/class/hwmon/hwmon*/temp*_input; do echo \"$(<$i) $i\"; done | sort -nr | awk 'NR==1 {printf \"%d\\n\", $1/1000 + 0.5}'",
+    "format": " {}°C",
+    "interval": 10
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {specific_free:0.2f}GB",
+    "path": "/",
+    "unit": "GB"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {percentage}%",
+    "max-length": 10
+  },
+  "image#icon": {
+    "path": "/home/strawberries/.config/waybar/arch.png",
+    "size": 16,
+    "on-click": "wofi",
+    "interval": 1
+  },
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "hyprland/workspaces": {
+    "format": "{}"
+  },
+  "hyprland/language": {
+    "format-en": "EN",
+    "format-fr": "FR"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "clock": {
+    "format": " {:%a %D %H:%M:%S}",
+    "tooltip": false,
+    "interval": 1
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-scroll-up": "~/.config/scripts/controls/brightness --inc",
+    "on-scroll-down": "~/.config/scripts/controls/brightness --dec",
+    "min-length": 6,
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}% {time}",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
+    "on-click": "~/.config/scripts/controls/volume --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/scripts/controls/volume --inc",
+    "on-scroll-down": "~/.config/scripts/controls/volume --dec",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "  Muted",
+    "on-click": "~/.config/scripts/controls/volume --toggle-mic",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/scripts/controls/volume --mic-inc",
+    "on-scroll-down": "~/.config/scripts/controls/volume --mic-dec",
+    "scroll-step": 5
+  },
+  "network": {
+    "interval": 1,
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": " {bandwidthDownBytes} 󰖩 ",
+    "format-ethernet": " {bandwidthDownBytes} 󰈀 ", //{ipaddr}/{cidr}",
+    "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "Disconnected ⚠",
+    "tooltip": true
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "blueman-manager"
+  },
+  "custom/spotify": {
+    "exec": "/usr/bin/python3 ~/.config/waybar/modules/mediaplayer.py --player spotify",
+    "format": "{}  ",
+    "return-type": "json",
+    "max-length": 46,
+    "on-click": "playerctl play-pause"
+  },
+  "custom/pkg_updates": {
+    "exec": "~/.config/scripts/pkg_updates.sh",
+    "format": " {}",
+    "tooltip-format": "Apply updates",
+    "on-click": "~/.config/scripts/pkg_updates.sh --update"
+    // "interval": 350
+  },
+  "cava": {
+    // "cava_config": "$XDG_CONFIG_HOME/cava/config",
+    "framerate": 60,
+    "autosens": 1,
+    "sensitivity": 3,
+    "bars": 26,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "method": "pulse",
+    "source": "auto",
+    "stereo": false,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": [
+      " ",
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  }
+}
