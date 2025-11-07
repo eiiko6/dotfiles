@@ -3,95 +3,95 @@
 # --------- PACKAGES -----------
 
 MAIN_PACKAGES="
-  blueman
-  brightnessctl
-  fuzzel
-  rustup
-  chezmoi
-  cliphist
-  eza
-  fastfetch
-  file-roller
-  fish
-  gnome-themes-extra
-  grim
-  gtk3
-  gvfs
-  hyprcursor
-  hyprland
-  hyprlock
-  hypridle
-  kitty
-  lemurs
-  libpulse
-  mako
-  neovim
-  network-manager-applet
-  noto-fonts
-  noto-fonts-cjk
-  noto-fonts-emoji
-  nwg-look
-  pacman-contrib
-  pamixer
-  pavucontrol
-  pipewire
-  pipewire-pulse
-  python-pywal
-  qt5-graphicaleffects
-  qt5-quickcontrols2
-  qt5-wayland
-  qt6-5compat
-  qt6-wayland
-  qt6ct
-  slurp
-  starship
-  swappy
-  swww
-  thunar
-  thunar-archive-plugin
-  tumbler
-  ttf-fira-code
-  ttf-hack
-  ttf-jetbrains-mono-nerd
-  7zip
-  waybar
-  wayland
-  wireplumber
-  wofi
-  xdg-desktop-portal
-  xdg-desktop-portal-hyprland
+blueman
+brightnessctl
+fuzzel
+rustup
+chezmoi
+cliphist
+eza
+fastfetch
+file-roller
+fish
+gnome-themes-extra
+grim
+gtk3
+gvfs
+hyprcursor
+hyprland
+hyprlock
+hypridle
+kitty
+lemurs
+libpulse
+mako
+neovim
+network-manager-applet
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+nwg-look
+pacman-contrib
+pamixer
+pavucontrol
+pipewire
+pipewire-pulse
+python-pywal
+qt5-graphicaleffects
+qt5-quickcontrols2
+qt5-wayland
+qt6-5compat
+qt6-wayland
+qt6ct
+slurp
+starship
+swappy
+swww
+thunar
+thunar-archive-plugin
+tumbler
+ttf-fira-code
+ttf-hack
+ttf-jetbrains-mono-nerd
+7zip
+waybar
+wayland
+wireplumber
+wofi
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
 "
 
 AUR_PACKAGES="
-  rose-pine-hyprcursor
+rose-pine-hyprcursor
 "
 
 EXTRA_PACKAGES="
-  arch-install-scripts
-  audacious
-  btop
-  firefox
-  less
-  man-db
-  mvp
-  npm
-  qemu
-  rust-analyzer
-  spotify-lauhcher
-  stress
-  tealdeer
-  vesktop
-  yt-dlp
+arch-install-scripts
+audacious
+btop
+firefox
+less
+man-db
+mvp
+npm
+qemu
+rust-analyzer
+spotify-lauhcher
+stress
+tealdeer
+vesktop
+yt-dlp
 "
 
 RUST_PACKAGES="
-  yazi
-  hyperfine
-  dust
-  zoxide
-  fd
-  uutils-coreutils
-  sudo-rs
+yazi
+hyperfine
+dust
+zoxide
+fd
+uutils-coreutils
+sudo-rs
 "
 
 # Function to detect the Linux distribution
@@ -135,7 +135,7 @@ ask_oxidize() {
 oxidize_install() {
   echo "Installing Rust-powered replacements..."
 
-  yay -S --noconfirm --needed --sudoloop $RUST_PACKAGES
+  paru -S --noconfirm --needed --sudoloop $RUST_PACKAGES
 
   rustup default stable
 
@@ -199,23 +199,25 @@ handle_arch() {
   cargo install --git "https://github.com/eiiko6/dotswitch"
 
   echo "Dotfiles installation ended"
-  echo "Now installing yay"
+  echo "Now installing paru"
 
-  # Install yay
-  if ! command -v yay &>/dev/null; then
-    echo "yay not found. Installing yay..."
+  # Install paru
+  if ! command -v paru &>/dev/null; then
+    echo "paru not found. Installing..."
     sudo pacman -S --needed --noconfirm git base-devel
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    cd /tmp/yay && makepkg -si --noconfirm
-    cd - && rm -rf /tmp/yay
+    sudo pacman -S --needed base-devel
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    cd /tmp/paru
+    makepkg -si
+    cd - && rm -rf /tmp/paru
   else
-    echo "yay is already installed."
+    echo "paru is already installed."
   fi
 
-  echo "yay installation ended"
+  echo "paru installation ended"
 
-  # Install yay packages
-  yay -S --noconfirm --needed --sudoloop $AUR_PACKAGES
+  # Install paru packages
+  paru -S --noconfirm --needed --sudoloop $AUR_PACKAGES
 
   # Set color themes with default temporary wallpaper
   fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
@@ -233,7 +235,7 @@ install_extra_packages() {
   printf "Installing $(echo $EXTRA_PACKAGES | tr ' ' '\n' | wc -l) extra packages"
 
   # Install the optional packages
-  yay -S --noconfirm --needed --sudoloop $EXTRA_PACKAGES
+  paru -S --noconfirm --needed --sudoloop $EXTRA_PACKAGES
 }
 
 # Handle unsupported distros

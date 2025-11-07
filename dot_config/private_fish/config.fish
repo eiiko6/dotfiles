@@ -36,6 +36,13 @@ alias gf='git fetch'
 alias gc='git commit -m'
 alias h='helix'
 alias zel='zellij'
+alias dla='yt-dlp --extract-audio'
+
+function amazon-shorten
+    set url (echo $argv | cut -d '/' -f 4 --complement | awk -F '?' '{print $1}')
+    echo $url
+    echo $url | tr -d '\n' | wl-copy
+end
 
 function theme
     dotswitch switch $argv[1] common $argv[2]
@@ -45,8 +52,25 @@ function palette
     ~/.config/scripts/palette/change-wallpaper.sh $argv
 end
 
-function shufbg
-    fish -c 'source ~/.config/fish/functions/palette.fish; set wallpaper (lls ~/Pictures/Wallpapers/rin/ | shuf -n 1 | sed s/.png\$//); palette "rin/$wallpaper"'
+function upscale
+    if test (count $argv) -lt 3
+        echo "Usage: upscale <input> <output> <size>"
+        return 1
+    end
+    ffmpeg -i $argv[1] -vf "scale=$argv[3]:$argv[3]:flags=neighbor" $argv[2]
+end
+
+# Rerun last command
+function rr
+  set PREV_CMD (history | head -1)
+  # set PREV_OUTPUT (eval $PREV_CMD)
+  # set CMD $argv[1]
+  # eval "$CMD $PREV_OUTPUT"
+  if test "$PREV_CMD" != "rr"
+    eval "$PREV_CMD"
+  else
+    echo "Cannot execute rr again"
+  end
 end
 
 # Setup greeting

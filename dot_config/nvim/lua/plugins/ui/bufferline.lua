@@ -1,6 +1,7 @@
 return {
   'akinsho/bufferline.nvim',
   event = 'VeryLazy',
+  dependencies = { 'catppuccin/nvim' },
   keys = {
     { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
     { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete Non-Pinned Buffers' },
@@ -13,8 +14,8 @@ return {
     { '[B', '<cmd>BufferLineMovePrev<cr>', desc = 'Move buffer prev' },
     { ']B', '<cmd>BufferLineMoveNext<cr>', desc = 'Move buffer next' },
   },
-  opts = {
-    options = {
+  opts = function(_, opts)
+    opts.options = vim.tbl_deep_extend('force', opts.options or {}, {
       diagnostics = 'nvim_lsp',
       always_show_bufferline = false,
       diagnostics_indicator = function(_, _, diag)
@@ -30,15 +31,16 @@ return {
           highlight = 'Directory',
           text_align = 'left',
         },
-        {
-          filetype = 'snacks_layout_box',
-        },
+        { filetype = 'snacks_layout_box' },
       },
-    },
-  },
+    })
+
+    return opts
+  end,
   config = function(_, opts)
     require('bufferline').setup(opts)
-    -- Fix bufferline when restoring a session
+
+    -- fix restoring session (still fine)
     vim.api.nvim_create_autocmd({ 'BufAdd', 'BufDelete' }, {
       callback = function()
         vim.schedule(function()

@@ -14,16 +14,20 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 -- vim.keymap.set('n', 'gd', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 vim.keymap.set('n', '<leader>k', function()
-  vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = false })
+  vim.diagnostic.config { virtual_lines = { current_line = true }, virtual_text = false }
 
   vim.api.nvim_create_autocmd('CursorMoved', {
     group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
     callback = function()
-      vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+      vim.diagnostic.config { virtual_lines = false, virtual_text = true }
       return true
     end,
   })
 end, { desc = 'Show diagnostics in virtual lines' })
+
+vim.keymap.set('n', '<leader>K', function()
+  vim.diagnostic.open_float()
+end, { desc = 'Show diagnostics in a floating window' })
 
 --  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

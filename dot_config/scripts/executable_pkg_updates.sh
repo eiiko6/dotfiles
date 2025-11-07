@@ -4,45 +4,45 @@
 COUNT_FILE="$HOME/.cache/pkg_updates_count"
 
 update_count() {
-  # Update official packages count
-  OFFICIAL_COUNT=$(checkupdates 2>/dev/null | wc -l)
+    # Update official packages count
+    OFFICIAL_COUNT=$(checkupdates 2>/dev/null | wc -l)
 
-  # Update AUR packages count
-  AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l)
+    # Update AUR packages count
+    AUR_COUNT=$(paru -Qua 2>/dev/null | wc -l)
 
-  TOTAL_COUNT=$((OFFICIAL_COUNT + AUR_COUNT))
+    TOTAL_COUNT=$((OFFICIAL_COUNT + AUR_COUNT))
 
-  echo $TOTAL_COUNT >$COUNT_FILE
-  echo $TOTAL_COUNT
+    echo $TOTAL_COUNT >$COUNT_FILE
+    echo $TOTAL_COUNT
 }
 
 update_packages() {
-  if [[ "$(cat $COUNT_FILE)" -eq 0 ]]; then
-    notify-send "Everything is up to date!" "There is nothing to do."
-  else
-    # Update everything (official and AUR)
-    notify-send "Opening a terminal..."
+    if [[ "$(cat $COUNT_FILE)" -eq 0 ]]; then
+        notify-send "Everything is up to date!" "There is nothing to do."
+    else
+        # Update everything (official and AUR)
+        notify-send "Opening a terminal..."
 
-    kitty --class floatingcentered --hold -e bash -c "
-        echo '> Updating system...'; 
-        yay -Syu --noconfirm; 
-        echo '> Cleaning package cache...'; 
-        sudo pacman -Sc --noconfirm; 
-        # echo '> Removing orphaned packages...'; 
-        # sudo pacman -Rns \$(pacman -Qdtq) --noconfirm; 
-        echo '> System updated! Press any key to close...'; 
+        kitty --class floatingcentered --hold -e bash -c "
+        echo '> Updating system...';
+        paru -Syu --noconfirm;
+        echo '> Cleaning package cache...';
+        sudo pacman -Sc --noconfirm;
+        # echo '> Removing orphaned packages...';
+        # sudo pacman -Rns \$(pacman -Qdtq) --noconfirm;
+        echo '> System updated! Press any key to close...';
         read -n 1;
         exit"
 
-    # Update the count file
-    update_count
-  fi
+        # Update the count file
+        update_count
+    fi
 }
 
 # Check arguments
 if [[ $1 == "--update" ]]; then
-  update_packages
+    update_packages
 else
-  # Otherwise, just print the update count
-  update_count
+    # Otherwise, just print the update count
+    update_count
 fi

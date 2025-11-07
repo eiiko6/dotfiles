@@ -1,9 +1,16 @@
 return {
   {
-    "IogaMaster/neocord",
-    event = "VeryLazy",
-    -- enabled = vim.fn.system("git rev-parse --is-inside-work-tree") == "true\n", -- Seems to force the plugin to block everything on loading
-    enabled = false, -- Until I find some way to make the git repo check fast
+    'IogaMaster/neocord',
+    event = 'VeryLazy',
+    -- enabled = function()
+    --   if vim.fn.hostname() == 'Fatalis' then
+    --     return vim.fn.system 'git rev-parse --is-inside-work-tree' == 'true\n' -- Seems to force the plugin to block everything on loading
+    --   else
+    --     return false
+    --   end
+    -- end,
+    enabled = false,
+    -- stylua: ignore
     opts = {
       -- General options
       logo = "#",                        -- "auto" or url
