@@ -9,12 +9,19 @@ vim.opt.tabstop = 2
 -- Disable line wrap
 vim.o.wrap = false
 
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
 -- Set <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set shell for terminals
-vim.o.shell = '/usr/bin/fish'
+vim.o.shell = '/usr/bin/env fish'
 
 -- Use terminal colors
 vim.o.termguicolors = true
