@@ -35,6 +35,7 @@ return {
       cpp = { 'clang-format' },
       sh = { 'beautysh' },
       json = { 'fixjson' },
+      toml = { 'taplo' },
     },
   },
 }
