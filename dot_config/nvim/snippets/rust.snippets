@@ -1,0 +1,77 @@
+snippet cli "base clap cli struct"
+  #[derive(Parser, Debug)]
+  #[command(author, version, about, long_about = None)]
+  pub struct Cli {
+      /// Input string
+      #[arg(short, long)]
+      input: String,
+
+      /// Verbose mode
+      #[arg(short, long)]
+      verbose: bool,
+  }
+
+snippet axum "base axum api server"
+  use std::{net::SocketAddr, time::Duration};
+  
+  use axum::{
+      Router,
+      http::{Method, header},
+      routing::{get, post},
+  };
+  use serde::Serialize;
+  use tower_governor::{GovernorLayer, governor::GovernorConfigBuilder};
+  use tower_http::cors::{Any, CorsLayer};
+  
+  pub fn routes() -> Router {
+      Router::new()
+          // .route("/submit", post(submit))
+          .route("/", get(|| async { "Hello, World!" }))
+  }
+  
+  #[tokio::main]
+  async fn main() -> anyhow::Result<()> {
+      let subscriber = tracing_subscriber::FmtSubscriber::new();
+      tracing::subscriber::set_global_default(subscriber).unwrap();
+  
+      let cors = CorsLayer::new()
+          .allow_origin(Any)
+          .allow_methods([Method::GET, Method::POST])
+          .allow_headers([header::AUTHORIZATION, header::CONTENT_TYPE]);
+  
+      let governor_conf = GovernorConfigBuilder::default()
+          .per_second(5)
+          .burst_size(10)
+          .finish()
+          .unwrap();
+  
+      let governor_limiter = governor_conf.limiter().clone();
+  
+      let interval = Duration::from_secs(60);
+      std::thread::spawn(move || {
+          loop {
+              std::thread::sleep(interval);
+              governor_limiter.retain_recent();
+          }
+      });
+  
+      let app = Router::new()
+          .layer(cors)
+          .layer(GovernorLayer::new(governor_conf))
+          .merge(routes());
+  
+      let port = std::env::var("SERVER_PORT").unwrap_or_else(|_| "8081".to_string());
+      let addr = format!("127.0.0.1:{port}");
+  
+      let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+      tracing::info!("Listening on {addr}");
+  
+      axum::serve(
+          listener,
+          app.into_make_service_with_connect_info::<SocketAddr>(),
+      )
+      .await
+      .unwrap();
+  
+      Ok(())
+  }

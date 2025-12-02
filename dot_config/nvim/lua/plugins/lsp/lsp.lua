@@ -187,6 +187,9 @@ return {
     --  - filetypes (table): Override the default list of associated filetypes for the server
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
+
+    local uv = vim.uv or vim.loop
+    local fs = require("lspconfig.util")
     local servers = {
       -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
@@ -264,9 +267,19 @@ return {
 
       -- jdtls
       jdtls = {
-        handlers = {
-          ['$/progress'] = function(_, _, _) end,
+        capabilities = capabilities,
+        handlers = { ['$/progress'] = function() end },
+        settings = {
+          java = {
+            configuration = {
+              runtimes = {
+                { name = "JavaSE-21", path = "/usr/lib/jvm/java-21-openjdk", default = true },
+              },
+            },
+            import = { gradle = { enabled = true, wrapper = true } },
+          },
         },
+        cmd = { 'jdtls' },
       },
 
       -- rust-analyzer
@@ -304,6 +317,18 @@ return {
 
       -- nil + nixfmt
       nil_ls = {},
+
+      roslyn_ls = {
+        cmd = {
+          'dotnet',
+          '/home/strawberries/Microsoft/roslyn_ls/content/LanguageServer/linux-x64/Microsoft.CodeAnalysis.LanguageServer.dll',
+          '--logLevel',              -- this property is required by the server
+          'Information',
+          '--extensionLogDirectory', -- this property is required by the server
+          '/tmp/roslyn_ls/logs',
+          '--stdio',
+        },
+      }
     }
 
     -- collect missing LSPs first
