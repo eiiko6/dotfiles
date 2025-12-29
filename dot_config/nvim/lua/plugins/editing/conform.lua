@@ -30,7 +30,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'black' },
-      rust = { 'rustfmt' },
+      rust = { 'rustfmt', 'leptosfmt' },
       c = { 'clang-format' },
       cpp = { 'clang-format' },
       sh = { 'beautysh' },

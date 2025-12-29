@@ -147,6 +147,7 @@ return {
         phpactor = 'phpactor',
         -- tailwindcss = 'tailwindcss-language-server',
         nil_ls = 'nil',
+        qml = 'qmlls6',
       }
 
       local pkg_map = {
@@ -161,6 +162,7 @@ return {
         phpactor = 'phpactor',
         -- tailwindcss = 'tailwindcss-language-server',
         nil_ls = 'nil-git',
+        qml = 'qmlls6',
       }
 
       local bin = binaries[server]
@@ -189,7 +191,7 @@ return {
     --  - settings (table): Override the default settings passed when initializing the server.
 
     local uv = vim.uv or vim.loop
-    local fs = require("lspconfig.util")
+    local fs = require 'lspconfig.util'
     local servers = {
       -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
@@ -207,13 +209,13 @@ return {
       -- vtsls (TypeScript + Vue integration)
       vtsls = {
         filetypes = {
-          "javascript",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx",
-          "vue", -- <- key addition
+          'javascript',
+          'javascriptreact',
+          'javascript.jsx',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
+          'vue',
         },
         settings = {
           complete_function_calls = true,
@@ -227,22 +229,22 @@ return {
             tsserver = {
               globalPlugins = {
                 {
-                  name = "@vue/typescript-plugin",
-                  location = "/usr/lib/node_modules/@vue/language-server",
-                  languages = { "vue" },
-                  configNamespace = "typescript",
+                  name = '@vue/typescript-plugin',
+                  location = '/usr/lib/node_modules/@vue/language-server',
+                  languages = { 'vue' },
+                  configNamespace = 'typescript',
                   enableForWorkspaceTypeScriptVersions = true,
                 },
               },
             },
           },
           typescript = {
-            updateImportsOnFileMove = { enabled = "always" },
+            updateImportsOnFileMove = { enabled = 'always' },
             suggest = { completeFunctionCalls = true },
             inlayHints = {
               enumMemberValues = { enabled = true },
               functionLikeReturnTypes = { enabled = true },
-              parameterNames = { enabled = "literals" },
+              parameterNames = { enabled = 'literals' },
               parameterTypes = { enabled = true },
               propertyDeclarationTypes = { enabled = true },
               variableTypes = { enabled = false },
@@ -256,13 +258,13 @@ return {
         init_options = {
           typescript = {
             -- must point to vtsls or tsserver client ID
-            tsdk = "/usr/lib/node_modules/typescript/lib",
+            tsdk = '/usr/lib/node_modules/typescript/lib',
             -- tell volar which LSP to use for TS features
             -- vtsls registers under this name
-            lspClient = "vtsls",
+            lspClient = 'vtsls',
           },
         },
-        filetypes = { "vue" },
+        filetypes = { 'vue' },
       },
 
       -- jdtls
@@ -273,7 +275,7 @@ return {
           java = {
             configuration = {
               runtimes = {
-                { name = "JavaSE-21", path = "/usr/lib/jvm/java-21-openjdk", default = true },
+                { name = 'JavaSE-21', path = '/usr/lib/jvm/java-21-openjdk', default = true },
               },
             },
             import = { gradle = { enabled = true, wrapper = true } },
@@ -285,13 +287,25 @@ return {
       -- rust-analyzer
       rust_analyzer = {
         enabled = true,
-        -- settings = {
-        --   ['rust-analyzer'] = {
-        --     checkOnSave = {
-        --       command = 'clippy',
-        --     },
-        --   },
-        -- },
+        settings = {
+          ['rust-analyzer'] = {
+            cargo = {
+              features = 'all',
+            },
+            procMacro = {
+              enabled = true,
+              ignored = {
+                leptos_macro = {
+                  -- "component",
+                  'server',
+                },
+              },
+            },
+            -- checkOnSave = {
+            --   command = 'clippy',
+            -- },
+          },
+        },
       },
 
       -- lua-language-server
@@ -322,13 +336,18 @@ return {
         cmd = {
           'dotnet',
           '/home/strawberries/Microsoft/roslyn_ls/content/LanguageServer/linux-x64/Microsoft.CodeAnalysis.LanguageServer.dll',
-          '--logLevel',              -- this property is required by the server
+          '--logLevel', -- this property is required by the server
           'Information',
           '--extensionLogDirectory', -- this property is required by the server
           '/tmp/roslyn_ls/logs',
           '--stdio',
         },
-      }
+      },
+
+      qmlls = {
+        cmd = { 'qmlls6' },
+        filetypes = { 'qml' },
+      },
     }
 
     -- collect missing LSPs first
@@ -353,15 +372,17 @@ return {
         local has_vue = false
         for _, ft in ipairs(opts.filetypes) do
           if ft == 'vue' then
-            has_vue = true; break
+            has_vue = true
+            break
           end
         end
-        if not has_vue then table.insert(opts.filetypes, 'vue') end
+        if not has_vue then
+          table.insert(opts.filetypes, 'vue')
+        end
 
         -- copy typescript settings into javascript so JS gets same behavior
         if opts.settings and opts.settings.typescript then
-          opts.settings.javascript = vim.tbl_deep_extend('force', {}, opts.settings.typescript,
-            opts.settings.javascript or {})
+          opts.settings.javascript = vim.tbl_deep_extend('force', {}, opts.settings.typescript, opts.settings.javascript or {})
         end
       end
 
