@@ -42,10 +42,15 @@ vim.o.showmode = false
 -- Hide status
 vim.opt.laststatus = 3
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+-- Use OSC52 nad system clipboard
+vim.opt.clipboard = 'unnamedplus'
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    if vim.v.event.operator == 'y' and (vim.v.event.regname == '+' or vim.v.event.regname == '') then
+      require('vim.ui.clipboard.osc52').copy('+')(vim.v.event.regcontents)
+    end
+  end,
+})
 
 -- Enable break indent
 vim.o.breakindent = true
