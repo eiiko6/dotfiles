@@ -1,5 +1,5 @@
 snippet cli "base clap cli struct"
-  #[derive(Parser, Debug)]
+  #[derive(clap::Parser, Debug)]
   #[command(author, version, about, long_about = None)]
   pub struct Cli {
       /// Input string

@@ -57,3 +57,24 @@ vim.keymap.set('n', '<leader>d', function()
   -- Delete the buffer we started on
   vim.api.nvim_buf_delete(buf, { force = false })
 end, { desc = 'Delete Buffer' })
+
+-- code action on hover
+vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, { desc = 'LSP Code Action' })
+
+local function instant_import()
+  vim.lsp.buf.code_action {
+    context = { only = { 'quickfix' } },
+    filter = function(action)
+      return action.title:match '^Import'
+    end,
+    apply = true,
+  }
+
+  vim.defer_fn(function()
+    if vim.api.nvim_get_mode().mode == 'n' then
+      vim.cmd 'silent! write'
+    end
+  end, 250)
+end
+
+vim.keymap.set('n', '<leader>i', instant_import, { desc = 'LSP Instant Import' })
