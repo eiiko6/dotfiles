@@ -42,15 +42,15 @@ vim.o.showmode = false
 -- Hide status
 vim.opt.laststatus = 3
 
--- Use OSC52 nad system clipboard
+-- Use OSC52 and system clipboard
 vim.opt.clipboard = 'unnamedplus'
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    if vim.v.event.operator == 'y' and (vim.v.event.regname == '+' or vim.v.event.regname == '') then
-      require('vim.ui.clipboard.osc52').copy('+')(vim.v.event.regcontents)
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--   callback = function()
+--     if vim.v.event.operator == 'y' then
+--       require('vim.ui.clipboard.osc52').copy('+')(vim.v.event.regcontents)
+--     end
+--   end,
+-- })
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -127,6 +127,7 @@ require('lazy').setup {
   { import = 'plugins.editing' },
   { import = 'plugins.lsp' },
   { import = 'plugins.ui' },
+  { import = 'plugins.random-languages' },
 }
 
 require 'keymaps'
