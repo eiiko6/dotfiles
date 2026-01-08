@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # --------- PACKAGES -----------
 
@@ -60,6 +60,7 @@ wireplumber
 wofi
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
+zellij
 "
 
 AUR_PACKAGES="
@@ -71,6 +72,7 @@ arch-install-scripts
 audacious
 btop
 firefox
+imv
 less
 man-db
 mvp
@@ -209,7 +211,7 @@ handle_arch() {
     git clone https://aur.archlinux.org/paru.git /tmp/paru
     cd /tmp/paru
     makepkg -si
-    cd - && rm -rf /tmp/paru
+    cd && rm -rf /tmp/paru
   else
     echo "paru is already installed."
   fi
@@ -220,15 +222,16 @@ handle_arch() {
   paru -S --noconfirm --needed --sudoloop $AUR_PACKAGES
 
   # Set color themes with default temporary wallpaper
-  fish -c 'source ~/.config/fish/config.fish; theme prettydesktop'
+  fish -c 'source ~/.config/fish/config.fish; theme macchiato'
   mkdir -p "$HOME/Pictures/Wallpapers"
-  cp "$(find "$HOME"/.config/theme-switcher/themes/ -type f -name 'wallpaper.png' | shuf -n 1)" "$HOME/Pictures/Wallpapers/wallpaper.png"
-  ~/.config/scripts/palette/change-wallpaper.sh wallpaper
+  cp "$(find "$HOME"/.config/dotswitch/themes/ -type f -name 'wallpaper.png' | shuf -n 1)" "$HOME/Pictures/Wallpapers/wallpaper.png"
+  # ~/.config/scripts/palette/change-wallpaper.sh wallpaper
 
   # Setup directories
   mkdir -p ~/.local/share/icons ~/Desktop/
 
-  sudo mv /usr/share/icons/rose-pine-hyprcursor/ ~/.local/share/icons/
+  # sudo mv /usr/share/icons/rose-pine-hyprcursor/ ~/.local/share/icons/
+  cp -r /usr/share/icons/rose-pine-hyprcursor/ ~/.local/share/icons/
 }
 
 install_extra_packages() {
