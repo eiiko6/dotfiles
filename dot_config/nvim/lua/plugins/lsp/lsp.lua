@@ -68,8 +68,14 @@ return {
           end
         end
 
-        -- Highlight references of the word under the cursor
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        -- Disable vue_ls formatting
+        -- if client and client.name == 'vue_ls' then
+        --   client.server_capabilities.documentFormattingProvider = false
+        -- end
+
+        -- Highlight references of the word under the cursor
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -291,6 +297,9 @@ return {
           ['rust-analyzer'] = {
             cargo = {
               features = 'all',
+              buildScripts = {
+                enable = true,
+              },
             },
             procMacro = {
               enabled = true,
@@ -347,6 +356,21 @@ return {
       qmlls = {
         cmd = { 'qmlls6' },
         filetypes = { 'qml' },
+      },
+
+      ruby_lsp = {
+        filetypes = { 'ruby' },
+        cmd = { 'ruby-lsp' }, -- or { "bundle", "exec", "ruby-lsp" },
+        root_markers = { 'Gemfile', '.git' },
+        init_options = {
+          formatter = 'standard',
+          linters = { 'standard' },
+          -- addonSettings = {
+          --   ['Ruby LSP Rails'] = {
+          --     enablePendingMigrationsPrompt = false,
+          --   },
+          -- },
+        },
       },
     }
 

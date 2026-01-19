@@ -38,6 +38,14 @@ alias h='helix'
 alias zel='zellij'
 alias dla='yt-dlp --extract-audio'
 
+function files
+  for file in (fd -t f)
+    echo $file
+    command cat $file
+    echo
+  end
+end
+
 function amazon-shorten
     set url (echo $argv | cut -d '/' -f 4 --complement | awk -F '?' '{print $1}')
     echo $url
@@ -95,6 +103,9 @@ starship init fish | source
 set PATH $PATH /home/strawberries/.local/bin
 set PATH $PATH /home/strawberries/.cargo/bin
 set PATH $PATH /home/strawberries/go/bin
+set PATH $PATH /home/strawberries/.local/share/gem/ruby/*/bin
+
+set JAVA_HOME /opt/android-studio/jbr
 
 # Bindings
 bind ctrl-backspace 'commandline -r ""'
@@ -105,7 +116,7 @@ for file in ~/.config/fish/functions/*
     source $file 2>/dev/null
 end
 
-pyenv init - fish | source
+# pyenv init - fish | source
 
 source ~/private/config.fish 2>/dev/null
 
