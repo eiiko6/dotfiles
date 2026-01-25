@@ -98,12 +98,15 @@ sudo-rs
 
 # Function to detect the Linux distribution
 detect_distro() {
-  if [ -f /etc/os-release ]; then
-    # Extract the ID from /etc/os-release
+  if [[ -f /etc/os-release ]]; then
     . /etc/os-release
-    DISTRO=$ID
+
+    if [[ "$ID" == "arch" ]] || [[ "$ID_LIKE" == *"arch"* ]]; then
+      DISTRO="arch"
+    else
+      DISTRO="unsupported"
+    fi
   else
-    # Default to unsupported if the file doesn't exist
     DISTRO="unsupported"
   fi
 }
