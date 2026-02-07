@@ -205,7 +205,13 @@ return {
       clangd = {},
 
       -- pyright-langserver
-      pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            pythonPath = ".venv/bin/python"
+          }
+        }
+      },
 
       -- typescript-language-server
       -- explicitly disable old tsserver / ts_ls so they don't conflict with vtsls
