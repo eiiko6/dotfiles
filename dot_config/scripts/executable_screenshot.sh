@@ -7,6 +7,8 @@ timestamp=$(date +'%Y-%m-%d_%H-%M-%S')
 if [ "$1" = "full" ]; then
   geometry=$(hyprctl monitors | sed -n '2p' | cut -d '@' -f 1 | xargs)
   grim -g "0,0 $geometry" "$dir/$timestamp.png"
+elif [ "$1" = "editor" ]; then
+  grim -g "$(slurp)" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 else
   grim -g "$(slurp)" "$dir/$timestamp.png"
 fi

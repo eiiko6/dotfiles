@@ -43,6 +43,7 @@ qt5-wayland
 qt6-5compat
 qt6-wayland
 qt6ct
+satty
 slurp
 starship
 swappy
