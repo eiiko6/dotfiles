@@ -201,6 +201,8 @@ handle_arch() {
   # Replace my username with current user
   find ~/.config -type f -exec sed -i "s/strawberries/$(whoami)/g" {} +
 
+  rustup default stable
+
   # Install my profile switcher
   cargo install --git "https://github.com/eiiko6/dotswitch"
 
