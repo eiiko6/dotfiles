@@ -27,9 +27,8 @@ update_packages() {
         echo '> Updating system...';
         paru -Syu --noconfirm;
         echo '> Cleaning package cache...';
-        sudo pacman -Sc --noconfirm;
-        # echo '> Removing orphaned packages...';
-        # sudo pacman -Rns \$(pacman -Qdtq) --noconfirm;
+        sudo paccache -r
+        paru -Scc
         echo '> System updated! Press any key to close...';
         read -n 1;
         exit"

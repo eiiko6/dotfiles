@@ -4,104 +4,104 @@ SINK="${SINK:-$(pactl get-default-sink 2>/dev/null)}"
 [[ -z "$SINK" ]] && SINK=$(pactl list short sinks | awk 'NR==1 {print $2}')
 
 # Asymmetry Config
-RATIO=1.15  # (Right = Left * RATIO)
+RATIO=1.16  # (Right = Left * RATIO)
 
 # Get left channel volume (as integer)
 get_left_volume() {
-  pactl get-sink-volume "$SINK" | awk -F'/' '/front-left:/ {gsub(/%/,"",$2); print int($2)}'
+    pactl get-sink-volume "$SINK" | awk -F'/' '/front-left:/ {gsub(/%/,"",$2); print int($2)}'
 }
 
 # Set both channels, integer % only
 set_volume() {
-  left=$1
-  right=$(awk "BEGIN {printf \"%d\", $left * $RATIO}")
-  pactl set-sink-volume "$SINK" ${left}% ${right}%
+    left=$1
+    right=$(awk "BEGIN {printf \"%d\", $left * $RATIO}")
+    pactl set-sink-volume "$SINK" ${left}% ${right}%
 }
 
 # Increase volume (keeping ratio)
 inc_volume() {
-  left=$(get_left_volume)
-  (( left == 0 )) && left=1  # safety if unset
-  new_left=$((left + 2))
-  (( new_left > 100 )) && new_left=100
-  set_volume "$new_left"
-  notify_user
+    left=$(get_left_volume)
+    (( left == 0 )) && left=1  # safety if unset
+    new_left=$((left + 2))
+    (( new_left > 100 )) && new_left=100
+    set_volume "$new_left"
+    notify_user
 }
 
 # Decrease volume (keeping ratio)
 dec_volume() {
-  left=$(get_left_volume)
-  (( left == 0 )) && left=1  # safety if unset
-  new_left=$((left - 2))
-  (( new_left < 0 )) && new_left=0
-  set_volume "$new_left"
-  notify_user
+    left=$(get_left_volume)
+    (( left == 0 )) && left=1  # safety if unset
+    new_left=$((left - 2))
+    (( new_left < 0 )) && new_left=0
+    set_volume "$new_left"
+    notify_user
 }
 
 # Toggle mute
 toggle_mute() {
-  if [ "$(pamixer --get-mute)" == "false" ]; then
-    pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/volume-mute.png" "Volume Switched OFF"
-  else
-    pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Switched ON"
-  fi
+    if [ "$(pamixer --get-mute)" == "false" ]; then
+        pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/volume-mute.png" "Volume Switched OFF"
+    else
+        pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Switched ON"
+    fi
 }
 
 # --- Icons ---
 get_icon() {
-  current=$(get_left_volume)
-  if [[ "$current" -eq "0" ]]; then
-    echo "$iDIR/volume-mute.png"
-  elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
-    echo "$iDIR/volume-low.png"
-  elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
-    echo "$iDIR/volume-mid.png"
-  elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
-    echo "$iDIR/volume-high.png"
-  fi
+    current=$(get_left_volume)
+    if [[ "$current" -eq "0" ]]; then
+        echo "$iDIR/volume-mute.png"
+    elif [[ ("$current" -ge "0") && ("$current" -le "30") ]]; then
+        echo "$iDIR/volume-low.png"
+    elif [[ ("$current" -ge "30") && ("$current" -le "60") ]]; then
+        echo "$iDIR/volume-mid.png"
+    elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+        echo "$iDIR/volume-high.png"
+    fi
 }
 
 # --- Notifications ---
 notify_user() {
-  notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_left_volume) %"
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_left_volume) %"
 }
 
 # --- Mic controls ---
 toggle_mic() {
-  if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-    pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/microphone-mute.png" "Microphone Switched OFF"
-  else
-    pamixer -u --default-source && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/microphone.png" "Microphone Switched ON"
-  fi
+    if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
+        pamixer --default-source -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/microphone-mute.png" "Microphone Switched OFF"
+    else
+        pamixer -u --default-source && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/microphone.png" "Microphone Switched ON"
+    fi
 }
 
 get_mic_icon() {
-  echo "$iDIR/microphone.png"
+    echo "$iDIR/microphone.png"
 }
 
 notify_mic_user() {
-  notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_mic_icon)" "Mic-Level : $(pamixer --default-source --get-volume) %"
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_mic_icon)" "Mic-Level : $(pamixer --default-source --get-volume) %"
 }
 
 inc_mic_volume() {
-  pamixer --default-source -i 5 && notify_mic_user
+    pamixer --default-source -i 5 && notify_mic_user
 }
 
 dec_mic_volume() {
-  pamixer --default-source -d 5 && notify_mic_user
+    pamixer --default-source -d 5 && notify_mic_user
 }
 
 # --- Dispatcher ---
 case "$1" in
-  --set) set_volume "$2" ;;
-  --get) get_left_volume ;;
-  --inc) inc_volume ;;
-  --dec) dec_volume ;;
-  --toggle) toggle_mute ;;
-  --toggle-mic) toggle_mic ;;
-  --get-icon) get_icon ;;
-  --get-mic-icon) get_mic_icon ;;
-  --mic-inc) inc_mic_volume ;;
-  --mic-dec) dec_mic_volume ;;
-  *) get_left_volume ;;
+    --set) set_volume "$2" ;;
+    --get) get_left_volume ;;
+    --inc) inc_volume ;;
+    --dec) dec_volume ;;
+    --toggle) toggle_mute ;;
+    --toggle-mic) toggle_mic ;;
+    --get-icon) get_icon ;;
+    --get-mic-icon) get_mic_icon ;;
+    --mic-inc) inc_mic_volume ;;
+    --mic-dec) dec_mic_volume ;;
+    *) get_left_volume ;;
 esac
