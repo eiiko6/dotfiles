@@ -42,7 +42,7 @@
   },
   "disk": {
     "interval": 30,
-    "format": " {percentage_used}%",
+    "format": " {specific_free:0.2f}GB",
     "path": "/",
     "unit": "GB"
   },
