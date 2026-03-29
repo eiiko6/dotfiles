@@ -67,8 +67,8 @@ palette() {
         wal -i "$wallpaper_path" -n -q -t --saturate 0.6
     fi
 
-    # Set the wallpaper using swww
-    swww img "$wallpaper_path" -t fade
+    # Set the wallpaper using awww
+    awww img "$wallpaper_path" -t fade
 
     # Change the preview
     wallpaper=$(echo "$wallpaper_path" | sed -E 's|.*/Wallpapers/||; s|\.[^.]+$||')
