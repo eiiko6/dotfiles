@@ -22,6 +22,8 @@ keybinds clear-defaults=true {
 
         unbind "Ctrl o"
         bind "Ctrl Shift o" { SwitchToMode "session"; }
+
+        unbind "Ctrl s"
     }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }

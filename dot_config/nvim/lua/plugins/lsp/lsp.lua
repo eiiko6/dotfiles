@@ -208,9 +208,9 @@ return {
       pyright = {
         settings = {
           python = {
-            pythonPath = ".venv/bin/python"
-          }
-        }
+            pythonPath = '.venv/bin/python',
+          },
+        },
       },
 
       -- typescript-language-server
@@ -345,7 +345,15 @@ return {
       -- tailwindcss = {},
 
       -- nil + nixfmt
-      nil_ls = {},
+      nil_ls = {
+        settings = {
+          ['nil'] = {
+            formatting = {
+              command = { 'nixfmt', '--indent', '4' },
+            },
+          },
+        },
+      },
 
       roslyn_ls = {
         cmd = {
