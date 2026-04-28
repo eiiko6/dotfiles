@@ -39,7 +39,7 @@ return {
         },
         formatters = {
             ['clang-format'] = {
-                prepend_args = { '-style={IndentWidth: 4, BasedOnStyle: google}' },
+                prepend_args = { '-style={IndentWidth: 4, BasedOnStyle: llvm}' },
             },
         },
     },
