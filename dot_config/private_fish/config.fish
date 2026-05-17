@@ -38,6 +38,11 @@ alias h='helix'
 alias zel='zellij'
 alias dla='yt-dlp --extract-audio'
 
+function ccc
+    gcc $argv[1] -o ccc-out; or return
+    ./ccc-out $argv[2..-1]
+end
+
 function files
   for file in (fd -t f)
     echo $file
@@ -105,7 +110,7 @@ set PATH $PATH /home/strawberries/.cargo/bin
 set PATH $PATH /home/strawberries/go/bin
 set PATH $PATH /home/strawberries/.local/share/gem/ruby/*/bin
 
-set JAVA_HOME /opt/android-studio/jbr
+# set JAVA_HOME /opt/android-studio/jbr
 
 # Bindings
 bind ctrl-backspace 'commandline -r ""'
