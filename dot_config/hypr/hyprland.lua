@@ -68,9 +68,9 @@ hl.config({
 	--     workspace_swipe = true,
 	--     workspace_swipe_fingers = 3,
 	-- }
-	-- misc = {
-	-- 	initial_workspace_tracking = 2,
-	-- },
+	misc = {
+		initial_workspace_tracking = 0,
+	},
 })
 
 -- Source config files using loadfile
