@@ -64,12 +64,13 @@ hl.config({
 	debug = {
 		-- overlay = true
 	},
-	-- gestures = {
-	--     workspace_swipe = true,
-	--     workspace_swipe_fingers = 3,
-	-- }
+
 	misc = {
 		initial_workspace_tracking = 0,
+	},
+
+	dwindle = {
+		preserve_split = true,
 	},
 })
 

@@ -114,7 +114,8 @@ hl.window_rule({
 	match = { class = "^([Tt]hunar)$" },
 	float = true,
 	center = true,
-	opacity = "0.7",
+	-- opacity = "0.7",
+	opacity = "1",
 	size = { "monitor_w * 0.9", "monitor_h * 0.9" },
 })
 

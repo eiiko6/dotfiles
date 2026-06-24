@@ -1,9 +1,9 @@
 hl.env("XCURSOR_PATH", "~/.local/share/icons/")
 hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
-hl.env("XCURSOR_SIZE", "30")
+hl.env("XCURSOR_SIZE", "40")
 
 hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
-hl.env("HYPRCURSOR_SIZE", "30")
+hl.env("HYPRCURSOR_SIZE", "40")
 
 hl.env("GTK_THEME", "Graphite-Dark")
 

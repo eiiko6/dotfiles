@@ -35,9 +35,9 @@ hl.bind(mainMod .. " + CONTROL + " .. "J", hl.dsp.window.resize({ x = 0, y = 100
 
 -- Switch workspaces with mainMod + [0-9]
 for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	local key = i % 10
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 hl.bind(mainMod .. " + " .. "ESCAPE", hl.dsp.workspace.toggle_special("terminal"))
@@ -52,22 +52,22 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Switch focus between monitors
-hl.bind(mainMod .. " + " .. "Tab", hl.dsp.focus({ monitor = "+1" }))
-hl.bind(mainMod .. " + SHIFT + " .. "Tab", hl.dsp.focus({ monitor = "-1" }))
+hl.bind(mainMod .. " + " .. "Tab", hl.dsp.window.cycle_next({ next = true }))
+hl.bind(mainMod .. " + SHIFT + " .. "Tab", hl.dsp.window.cycle_next({ next = false }))
 
 -- Center and float windows
 hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + " .. "C", function()
-    local m = hl.get_active_monitor()
-    hl.dispatch(hl.dsp.window.float({ action = "enable" }))
-    hl.dispatch(hl.dsp.window.resize({ x = m.width * 0.73, y = m.height * 0.73, relative = false }))
-    hl.dispatch(hl.dsp.window.center())
+	local m = hl.get_active_monitor()
+	hl.dispatch(hl.dsp.window.float({ action = "enable" }))
+	hl.dispatch(hl.dsp.window.resize({ x = m.width * 0.73, y = m.height * 0.73, relative = false }))
+	hl.dispatch(hl.dsp.window.center())
 end)
 
 -- Launch small utilities
 -- bind = $mainMod, SPACE, exec, wofi -H 600 -- App launcher
-hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("fuzzel"))                   -- App launcher
-hl.bind(mainMod .. " + " .. "X", hl.dsp.exec_cmd(lockScript))                     -- Screen lock
+hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("fuzzel")) -- App launcher
+hl.bind(mainMod .. " + " .. "X", hl.dsp.exec_cmd(lockScript)) -- Screen lock
 hl.bind(mainMod .. " + SHIFT + " .. "P", hl.dsp.exec_cmd("hyprpicker -a -f hex")) -- Color picker
 -- bind = $mainMod_SHIFT, V, exec, cliphist list | wofi -S dmenu -W 500 -H 300 | cliphist decode | wl-copy
 hl.bind(mainMod .. " + SHIFT + " .. "V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
@@ -75,25 +75,29 @@ hl.bind(mainMod .. " + " .. "S", hl.dsp.exec_cmd(screenshotScript))
 hl.bind(mainMod .. " + SHIFT + " .. "S", hl.dsp.exec_cmd(screenshotScript .. " full"))
 hl.bind(mainMod .. " + CONTROL + " .. "S", hl.dsp.exec_cmd(screenshotScript .. " editor"))
 hl.bind(mainMod .. " + " .. "SEMICOLON", hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh"))
-hl.bind(mainMod .. " + SHIFT + " .. "SEMICOLON",
-    hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh --fuzzel"))
+hl.bind(
+	mainMod .. " + SHIFT + " .. "SEMICOLON",
+	hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh --fuzzel")
+)
 
 -- Launch apps
 hl.bind(mainMod .. " + " .. "Q", hl.dsp.exec_cmd(terminal)) -- Main terminal
 hl.bind(mainMod .. " + SHIFT + " .. "Q", hl.dsp.exec_cmd("env CLEAN_FISH=true kitty"))
-hl.bind(mainMod .. " + " .. "ESCAPE",
-    hl.dsp.exec_cmd("hyprctl clients | grep specialterminal || kitty --class specialterminal --hold"))
-hl.bind(mainMod .. " + " .. "T", hl.dsp.exec_cmd(secondaryTerminal))     -- Secondary terminal
-hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd(fileManager))           -- File manager
-hl.bind(mainMod .. " + " .. "I", hl.dsp.exec_cmd(browser))               -- Browser
+hl.bind(
+	mainMod .. " + " .. "ESCAPE",
+	hl.dsp.exec_cmd("hyprctl clients | grep specialterminal || kitty --class specialterminal --hold")
+)
+hl.bind(mainMod .. " + " .. "T", hl.dsp.exec_cmd(secondaryTerminal)) -- Secondary terminal
+hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd(fileManager)) -- File manager
+hl.bind(mainMod .. " + " .. "I", hl.dsp.exec_cmd(browser)) -- Browser
 -- hl.bind(mainMod .. " + SHIFT + " .. "I", hl.dsp.exec_cmd(privateBrowser))
 hl.bind(mainMod .. " + " .. "O", hl.dsp.exec_cmd("gtk-launch obsidian")) -- Obsidian
-hl.bind(mainMod .. " + " .. "D", hl.dsp.exec_cmd("qalculate-gtk"))       -- Calculator
+hl.bind(mainMod .. " + " .. "D", hl.dsp.exec_cmd("qalculate-gtk")) -- Calculator
 
 -- Scripts
-hl.bind(mainMod .. " + " .. "N", hl.dsp.exec_cmd(waybarScript))           -- Launch or kill waybar
-hl.bind(mainMod .. " + " .. "G", hl.dsp.exec_cmd(gamemodeScript))         -- Toggle some hyprland visual effects
-hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd(idleScript))             -- mkdir -p "$HOME/Pictures/Screenshots"Launch or kill hypridle
+hl.bind(mainMod .. " + " .. "N", hl.dsp.exec_cmd(waybarScript)) -- Launch or kill waybar
+hl.bind(mainMod .. " + " .. "G", hl.dsp.exec_cmd(gamemodeScript)) -- Toggle some hyprland visual effects
+hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd(idleScript)) -- mkdir -p "$HOME/Pictures/Screenshots"Launch or kill hypridle
 -- bind = $mainMod, W, exec, fish -c 'source ~/.config/fish/functions/palette.fish; set wallpaper (find $HOME/Pictures/Wallpapers/ -type f -printf "%P\n" | shuf -n 1 | sed s/.png\$//); palette "$wallpaper"' -- Set a random wallpaper form ~/Pictures/Wallpapers/
 hl.bind(mainMod .. " + " .. "PERIOD", hl.dsp.exec_cmd(emojiPickerScript)) -- Dmenu emoji picker
 
@@ -110,3 +114,5 @@ hl.bind("xf86MonBrightnessUp", hl.dsp.exec_cmd(mediaScript .. "/brightness --inc
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
