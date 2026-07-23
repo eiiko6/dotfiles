@@ -1,0 +1,52 @@
+return {
+  'akinsho/bufferline.nvim',
+  event = 'VeryLazy',
+  dependencies = { 'catppuccin/nvim' },
+  keys = {
+    { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle Pin' },
+    { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete Non-Pinned Buffers' },
+    { '<leader>br', '<Cmd>BufferLineCloseRight<CR>', desc = 'Delete Buffers to the Right' },
+    { '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', desc = 'Delete Buffers to the Left' },
+    { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
+    { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
+    { '[b', '<cmd>BufferLineCyclePrev<cr>', desc = 'Prev Buffer' },
+    { ']b', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
+    { '[B', '<cmd>BufferLineMovePrev<cr>', desc = 'Move buffer prev' },
+    { ']B', '<cmd>BufferLineMoveNext<cr>', desc = 'Move buffer next' },
+  },
+  opts = function(_, opts)
+    opts.options = vim.tbl_deep_extend('force', opts.options or {}, {
+      diagnostics = 'nvim_lsp',
+      always_show_bufferline = false,
+      diagnostics_indicator = function(_, _, diag)
+        local init = require 'init'
+        local icons = init.icons.diagnostics
+        local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') .. (diag.warning and icons.Warn .. diag.warning or '')
+        return vim.trim(ret)
+      end,
+      offsets = {
+        {
+          filetype = 'neo-tree',
+          text = 'Neo-tree',
+          highlight = 'Directory',
+          text_align = 'left',
+        },
+        { filetype = 'snacks_layout_box' },
+      },
+    })
+
+    return opts
+  end,
+  config = function(_, opts)
+    require('bufferline').setup(opts)
+
+    -- fix restoring session (still fine)
+    vim.api.nvim_create_autocmd({ 'BufAdd', 'BufDelete' }, {
+      callback = function()
+        vim.schedule(function()
+          pcall(nvim_bufferline)
+        end)
+      end,
+    })
+  end,
+}
