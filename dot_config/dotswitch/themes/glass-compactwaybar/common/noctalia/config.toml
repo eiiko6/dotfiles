@@ -161,6 +161,16 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1" ]
 [nightlight]
 enabled = true
 
+[notification]
+background_opacity = 0.59999998658895493
+offset_x = 8
+
+[osd]
+background_opacity = 0.59999998658895493
+offset_x = 8
+orientation = "vertical"
+position_vertical = "top_left"
+
 [plugins]
 enabled = [ "yuuto/arch-updater" ]
 
@@ -206,18 +216,6 @@ wallpaper_scheme = "m3-content"
 edge_smoothness = 0.0
 transition = [ "zoom" ]
 transition_on_startup = true
-
-    # [wallpaper.default]
-    # path = "/home/strawberries/Pictures/Wallpapers/furina-cry.png"
-    #
-    # [wallpaper.last]
-    # path = "/home/strawberries/Pictures/Wallpapers/furina-cry.png"
-    #
-    # [wallpaper.monitors.DP-1]
-    # path = "/home/strawberries/Pictures/Wallpapers/furina-cry.png"
-    #
-    # [wallpaper.monitors.HDMI-A-2]
-    # path = "/home/strawberries/Pictures/Wallpapers/furina-cry.png"
 
 [widget.clock]
 format = "{:%a %D %H:%M:%S}"

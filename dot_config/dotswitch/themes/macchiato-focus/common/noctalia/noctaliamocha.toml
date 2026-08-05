@@ -1,5 +1,5 @@
 [bar.default]
-background_opacity = 0.59999998658895493
+background_opacity = 1.0
 center = [ "temp", "ram" ]
 end = [
     "media",
@@ -87,7 +87,8 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
         wave_thickness = 1.0
 
 [hooks]
-wallpaper_changed = "~/.config/scripts/palette/change-wallpaper.sh -p \"$NOCTALIA_WALLPAPER_PATH\"; noctalia msg panel-close wallpaper"
+# Explicitly empty the hook so the wallpaper-changed script does not trigger in this theme
+wallpaper_changed = ""
 
 [keybinds]
 down = [ "Down", "Ctrl+n", "Ctrl+j" ]
@@ -158,18 +159,16 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1" ]
         show_unlock_hint = true
         show_weather = true
 
-[nightlight]
-enabled = true
-
 [notification]
-background_opacity = 0.59999998658895493
 offset_x = 8
 
 [osd]
-background_opacity = 0.59999998658895493
 offset_x = 8
 orientation = "vertical"
 position_vertical = "top_left"
+
+[nightlight]
+enabled = true
 
 [plugins]
 enabled = [ "yuuto/arch-updater" ]
@@ -189,7 +188,7 @@ screen_time_enabled = true
     [shell.panel]
     launcher_placement = "attached"
     open_near_click_control_center = true
-    transparency_mode = "glass"
+    transparency_mode = "solid"
 
     [shell.screen_corners]
     enabled = true
@@ -205,7 +204,7 @@ cpu_temp_activity_threshold = 70
 builtin = "Catppuccin"
 community_palette = "Catppuccin Mocha Pink"
 mode = "dark"
-source = "wallpaper"
+source = "community"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
@@ -216,6 +215,18 @@ wallpaper_scheme = "m3-content"
 edge_smoothness = 0.0
 transition = [ "zoom" ]
 transition_on_startup = true
+
+    # [wallpaper.default]
+    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
+    #
+    # [wallpaper.last]
+    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
+    #
+    # [wallpaper.monitors.DP-1]
+    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
+    #
+    # [wallpaper.monitors.HDMI-A-2]
+    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
 
 [widget.clock]
 format = "{:%a %D %H:%M:%S}"
@@ -252,5 +263,5 @@ type = "yuuto/arch-updater:widget"
 [widget.workspaces]
 active_pill_size = 1.75
 empty_color = "outline"
-occupied_color = "secondary"
+occupied_color = "surface_variant"
 scale = 1.1500000000000001
