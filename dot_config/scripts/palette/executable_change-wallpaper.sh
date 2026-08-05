@@ -68,7 +68,7 @@ palette() {
     fi
 
     # Set the wallpaper using awww
-    awww img "$wallpaper_path" -t fade
+    # awww img "$wallpaper_path" -t fade
 
     # Change the preview
     wallpaper=$(echo "$wallpaper_path" | sed -E 's|.*/Wallpapers/||; s|\.[^.]+$||')
@@ -94,7 +94,7 @@ palette() {
     ln -sf "$preview_path" "$HOME/.cache/palette/current-preview.png"
 
     # Reload waybar
-    pkill -SIGUSR2 waybar &>/dev/null
+    # pkill -SIGUSR2 waybar &>/dev/null
 
     # Reload hyprland
     hyprctl reload &>/dev/null

@@ -66,7 +66,8 @@ end)
 
 -- Launch small utilities
 -- bind = $mainMod, SPACE, exec, wofi -H 600 -- App launcher
-hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("fuzzel")) -- App launcher
+-- hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("fuzzel")) -- App launcher
+hl.bind(mainMod .. " + " .. "SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")) -- App launcher
 hl.bind(mainMod .. " + " .. "X", hl.dsp.exec_cmd(lockScript)) -- Screen lock
 hl.bind(mainMod .. " + SHIFT + " .. "P", hl.dsp.exec_cmd("hyprpicker -a -f hex")) -- Color picker
 -- bind = $mainMod_SHIFT, V, exec, cliphist list | wofi -S dmenu -W 500 -H 300 | cliphist decode | wl-copy
@@ -74,7 +75,10 @@ hl.bind(mainMod .. " + SHIFT + " .. "V", hl.dsp.exec_cmd("cliphist list | fuzzel
 hl.bind(mainMod .. " + " .. "S", hl.dsp.exec_cmd(screenshotScript))
 hl.bind(mainMod .. " + SHIFT + " .. "S", hl.dsp.exec_cmd(screenshotScript .. " full"))
 hl.bind(mainMod .. " + CONTROL + " .. "S", hl.dsp.exec_cmd(screenshotScript .. " editor"))
-hl.bind(mainMod .. " + " .. "SEMICOLON", hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh"))
+hl.bind(
+	mainMod .. " + " .. "SEMICOLON",
+	hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh --noctalia")
+)
 hl.bind(
 	mainMod .. " + SHIFT + " .. "SEMICOLON",
 	hl.dsp.exec_cmd("~/.config/scripts/palette/change-wallpaper-menu.sh --fuzzel")
@@ -85,7 +89,7 @@ hl.bind(mainMod .. " + " .. "Q", hl.dsp.exec_cmd(terminal)) -- Main terminal
 hl.bind(mainMod .. " + SHIFT + " .. "Q", hl.dsp.exec_cmd("env CLEAN_FISH=true kitty"))
 hl.bind(
 	mainMod .. " + " .. "ESCAPE",
-	hl.dsp.exec_cmd("hyprctl clients | grep specialterminal || kitty --class specialterminal --hold")
+	hl.dsp.exec_cmd("hyprctl clients | grep specialterminal || kitty --class specialterminal --hold -e btop")
 )
 hl.bind(mainMod .. " + " .. "T", hl.dsp.exec_cmd(secondaryTerminal)) -- Secondary terminal
 hl.bind(mainMod .. " + " .. "E", hl.dsp.exec_cmd(fileManager)) -- File manager

@@ -13,6 +13,10 @@ if [[ "$1" == "--fuzzel" ]]; then
     USE_FUZZEL=true
     MENU_CMD=(fuzzel --dmenu --prompt "Select Wallpaper: ")
 fi
+if [[ "$1" == "--noctalia" ]]; then
+    noctalia msg panel-toggle wallpaper
+    exit
+fi
 
 if $USE_FUZZEL; then
     # Fuzzel: show just relative paths (no images)
@@ -28,5 +32,6 @@ fi
 
 if [ -n "$SELECTED_REL" ]; then
     WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED_REL"
-    ~/.config/scripts/palette/change-wallpaper.sh -p "$WALLPAPER_PATH"
+    # ~/.config/scripts/palette/change-wallpaper.sh -p "$WALLPAPER_PATH"
+    noctalia msg wallpaper-set "$WALLPAPER_PATH"
 fi

@@ -21,19 +21,19 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("~/.config/scripts/start-portal.sh")
 	-- hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePine-Linux'")
-	hl.exec_cmd("awww-daemon")
+	-- hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("thunar --daemon")
-	hl.exec_cmd("waybar")
-	hl.exec_cmd("hypridle")
-	hl.exec_cmd("mako")
+	-- hl.exec_cmd("waybar")
+	-- hl.exec_cmd("hypridle")
+	-- hl.exec_cmd("mako")
 	-- hl.exec_cmd("wireplumber")
 	-- hl.exec_cmd("blueman-applet")
-	hl.exec_cmd("nm-applet --indicator")
+	-- hl.exec_cmd("nm-applet --indicator")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	-- hl.exec_cmd("~/.config/waybar/scripts/album_art.sh")
 	-- hl.exec_cmd("~/Desktop/scripts/wayBarIconAnimation.sh")
 	hl.exec_cmd(palette .. " --all")
-	hl.exec_cmd("hypridle")
+	hl.exec_cmd("noctalia")
 end)
 
 -- Behavior and Settings
@@ -76,6 +76,8 @@ hl.config({
 
 -- Source config files using loadfile
 local config_dir = os.getenv("HOME") .. "/.config/hypr/"
+
+-- require("noctalia").apply_theme()
 
 require("keymaps")
 require("rules")

@@ -96,14 +96,14 @@ hl.window_rule({
 hl.window_rule({
 	name = "Spotify",
 	match = { class = "^(spotify)$" },
-	opacity = "0.8",
+	-- opacity = "0.8",
 })
 
 -- ST Terminal
 hl.window_rule({
 	name = "ST Terminal",
 	match = { class = "^(st-256color)$" },
-	opacity = "0.6 0.6",
+	-- opacity = "0.6 0.6",
 	float = true,
 	size = "40% 40%",
 })
@@ -115,7 +115,6 @@ hl.window_rule({
 	float = true,
 	center = true,
 	-- opacity = "0.7",
-	opacity = "1",
 	size = { "monitor_w * 0.9", "monitor_h * 0.9" },
 })
 
@@ -124,7 +123,7 @@ hl.window_rule({
 	name = "File Roller",
 	match = { class = "^(org.gnome.FileRoller)$" },
 	float = true,
-	opacity = "0.7",
+	-- opacity = "0.7",
 	size = { "monitor_w * 0.65", "monitor_h * 0.65" },
 })
 
@@ -150,7 +149,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "Vesktop",
 	match = { class = "^(vesktop)$" },
-	opacity = "0.75",
+	-- opacity = "0.75",
 })
 
 -- Discord
@@ -160,7 +159,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "Virt Manager",
 	match = { class = "^(virt-manager)$" },
-	opacity = "0.8",
+	-- opacity = "0.8",
 	float = true,
 	size = { "monitor_w * 0.8", "monitor_h * 0.8" },
 })
@@ -180,7 +179,7 @@ hl.window_rule({
 	float = true,
 	move = { "cursor_x - (monitor_w * 0.03)", "cursor_y - (monitor_h * 1.05)" },
 	no_anim = true,
-	opacity = "0.8 0.6",
+	-- opacity = "0.8 0.6",
 })
 hl.layer_rule({ match = { namespace = "wofi" }, blur = true })
 hl.layer_rule({ match = { namespace = "wofi" }, ignore_alpha = 0 })
@@ -206,8 +205,25 @@ hl.window_rule({
 	workspace = "special:terminal",
 })
 
+-- hl.window_rule({
+-- 	name = "Genshin Impact",
+-- 	match = { class = "steam_app_3366906218" },
+-- 	confine_pointer = true,
+-- })
+
+hl.layer_rule({
+	name = "noctalia",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+	},
+	no_anim = true,
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
+})
+
 hl.window_rule({
-	name = "Genshin Impact",
-	match = { class = "steam_app_3366906218" },
-	confine_pointer = true,
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size = { "monitor_w * 0.65", "monitor_h * 0.65" },
 })
