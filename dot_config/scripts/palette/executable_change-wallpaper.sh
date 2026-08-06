@@ -69,6 +69,7 @@ palette() {
 
     # Set the wallpaper using awww
     # awww img "$wallpaper_path" -t fade
+    # noctalia msg wallpaper-set "$wallpaper_path"
 
     # Change the preview
     wallpaper=$(echo "$wallpaper_path" | sed -E 's|.*/Wallpapers/||; s|\.[^.]+$||')

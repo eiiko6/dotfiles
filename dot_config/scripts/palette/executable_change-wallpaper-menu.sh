@@ -32,6 +32,6 @@ fi
 
 if [ -n "$SELECTED_REL" ]; then
     WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED_REL"
-    # ~/.config/scripts/palette/change-wallpaper.sh -p "$WALLPAPER_PATH"
-    noctalia msg wallpaper-set "$WALLPAPER_PATH"
+    ~/.config/scripts/palette/change-wallpaper.sh -p "$WALLPAPER_PATH"
+    # noctalia msg wallpaper-set "$WALLPAPER_PATH"
 fi

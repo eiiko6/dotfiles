@@ -9,7 +9,7 @@ on-button-left=dismiss
 on-button-middle=none
 on-button-right=dismiss-all
 on-touch=dismiss
-#on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
 # STYLE OPTIONS
 font=Fantasque Sans Mono 14
@@ -33,12 +33,25 @@ max-visible=6
 layer=overlay
 anchor=top-right
 
-# Catppuccin
+background-color=#210C3855
+text-color=#F2DFF3
+border-color=#ECC8B6
+progress-color=over #89b4fa
 
-background-color=#24273a
-text-color=#cad3f5
-border-color=#b7bdf8
-progress-color=over #363a4f
+[urgency=low]
+border-color=#ECC8B6
+default-timeout=2000
+
+[urgency=normal]
+border-color=#ECC8B6
+default-timeout=5000
 
 [urgency=high]
-border-color=#f5a97f
+border-color=#f38ba8
+text-color=#f38ba8
+default-timeout=0
+
+[category=mpd]
+border-color=#f9e2af
+default-timeout=2000
+group-by=category

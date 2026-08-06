@@ -87,7 +87,6 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
         wave_thickness = 1.0
 
 [hooks]
-# Explicitly empty the hook so the wallpaper-changed script does not trigger in this theme
 wallpaper_changed = ""
 
 [keybinds]
@@ -100,9 +99,9 @@ up = [ "Up", "Ctrl+p", "Ctrl+k" ]
 address = "Clermont Ferrand, France"
 
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1" ]
+widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1", "lockscreen-widget-0000000000000001" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -113,25 +112,25 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1" ]
     box_height = 196.0
     box_width = 810.0
     cx = 1280.0
-    cy = 1258.0
+    cy = 1250.0
     output = "DP-1"
     rotation = 0.0
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
+        background_opacity = 1.0
+        background_radius = 20.0
+        center_password_text = true
+        input_opacity = 0.80000000000000004
+        input_radius = 20.0
         layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
         show_session_buttons = true
-        show_unlock_hint = true
+        show_unlock_hint = false
         show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
@@ -159,18 +158,35 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@DP-1" ]
         show_unlock_hint = true
         show_weather = true
 
-[notification]
-background_opacity = 1
-offset_x = 8
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 320.0
+    cx = 1280.0
+    cy = 720.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "clock"
 
-[osd]
-background_opacity = 1
-offset_x = 8
-orientation = "vertical"
-position_vertical = "top_left"
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = true
+        background_opacity = 1.0
+        background_padding = 5
+        background_radius = 20
+        center_text = true
+        shadow = false
 
 [nightlight]
 enabled = true
+
+[notification]
+background_opacity = 1.0
+offset_x = 8
+
+[osd]
+background_opacity = 0.59999998658895493
+offset_x = 8
+orientation = "vertical"
+position_vertical = "top_left"
 
 [plugins]
 enabled = [ "yuuto/arch-updater" ]
@@ -205,7 +221,7 @@ cpu_temp_activity_threshold = 70
 [theme]
 builtin = "Catppuccin"
 community_palette = "Catppuccin Mocha Pink"
-mode = "dark"
+mode = "auto"
 source = "community"
 wallpaper_scheme = "m3-content"
 
@@ -218,17 +234,25 @@ edge_smoothness = 0.0
 transition = [ "zoom" ]
 transition_on_startup = true
 
-    # [wallpaper.default]
-    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
-    #
-    # [wallpaper.last]
-    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
-    #
-    # [wallpaper.monitors.DP-1]
-    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
-    #
-    # [wallpaper.monitors.HDMI-A-2]
-    # path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha.png"
+    [wallpaper.default]
+    path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha-alt.png"
+
+    [wallpaper.last]
+    path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha-alt.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha-alt.png"
+
+    [wallpaper.monitors.HDMI-A-2]
+    path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha-alt.png"
+
+    [[wallpaper.favorite]]
+    path = "/home/strawberries/Pictures/Wallpapers/nix/nix-wallpaper-nineish-catppuccin-mocha-alt.png"
+    theme_mode = "auto"
+
+    [[wallpaper.favorite]]
+    path = "/home/strawberries/Pictures/Wallpapers/frieren/frieren-rainbowspell-reversed.png"
+    theme_mode = "auto"
 
 [widget.clock]
 format = "{:%a %D %H:%M:%S}"
