@@ -14,7 +14,6 @@ end = [
     "clock"
 ]
 margin_ends = 0
-margin_opposite_edge = 5
 start = [ "launcher", "spacer_1", "workspaces", "spacer_1", "tray" ]
 
 [widget.clock]
