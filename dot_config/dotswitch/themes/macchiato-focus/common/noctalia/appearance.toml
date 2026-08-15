@@ -37,32 +37,6 @@ wallpaper_changed = ""
 [lockscreen]
 blur_intensity = 0.0
 
-[lockscreen_widgets.grid]
-visible = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-    background_color = "surface_variant"
-    background_opacity = 0.59999999999999998
-    background_radius = 20.0
-    input_opacity = 0.59999999999999998
-    input_radius = 20.0
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
-    background_color = "surface_variant"
-    background_opacity = 1.0
-    background_radius = 0.0
-    center_password_text = true
-    input_opacity = 1.0
-    input_radius = 0.0
-    show_unlock_hint = false
-
-    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
-    background = true
-    background_opacity = 1.0
-    background_padding = 5
-    background_radius = 20
-    shadow = false
-
 [notification]
 background_opacity = 1.0
 border = false

@@ -29,30 +29,6 @@ visible = true
 [hooks]
 wallpaper_changed = "~/.config/scripts/palette/change-wallpaper.sh -p \"$NOCTALIA_WALLPAPER_PATH\"; noctalia msg panel-close wallpaper"
 
-[lockscreen_widgets.grid]
-visible = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-    background_color = "surface_variant"
-    background_opacity = 0.59999999999999998
-    background_radius = 20.0
-    input_opacity = 0.59999999999999998
-    input_radius = 20.0
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
-    background_color = "surface_variant"
-    background_opacity = 0.88
-    background_radius = 12.0
-    input_opacity = 1.0
-    input_radius = 6.0
-
-    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
-    background = true
-    background_opacity = 0.59999999999999998
-    background_padding = 5
-    background_radius = 20
-    shadow = false
-
 [notification]
 background_opacity = 0.59999998658895493
 
