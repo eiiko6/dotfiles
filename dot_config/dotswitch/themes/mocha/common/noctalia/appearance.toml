@@ -27,8 +27,7 @@ visible = true
     wave_thickness = 1.0
 
 [hooks]
-# Intentionnaly empty because this theme doesn't need wallpaper color processing
-wallpaper_changed = ""
+wallpaper_changed = "~/.config/scripts/palette/change-wallpaper.sh -p \"$NOCTALIA_WALLPAPER_PATH\"; noctalia msg panel-close wallpaper"
 
 [notification]
 background_opacity = 1.0

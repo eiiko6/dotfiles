@@ -27,8 +27,7 @@ visible = true
     wave_thickness = 1.0
 
 [hooks]
-# Intentionnaly empty because this theme doesn't need wallpaper color processing
-wallpaper_changed = ""
+wallpaper_changed = "~/.config/scripts/palette/change-wallpaper.sh -p \"$NOCTALIA_WALLPAPER_PATH\"; noctalia msg panel-close wallpaper"
 
 [notification]
 background_opacity = 1.0
@@ -48,7 +47,7 @@ alpha = 0.39999999105930328
 [theme]
 builtin = "Catppuccin"
 community_palette = "Catppuccin Mocha Pink"
-mode = "dark"
+mode = "light"
 source = "community"
 wallpaper_scheme = "m3-content"
 
