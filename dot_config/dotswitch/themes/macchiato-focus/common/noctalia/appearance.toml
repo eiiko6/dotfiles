@@ -1,0 +1,125 @@
+[bar.default]
+background_opacity = 1.0
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+concave_edge_corners = false
+margin_ends = 0
+margin_opposite_edge = 0
+shadow = false
+
+[desktop_widgets.grid]
+visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+    background = true
+    background_opacity = 1.0
+    background_radius = 20
+    shadow = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+    background_opacity = 1.0
+    background_radius = 20
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+    background = true
+    background_opacity = 1.0
+    bloom_intensity = 0.0
+    inner_diameter = 0.60000000000000009
+    primary_color = "surface"
+    secondary_color = "primary"
+    wave_thickness = 1.0
+
+[hooks]
+# Intentionnaly empty because this theme doesn't need wallpaper color processing
+wallpaper_changed = ""
+
+[lockscreen]
+blur_intensity = 0.0
+
+[lockscreen_widgets.grid]
+visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+    background_color = "surface_variant"
+    background_opacity = 0.59999999999999998
+    background_radius = 20.0
+    input_opacity = 0.59999999999999998
+    input_radius = 20.0
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
+    background_color = "surface_variant"
+    background_opacity = 1.0
+    background_radius = 0.0
+    center_password_text = true
+    input_opacity = 1.0
+    input_radius = 0.0
+    show_unlock_hint = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+    background = true
+    background_opacity = 1.0
+    background_padding = 5
+    background_radius = 20
+    shadow = false
+
+[notification]
+background_opacity = 1.0
+border = false
+
+[osd]
+background_opacity = 0.99999997764825821
+border = false
+
+[shell]
+button_borders = false
+card_borders = false
+corner_radius_scale = 0.0
+input_borders = false
+popup_borders = false
+popup_shadows = false
+
+    [shell.animation]
+    enabled = false
+
+    [shell.panel]
+    transparency_mode = "solid"
+    borders = false
+    floating_offset = 0
+    shadow = false
+
+    [shell.screen_corners]
+    enabled = false
+    size = 20
+
+    [shell.shadow]
+    alpha = 0.0
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Catppuccin Mocha Pink"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "qt" ]
+    community_ids = [ "spicetify", "pywalfox-beta4", "discord", "prismlauncher", "steam", "obs" ]
+
+[wallpaper]
+edge_smoothness = 0.0
+transition = []
+transition_duration = 100
+transition_on_startup = true
+
+[wallpaper_panel]
+flatten = true
+
+[widget.media]
+art_size = 20
+
+[widget.workspaces]
+active_pill_size = 1.75
+empty_color = "outline"
+occupied_color = "surface_variant"
+scale = 1.1500000000000001

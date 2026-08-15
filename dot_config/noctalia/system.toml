@@ -1,0 +1,15 @@
+[brightness]
+enable_ddcutil = true
+minimum_brightness = 0.14999999664723873
+
+[location]
+address = "Clermont Ferrand, France"
+
+[nightlight]
+enabled = false
+
+[plugins]
+enabled = [ "yuuto/arch-updater" ]
+
+[system.monitor]
+cpu_temp_activity_threshold = 70

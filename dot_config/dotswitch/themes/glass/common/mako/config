@@ -33,17 +33,17 @@ max-visible=6
 layer=overlay
 anchor=top-right
 
-background-color=#210C3855
-text-color=#F2DFF3
-border-color=#ECC8B6
+background-color=#0C0E1655
+text-color=#EACEE8
+border-color=#B355D4
 progress-color=over #89b4fa
 
 [urgency=low]
-border-color=#ECC8B6
+border-color=#B355D4
 default-timeout=2000
 
 [urgency=normal]
-border-color=#ECC8B6
+border-color=#B355D4
 default-timeout=5000
 
 [urgency=high]
