@@ -13,6 +13,7 @@ mako() {
   BACKGROUND_COLOR=$(sed -n '1p' "$WAL_COLORS") # background
 
   # Generate mako config
+  rm "$HOME/.config/mako/config"
   cat >"$HOME/.config/mako/config" <<EOF
 # Auto-generated mako config
 

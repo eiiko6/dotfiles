@@ -34,7 +34,7 @@ wallpaper_changed = ""
 background_opacity = 1.0
 
 [osd]
-background_opacity = 0.59999998658895493
+background_opacity = 1.0
 
 [shell.panel]
 transparency_mode = "solid"

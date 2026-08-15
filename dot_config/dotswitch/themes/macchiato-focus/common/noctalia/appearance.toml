@@ -42,7 +42,7 @@ background_opacity = 1.0
 border = false
 
 [osd]
-background_opacity = 0.99999997764825821
+background_opacity = 1.0
 border = false
 
 [shell]
