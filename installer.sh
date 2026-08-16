@@ -50,6 +50,7 @@ swappy
 swww
 thunar
 thunar-archive-plugin
+nautilus
 tumbler
 ttf-fira-code
 ttf-hack

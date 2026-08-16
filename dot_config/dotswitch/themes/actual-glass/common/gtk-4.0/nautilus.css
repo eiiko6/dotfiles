@@ -1,0 +1,181 @@
+/* --- CENTRAL CONTROL: ADJUST OPACITY HERE --- */
+/* Change 0.6 to your preferred opacity (0.0 is fully clear, 1.0 is solid) */
+@define-color glass_bg alpha(@window_bg_color, 0.2);
+
+/* Mohammad Mahdi Tayebi
+ *
+ * To apply transparent sidebar. copy this file into ~/.config/gtk-4.0/gtk.css and if
+ * you use adw-gtk3 theme you can add it to ~/.config/gtk-3.0/gtk.css as well
+ *
+ * Use blur my shell extension to add blur effect behind the transparent part of windows
+*/
+
+/* --- Global Transparency Settings --- */
+
+window,
+window.background,
+widget.background.overview,
+.sidebar-pane,
+.sidebar,
+.navigation-sidebar,
+.nautilus-window,
+.nautilus-window .background,
+#blackbox-main-window {
+    background: @glass_bg;
+    background-color: @glass_bg;
+}
+
+/* Ensure main window background is fully transparent */
+window {
+    background: @glass_bg;
+}
+
+/* Global Content Pane */
+.content-pane,
+window.background .content-pane,
+window.background .view,
+window.background overlay-split-view {
+    background: @glass_bg;
+}
+
+/* Fallback for global content-pane if you prefer solid view area, 
+   change '@glass_bg' to '@view_bg_color' below */
+.content-pane {
+    background: @view_bg_color;
+}
+
+/* --- Headerbar & Titlebars --- */
+
+overlay-split-view revealer.raised.top-bar,
+overlay-split-view headerbar.titlebar,
+.tweak-titlebar-left,
+window.ssd.window .top-bar,
+window.ssd.window .top-bar windowhandle {
+    background: @glass_bg;
+    background-color: @glass_bg;
+    border: none;
+    box-shadow: none;
+}
+
+/* --- App Specific Tweaks --- */
+
+/* For EWW bar */
+window.background.vertical_bar {
+    background: @glass_bg;
+}
+
+/* Nautilus / File Chooser */
+#NautilusFileChooser overlay-split-view.view,
+.nautilus-window placessidebar {
+    background: @glass_bg;
+}
+
+.nautilus-window > * {
+    background: @glass_bg;
+}
+
+/* Lollypop */
+window > deck > grid > headerbar.titlebar > widget > widget > box > image {
+    margin-top: -1px;
+}
+
+window > deck > grid > headerbar.titlebar > box > :nth-child(1) {
+    margin-right: -44px;
+    opacity: 0;
+}
+
+window > deck > grid > headerbar.titlebar > box > :nth-child(2) {
+    margin-right: 34px;
+}
+
+window > deck > grid > headerbar.titlebar > box > .close {
+    margin-right: 0;
+}
+
+window > deck > grid > headerbar.titlebar {
+    background: linear-gradient(
+        90deg,
+        @glass_bg 0%,
+        @glass_bg 220px,
+        @headerbar_shade_color 221px,
+        @headerbar_bg_color 198px,
+        @headerbar_bg_color 100%
+    );
+    border-bottom: none;
+}
+
+/* Builder */
+.org-gnome-Builder paneldockchild.center {
+    background: @window_bg_color;
+}
+
+.org-gnome-Builder.workspace paneldockchild.start {
+    background: @glass_bg;
+}
+
+/* Speedtest (xyz.ketok.Speedtest) */
+.horizontal > gauge.dl.horizontal > overlay > .background,
+.horizontal > gauge.up.horizontal > overlay > .background {
+    background: @glass_bg;
+}
+
+/* Gnome Tweaks */
+window > leaflet > box:last-child > scrolledwindow > viewport.frame {
+    background: @window_bg_color;
+}
+
+/* Geary */
+.geary-main-layout > leaflet > leaflet > box:first-child,
+.geary-main-layout > leaflet > leaflet > box:first-child > headerbar {
+    background: @glass_bg;
+}
+
+/* Rhythmbox */
+window box:nth-child(2) paned:nth-child(3) paned:nth-child(3) box:nth-child(2) {
+    background: @window_bg_color;
+}
+
+window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar,
+window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar button,
+window box toolbar {
+    background: @glass_bg;
+}
+
+/* Disks */
+window > deck > box > leaflet > box:nth-child(3) > stack > statuspage > scrolledwindow > viewport.frame,
+window > deck > box > leaflet > box:nth-child(3) > stack > scrolledwindow > viewport.frame {
+    background: @window_bg_color;
+}
+
+window > deck > box > leaflet > box:nth-child(1) > scrolledwindow treeview.view,
+window > deck > box > leaflet > box:nth-child(1) > headerbar.titlebar.windowhandle {
+    background: @glass_bg;
+    border-bottom: none;
+}
+
+/* BlackBox Terminal */
+#blackbox-main-window headerbar {
+    /* Uses the specific BlackBox dark tone with the centralized opacity */
+    background-color: alpha(rgb(20, 21, 35), 0.6);
+}
+
+/* Ghostty terminal */
+window.ssd.window {
+    background: @glass_bg;
+}
+
+/* GNOME Text Editor */
+window > dialog-host > widget > widget > multi-layout-view > fullscreenbox > toolbarview > revealer,
+window > dialog-host > widget > widget > multi-layout-view > fullscreenbox > toolbarview > overlay-split-view widget.content-pane {
+    background: @glass_bg;
+    box-shadow: none;
+}
+
+window > dialog-host > widget > widget > multi-layout-view > fullscreenbox > toolbarview > overlay-split-view textview.editor.view {
+    background: @glass_bg;
+}
+
+window > dialog-host > widget > widget > multi-layout-view > fullscreenbox > toolbarview > overlay-split-view textview.editor.view > border,
+window > dialog-host > widget > widget > multi-layout-view > fullscreenbox > toolbarview > overlay-split-view textview.editor.view > border > gutter {
+    background: @glass_bg;
+}

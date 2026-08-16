@@ -59,6 +59,7 @@
     },
     {
       "type": "media",
+      "format": "{artist} - {title}",
       "key": "{$2}{#blue}󰝚 ",
     },
     {

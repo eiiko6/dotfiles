@@ -1,0 +1,93 @@
+[bar.default]
+background_opacity = 0.0099999997764825821
+margin_edge = 10
+margin_ends = 20
+panel_overlap = 0
+radius = 20
+radius_top_left = 20
+radius_top_right = 20
+
+[desktop_widgets.grid]
+visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+    background = true
+    background_opacity = 1.0
+    background_radius = 20
+    shadow = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+    background_opacity = 1.0
+    background_radius = 20
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+    background = true
+    background_opacity = 1.0
+    bloom_intensity = 0.0
+    inner_diameter = 0.60000000000000009
+    primary_color = "surface"
+    secondary_color = "primary"
+    wave_thickness = 1.0
+
+[dock]
+concave_edge_corners = false
+
+[hooks]
+wallpaper_changed = "~/.config/scripts/palette/change-wallpaper.sh -p \"$NOCTALIA_WALLPAPER_PATH\"; noctalia msg panel-close wallpaper"
+
+[notification]
+background_opacity = 0.59999998658895493
+offset_x = 8
+
+[osd]
+background_opacity = 0.59999998658895493
+offset_x = 8
+orientation = "vertical"
+position_vertical = "top_left"
+
+[shell]
+corner_radius_scale = 1.2000000178813934
+panel_anchor_bar = "default"
+popup_shadows = false
+
+    [shell.panel]
+    control_center_placement = "floating"
+    floating_offset = 10
+    launcher_placement = "floating"
+    open_near_click_control_center = true
+    shadow = false
+    transparency_mode = "glass"
+    wallpaper_placement = "floating"
+    wallpaper_position = "center"
+
+    [shell.screen_corners]
+    enabled = false
+    size = 1
+
+    [shell.shadow]
+    alpha = 0.39999999105930328
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Catppuccin Mocha Pink"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "qt" ]
+    community_ids = [ "spicetify", "pywalfox-beta4", "discord", "prismlauncher", "steam", "obs" ]
+
+[wallpaper]
+edge_smoothness = 0.0
+transition = [ "zoom" ]
+transition_on_startup = true
+
+[widget.media]
+art_size = 20
+
+[widget.workspaces]
+active_pill_size = 1.75
+empty_color = "outline"
+occupied_color = "secondary"
+scale = 1.1500000000000001
