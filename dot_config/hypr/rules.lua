@@ -111,7 +111,7 @@ hl.window_rule({
 -- Thunar
 hl.window_rule({
     name = "Thunar",
-    match = { class = "^([Tt]hunar)$" },
+    match = { class = "^([Tt]hunar)$|org.gnome.Nautilus" },
     float = true,
     center = true,
     -- opacity = "0.7",
