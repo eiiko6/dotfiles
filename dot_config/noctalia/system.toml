@@ -9,7 +9,11 @@ address = "Clermont Ferrand, France"
 enabled = false
 
 [plugins]
-enabled = [ "yuuto/arch-updater" ]
+# enabled = [ "yuuto/arch-updater", "noctalia/wallhaven" ]
+enabled = [ "noctalia/wallhaven" ]
+
+[plugin_settings."noctalia/wallhaven"]
+download_dir = "/home/strawberries/Pictures/NoctaliaWallpapers"
 
 [system.monitor]
 cpu_temp_activity_threshold = 70
