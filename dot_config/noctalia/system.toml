@@ -15,5 +15,8 @@ enabled = [ "noctalia/wallhaven" ]
 [plugin_settings."noctalia/wallhaven"]
 download_dir = "/home/strawberries/Pictures/NoctaliaWallpapers"
 
+[wallpaper]
+directory = "/home/strawberries/Pictures/Wallpapers"
+
 [system.monitor]
 cpu_temp_activity_threshold = 70

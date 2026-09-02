@@ -5,6 +5,7 @@ end = [
     "spacer_1",
     "widget",
     "notifications",
+    "spacer_1",
     "volume",
     "brightness",
     "bluetooth",
