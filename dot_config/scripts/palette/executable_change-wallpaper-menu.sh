@@ -17,6 +17,10 @@ if [[ "$1" == "--noctalia" ]]; then
     noctalia msg panel-toggle wallpaper
     exit
 fi
+if [[ "$1" == "--noctalia-wallhaven" ]]; then
+    noctalia msg panel-toggle noctalia/wallhaven:browser
+    exit
+fi
 
 if $USE_FUZZEL; then
     # Fuzzel: show just relative paths (no images)
