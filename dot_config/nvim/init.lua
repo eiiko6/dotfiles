@@ -119,8 +119,19 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
+-- [[ Source per-system overrides ]]
 
+local private_path = vim.fn.expand '~/private/nvim.lua'
+local private_plugin_specs = {}
+
+if vim.uv.fs_stat(private_path) then
+  local status, result = pcall(dofile, private_path)
+  if status and type(result) == 'table' then
+    private_plugin_specs = result
+  end
+end
+
+-- [[ Configure and install plugins ]]
 require('lazy').setup {
   { import = 'plugins' },
   { import = 'plugins.colors' },
@@ -128,6 +139,8 @@ require('lazy').setup {
   { import = 'plugins.lsp' },
   { import = 'plugins.ui' },
   { import = 'plugins.random-languages' },
+
+  private_plugin_specs,
 }
 
 require 'keymaps'
