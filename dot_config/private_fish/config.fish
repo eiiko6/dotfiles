@@ -35,8 +35,8 @@ alias ga='git add'
 alias gf='git fetch'
 alias gc='git commit -m'
 alias h='helix'
-alias zel='zellij'
 alias dla='yt-dlp --extract-audio'
+alias nd 'nom develop'
 
 function ccc
     gcc $argv[1] -o ccc-out; or return
@@ -98,6 +98,10 @@ else
     set -U fish_greeting
 end
 
+function zel
+    zellij attach --create $argv[1] --force-run-commands
+end
+
 # Env variables
 set -x MANPAGER 'nvim +Man!'
 
@@ -126,3 +130,5 @@ end
 source ~/private/config.fish 2>/dev/null
 
 set -x EDITOR nvim
+
+alias sf symfony
